@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arabian Palace - Authentic Mandi Experience. Premium Arabian restaurant serving the finest Mandi cuisine." />
+  <title>Arabian Palace | Authentic Mandi Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #019753;
+      --green-dark: #008A44;
+      --green-light: #00C460;
+      --white: #ffffff;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background: var(--green);
+      background-image:
+        radial-gradient(ellipse 60% 80% at 75% 55%, rgba(0,196,96,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 30%, rgba(0,140,70,0.15) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: relative;
+      z-index: 100;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 56px 16px 8px;
+      background: transparent;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: slideDown 0.7s ease forwards 0.1s;
+    }
+
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      margin-top: -18px;
+    }
+
+    .logo-img {
+      height: 200px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: #ffffff; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links li.active a { color: #ffffff; }
+    .nav-links li.active a::after { width: 100%; }
+
+    .nav-order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid rgba(255,255,255,0.85);
+      color: #ffffff;
+      background: transparent;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-order-btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: white;
+    }
+
+    .nav-order-btn .arrow { font-size: 15px; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      margin-left: auto;
+      padding-top: 28px;
+    }
+
+    /* ─── HERO BODY ─── */
+    .hero-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 56px 200px 120px;
+      position: relative;
+    }
+
+    /* ─── LEFT CONTENT ─── */
+    .hero-left {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 0;
+      z-index: 10;
+    }
+
+    .hero-heading {
+      font-family: 'Rye', Georgia, serif;
+      font-size: clamp(64px, 8.5vw, 118px);
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-heading span {
+      display: block;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0 14px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 0.65s;
+    }
+
+    .divider-line {
+      flex: 1;
+      max-width: 90px;
+      height: 1px;
+      background: rgba(255,255,255,0.6);
+    }
+
+    .divider-star {
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+    }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 0.75s;
+      margin-bottom: 36px;
+    }
+
+    /* ─── BUTTONS ─── */
+    .hero-btns {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards 0.9s;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      color: var(--green);
+      border: 2px solid transparent;
+      padding: 14px 28px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.06);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255,255,255,0.75);
+      padding: 14px 28px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .btn-arrow { font-size: 16px; }
+
+    /* ─── RIGHT CONTENT ─── */
+    .hero-right {
+      position: absolute;
+      right: -8%;
+      top: 50%;
+      transform: translateY(-57%);
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mandi-wrapper {
+      position: relative;
+      width: 100%;
+      opacity: 0;
+      transform: translateX(60px) scale(0.95);
+      animation: slideInRight 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.3s;
+    }
+
+    .mandi-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      z-index: 5;
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.2));
+    }
+
+
+    /* ─── FLOATING INGREDIENTS ─── */
+    .ingredient {
+      position: absolute;
+      z-index: 10;
+      pointer-events: none;
+      font-size: 24px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .ing-green-chili {
+      top: 5%;
+      left: 48%;
+      font-size: 28px;
+      animation: floatIng1 4s ease-in-out infinite;
+    }
+
+    .ing-red-chili-1 {
+      top: 10%;
+      left: 72%;
+      font-size: 22px;
+      animation: floatIng2 4.5s ease-in-out infinite 0.7s;
+    }
+
+    .ing-red-chili-2 {
+      top: 22%;
+      left: 35%;
+      font-size: 18px;
+      animation: floatIng3 3.8s ease-in-out infinite 1.3s;
+    }
+
+    .ing-coriander-1 {
+      top: 3%;
+      left: 58%;
+      font-size: 20px;
+      animation: floatIng1 5s ease-in-out infinite 0.5s;
+    }
+
+    .ing-coriander-2 {
+      top: 14%;
+      left: 78%;
+      font-size: 18px;
+      animation: floatIng2 4.2s ease-in-out infinite 1.8s;
+    }
+
+    .ing-coriander-3 {
+      top: 6%;
+      left: 42%;
+      font-size: 16px;
+      animation: floatIng3 4.8s ease-in-out infinite 2.1s;
+    }
+
+    /* ─── KEYFRAMES ─── */
+    @keyframes slideDown {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInRight {
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+
+    @keyframes floatIng1 {
+      0%   { transform: translateY(0) rotate(0deg); }
+      33%  { transform: translateY(-12px) rotate(8deg); }
+      66%  { transform: translateY(-6px) rotate(-5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes floatIng2 {
+      0%   { transform: translateY(0) rotate(0deg) scale(1); }
+      40%  { transform: translateY(-16px) rotate(-10deg) scale(1.05); }
+      70%  { transform: translateY(-8px) rotate(6deg) scale(0.98); }
+      100% { transform: translateY(0) rotate(0deg) scale(1); }
+    }
+
+    @keyframes floatIng3 {
+      0%   { transform: translateY(0) rotate(0deg); }
+      50%  { transform: translateY(-10px) rotate(12deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .navbar { padding: 20px 32px; }
+      .hero-body { padding: 0 32px; }
+      .nav-links { gap: 24px; }
+      .hero-heading { font-size: clamp(56px, 8vw, 90px); }
+      .hero-right { width: 58%; right: -3%; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 18px 24px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-body {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 24px 0;
+        min-height: calc(100vh - 80px);
+      }
+      .hero-left {
+        width: 100%;
+        padding-bottom: 16px;
+        z-index: 10;
+      }
+      .hero-heading { font-size: clamp(52px, 14vw, 80px); }
+      .hero-right {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 110%;
+        margin-left: -5%;
+        margin-top: -20px;
+      }
+      .mandi-wrapper {
+        animation: fadeIn 0.9s ease forwards 0.4s;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: none; }
+    }
+    /* ─── BANNER SECTION ─── */
+    .banner-section {
+      width: 100%;
+      background: var(--green);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .banner-box {
+      background: #11552b;
+      width: 100%;
+      max-width: 1350px;
+      border-radius: 16px;
+      padding: 16px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+    /* subtle mosque silhouette bg */
+    .banner-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 20% 50%, rgba(0,180,80,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,180,80,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .banner-delivery {
+      height: 130px;
+      width: auto;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+    /* center content */
+    .banner-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+    }
+    .banner-label {
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .banner-logos {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    /* --- Swiggy --- */
+    .swiggy-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .swiggy-logo-svg {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    .swiggy-wordmark {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: 1.5px;
+      font-family: 'Inter', sans-serif;
+    }
+    /* --- Divider --- */
+    .banner-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.3);
+    }
+    /* --- Zomato --- */
+    .zomato-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .zomato-logo-svg {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    .zomato-wordmark {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 26px;
+      letter-spacing: -0.5px;
+      font-family: 'Inter', sans-serif;
+      font-style: italic;
+    }
+
+    /* ─── STORY SECTION ─── */
+    .story-section {
+      width: 100%;
+      background: var(--green);
+      background-image:
+        radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,196,96,0.2) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 30%, rgba(0,100,50,0.2) 0%, transparent 60%);
+      padding: 100px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+    .story-left {
+      flex: 1;
+      max-width: 580px;
+    }
+    .story-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+      font-family: 'Inter', sans-serif;
+    }
+    .story-heading {
+      font-family: 'Rye', Georgia, serif;
+      font-size: clamp(52px, 6vw, 86px);
+      color: #ffffff;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+    .divider-wrap-white {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .divider-line-white {
+      height: 1px;
+      background: rgba(255,255,255,0.4);
+      flex: 1;
+      max-width: 80px;
+    }
+    .divider-star-white {
+      color: rgba(255,255,255,0.7);
+      font-size: 18px;
+    }
+    .story-text {
+      font-size: 17px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.9;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-story {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 40px;
+      background: #ffffff;
+      color: var(--green);
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .btn-story:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    }
+    .story-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      position: relative;
+    }
+    .camel-img {
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 50px rgba(0,0,0,0.25));
+      animation: camelFloat 5s ease-in-out infinite;
+    }
+    @keyframes camelFloat {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    @media (max-width: 1024px) {
+      .story-container { flex-direction: column; }
+      .story-left { max-width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; }
+      .banner-delivery { display: none; }
+      .banner-logos { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero" id="home">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="logo.png.png" alt="Arabian Palace Logo" class="logo-img" loading="eager" />
+    </div>
+
+    <!-- Nav Right Group -->
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li class="active"><a href="#home">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contacts">Contacts</a></li>
+      </ul>
+      <!-- CTA -->
+      <a href="#" class="nav-order-btn">
+        Order Now <span class="arrow">→</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO BODY ═══ -->
+  <div class="hero-body">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <h1 class="hero-heading">
+        <span>Arabian</span>
+        <span>Palace</span>
+      </h1>
+
+      <div class="divider-wrap">
+        <div class="divider-line"></div>
+        <span class="divider-star">✦</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <p class="hero-sub">Authentic Mandi Experience</p>
+
+      <div class="hero-btns">
+        <a href="#" class="btn-primary">
+          Order Now <span class="btn-arrow">→</span>
+        </a>
+        <a href="#" class="btn-secondary">
+          Explore Menu <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <div class="mandi-wrapper">
+
+
+        <!-- Mandi Image -->
+        <img
+          src="mandi.png.png"
+          alt="Authentic Arabian Mandi"
+          class="mandi-img"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+  </div><!-- /hero-body -->
+</section>
+
+<!-- ═══ BANNER SECTION ═══ -->
+<section class="banner-section">
+  <div class="banner-box">
+
+    <!-- Left Rider -->
+    <img src="rider_left.png" alt="Delivery Rider Left" class="banner-delivery" />
+
+    <!-- Center content -->
+    <div class="banner-center">
+      <span class="banner-label">We are Available on</span>
+      <div class="banner-logos">
+
+        <!-- Swiggy -->
+        <div class="swiggy-wrap">
+          <!-- Official-style Swiggy icon: orange drop shape with S -->
+          <svg class="swiggy-logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#fc8019"/>
+            <text x="20" y="27" text-anchor="middle" fill="white" font-size="18" font-weight="900" font-family="Arial, sans-serif">S</text>
+          </svg>
+          <span class="swiggy-wordmark">SWIGGY</span>
+        </div>
+
+        <div class="banner-divider"></div>
+
+        <!-- Zomato -->
+        <div class="zomato-wrap">
+          <svg class="zomato-logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#e23744"/>
+            <text x="20" y="26" text-anchor="middle" fill="white" font-size="14" font-weight="900" font-family="Arial, sans-serif">Z</text>
+          </svg>
+          <span class="zomato-wordmark">zomato</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Rider -->
+    <img src="rider_right.png" alt="Delivery Rider Right" class="banner-delivery" />
+
+  </div>
+</section>
+
+<!-- ═══ STORY SECTION ═══ -->
+<section class="story-section" id="story">
+  <div class="story-container">
+
+    <div class="story-left">
+      <span class="story-badge">✦ Since 2018 ✦</span>
+      <h2 class="story-heading">Our Story</h2>
+
+      <div class="divider-wrap-white">
+        <div class="divider-line-white"></div>
+        <span class="divider-star-white">✦</span>
+        <div class="divider-line-white"></div>
+      </div>
+
+      <p class="story-text">
+        At Arabian Palace, we bring the true essence of Middle Eastern culinary heritage to your table. Our journey began with a simple passion: to recreate the authentic flavors of Mandi, slow-cooked to perfection in traditional underground pits.
+      </p>
+      <p class="story-text">
+        Every dish we serve is a celebration of rich spices, tender meats, and fragrant rice — crafted with recipes passed down through generations. Step into our palace and experience hospitality that treats every guest like royalty.
+      </p>
+
+      <a href="#" class="btn-story">
+        Read More <span class="btn-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="story-right">
+      <img src="camel.png" alt="Arabian Camel" class="camel-img" loading="lazy" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ MENU SECTION ═══ -->
+<section class="menu-section" id="menu">
+  <div class="menu-container">
+
+    <!-- Header -->
+    <div class="menu-header">
+      <span class="menu-badge">✦ OUR FOOD ✦</span>
+      <h2 class="menu-heading">Our Signature Dishes</h2>
+      <p class="menu-subtext">Every dish is crafted with love, authentic spices,<br>and the magic of slow-cooked Mandi.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="filterMenu('mandi', this)">Mandi Specials</button>
+      <button class="menu-tab" onclick="filterMenu('grill', this)">Grill Items</button>
+      <button class="menu-tab" onclick="filterMenu('other', this)">Other Favorites</button>
+    </div>
+
+    <!-- ── Premium Carousel ── -->
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="menuGrid">
+
+        <!-- ══ MANDI SPECIALS ══ -->
+
+        <!-- Card 1 -->
+        <div class="c-card" data-cat="mandi">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Lamb Mandi</h3>
+            <p class="c-card-desc">Slow-cooked whole lamb over aromatic saffron rice with herbs &amp; nuts.</p>
+            <div class="c-card-tags"><span class="c-pill">Classic</span></div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="c-card" data-cat="mandi">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Chicken Mandi</h3>
+            <p class="c-card-desc">Whole roasted golden chicken on fragrant Yemeni-style Mandi rice.</p>
+            <div class="c-card-tags"><span class="c-pill spicy">🌶️ Spicy</span><span class="c-pill bestseller">Best Seller</span></div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="c-card" data-cat="mandi">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Kabsa Rice Bowl</h3>
+            <p class="c-card-desc">Spiced Arabian Kabsa rice topped with pulled chicken, onions &amp; almonds.</p>
+            <div class="c-card-tags"><span class="c-pill">Classic</span></div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="c-card" data-cat="mandi">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Mandi Soup</h3>
+            <p class="c-card-desc">Rich golden broth from slow-cooked lamb bones with warm Arabian spices.</p>
+            <div class="c-card-tags"><span class="c-pill healthy">🥣 Comfort</span></div>
+          </div>
+        </div>
+
+
+
+        <!-- ══ GRILL ITEMS ══ -->
+
+        <!-- Card G1 -->
+        <div class="c-card" data-cat="grill">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1558030006-450675393462?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Mixed Grill Platter</h3>
+            <p class="c-card-desc">Seekh kebabs, shish tawook &amp; lamb chops with hummus &amp; pita.</p>
+            <div class="c-card-tags"><span class="c-pill spicy">🔥 Extra Spicy</span></div>
+          </div>
+        </div>
+
+        <!-- Card G2 -->
+        <div class="c-card" data-cat="grill">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Lamb Seekh Kebab</h3>
+            <p class="c-card-desc">Minced lamb with fresh herbs &amp; spices, grilled on skewers over live charcoal.</p>
+            <div class="c-card-tags"><span class="c-pill spicy">🌶️ Spicy</span></div>
+          </div>
+        </div>
+
+        <!-- Card G3 -->
+        <div class="c-card" data-cat="grill">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Tandoori Chicken</h3>
+            <p class="c-card-desc">Marinated whole chicken in yoghurt &amp; spices, cooked in a clay tandoor.</p>
+            <div class="c-card-tags"><span class="c-pill bestseller">Best Seller</span></div>
+          </div>
+        </div>
+
+        <!-- Card G4 -->
+        <div class="c-card" data-cat="grill">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1615937722923-67f6deaf2cc9?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Grilled Lamb Chops</h3>
+            <p class="c-card-desc">Juicy premium lamb chops marinated in saffron, grilled to smoky perfection.</p>
+            <div class="c-card-tags"><span class="c-pill">Premium Cut</span></div>
+          </div>
+        </div>
+
+        <!-- ══ OTHER FAVORITES ══ -->
+
+        <!-- Card O1 -->
+        <div class="c-card" data-cat="other">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Spiced Grilled Prawns</h3>
+            <p class="c-card-desc">Jumbo prawns in saffron marinade, chargrilled to smoky perfection.</p>
+            <div class="c-card-tags"><span class="c-pill sweet">🍯 Smoky</span></div>
+          </div>
+        </div>
+
+        <!-- Card O2 -->
+        <div class="c-card" data-cat="other">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Classic Hummus</h3>
+            <p class="c-card-desc">Creamy hummus drizzled with olive oil &amp; paprika, served with warm pita.</p>
+            <div class="c-card-tags"><span class="c-pill healthy">🌿 Healthy</span></div>
+          </div>
+        </div>
+
+        <!-- Card O3 -->
+        <div class="c-card" data-cat="other">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Chicken Shawarma</h3>
+            <p class="c-card-desc">Slow-roasted shawarma chicken wrapped in fresh flatbread with garlic sauce.</p>
+            <div class="c-card-tags"><span class="c-pill bestseller">Fan Favourite</span></div>
+          </div>
+        </div>
+
+        <!-- Card O4 -->
+        <div class="c-card" data-cat="other">
+          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1519676867240-f03562e64548?w=700&q=85&fit=crop')"></div>
+          <div class="c-card-body">
+            <h3 class="c-card-title">Baklava</h3>
+            <p class="c-card-desc">Crisp filo pastry layered with nuts &amp; soaked in rose water honey syrup.</p>
+            <div class="c-card-tags"><span class="c-pill sweet">🍮 Dessert</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /carousel -->
+
+  </div>
+</section>
+
+<!-- ═══ REVIEWS SECTION ═══ -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-container">
+    <div class="reviews-header">
+      <span class="reviews-badge">HAPPY CUSTOMERS</span>
+      <h2 class="reviews-heading">What Our Guests Say</h2>
+      <p class="reviews-subtext">Thousands of happy customers. Here's what they're saying<br>about us.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <!-- Card 1 -->
+      <div class="r-card">
+        <div class="r-card-top">
+          <div class="r-avatar">A</div>
+          <div class="r-user">
+            <h4>Arjun Menon</h4>
+            <p><span class="r-dot zomato"></span> Zomato</p>
+          </div>
+          <div class="r-stars">★★★★★</div>
+        </div>
+        <p class="r-quote">"Hands down the best shawaya in Kochi! The masala chicken is absolutely out of this world — perfectly charred, juicy inside. Been coming here every week for 6 months!"</p>
+        <div class="r-card-bottom">
+          <span class="r-item">🍗 Masala Shawaya</span>
+          <span class="r-time">2 weeks ago</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="r-card r-top-review">
+        <div class="r-top-badge">Top Review ⭐</div>
+        <div class="r-card-top">
+          <div class="r-avatar">S</div>
+          <div class="r-user">
+            <h4>Sneha Krishnan</h4>
+            <p><span class="r-dot swiggy"></span> Swiggy</p>
+          </div>
+          <div class="r-stars">★★★★★</div>
+        </div>
+        <p class="r-quote">"The Mandi rice is a dream! Saffron-scented, fluffy, and goes so perfectly with the charcoal chicken. Never disappoints. Best budget-friendly Arabic food in Kerala, no contest!"</p>
+        <div class="r-card-bottom">
+          <span class="r-item">🍛 Mandi Rice Meal</span>
+          <span class="r-time">1 week ago</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="r-card">
+        <div class="r-card-top">
+          <div class="r-avatar">M</div>
+          <div class="r-user">
+            <h4>Mohammed Farhan</h4>
+            <p><span class="r-dot google"></span> Google</p>
+          </div>
+          <div class="r-stars">★★★★★</div>
+        </div>
+        <p class="r-quote">"Authentic Arabic taste right here in Kochi. The alfaham and the peri-peri are amazing. Decent pricing, generous portions, fast delivery. Highly recommend Arabian Palace!"</p>
+        <div class="r-card-bottom">
+          <span class="r-item">🔥 Alfaham</span>
+          <span class="r-time">3 weeks ago</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="r-card">
+        <div class="r-card-top">
+          <div class="r-avatar">P</div>
+          <div class="r-user">
+            <h4>Priya Nair</h4>
+            <p><span class="r-dot zomato"></span> Zomato</p>
+          </div>
+          <div class="r-stars">★★★★★</div>
+        </div>
+        <p class="r-quote">"The shawarma here is absolutely to die for. Tried literally every shawarma place in town — nothing comes close. The garlic sauce is insane!"</p>
+        <div class="r-card-bottom">
+          <span class="r-item">🌯 Shawarma</span>
+          <span class="r-time">5 days ago</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="r-card">
+        <div class="r-card-top">
+          <div class="r-avatar">R</div>
+          <div class="r-user">
+            <h4>Rahul Varma</h4>
+            <p><span class="r-dot google"></span> Google</p>
+          </div>
+          <div class="r-stars">★★★★★</div>
+        </div>
+        <p class="r-quote">"Visited the new branch last weekend. Atmosphere, food, and service — everything was top notch. The honey shawaya is a hidden gem. Queue outside tells you everything!"</p>
+        <div class="r-card-bottom">
+          <span class="r-item">🍯 Honey Shawaya</span>
+          <span class="r-time">1 month ago</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="r-card">
+        <div class="r-card-top">
+          <div class="r-avatar">F</div>
+          <div class="r-user">
+            <h4>Fathima Sherin</h4>
+            <p><span class="r-dot swiggy"></span> Swiggy</p>
+          </div>
+          <div class="r-stars">★★★★☆</div>
+        </div>
+        <p class="r-quote">"Ordered the peri-peri shawaya for the first time — absolute fireworks of flavor! Delivery was on time and the food was still hot. Will definitely order again soon!"</p>
+        <div class="r-card-bottom">
+          <span class="r-item">🌶️ Peri-Peri Shawaya</span>
+          <span class="r-time">2 days ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Box -->
+    <div class="reviews-stats">
+      <div class="r-stat">
+        <div class="r-stat-val">4.8</div>
+        <div class="r-stat-stars">★★★★★</div>
+        <div class="r-stat-label">AVG. RATING</div>
+      </div>
+      <div class="r-stat-divider"></div>
+      <div class="r-stat">
+        <div class="r-stat-val">1000+</div>
+        <div class="r-stat-icon">🍽️</div>
+        <div class="r-stat-label">DAILY HAPPY CUSTOMERS</div>
+      </div>
+      <div class="r-stat-divider"></div>
+      <div class="r-stat">
+        <div class="r-stat-val">10</div>
+        <div class="r-stat-icon">📍</div>
+        <div class="r-stat-label">OUTLETS IN KERALA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTLETS SECTION ═══ -->
+<section class="outlets-section" id="contacts">
+  <div class="outlets-container">
+    <div class="outlets-header">
+      <span class="outlets-badge">FIND US</span>
+      <h2 class="outlets-heading">Our Outlets</h2>
+      <p class="outlets-subtext">Visit us at any of our 10 locations in Kerala for the full Arabian Palace experience.</p>
+    </div>
+
+    <!-- Outlet Cards Scrollable Container -->
+    <div class="outlets-slider-wrapper">
+      <button class="slider-btn prev-btn" onclick="scrollOutlets(-1)">‹</button>
+      <div class="outlets-track" id="outletsTrack">
+        
+        <!-- Outlet 1 -->
+        <div class="o-card main-branch">
+          <div class="o-badge">Main Branch ⭐</div>
+          <div class="o-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="o-title">Thammanam</h3>
+          <p class="o-address">Pullepady Road, DD Village,<br>Kochi - 682032</p>
+          <a href="#" class="o-btn">Get Directions</a>
+        </div>
+
+        <!-- Outlet 2 -->
+        <div class="o-card">
+          <div class="o-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="o-title">Muvattupuzha</h3>
+          <p class="o-address">Muvattupuzha,<br>Kerala</p>
+          <a href="#" class="o-btn">Get Directions</a>
+        </div>
+
+        <!-- Outlet 3 -->
+        <div class="o-card">
+          <div class="o-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="o-title">Kakkanad</h3>
+          <p class="o-address">Kakkanad,<br>Kochi, Kerala</p>
+          <a href="#" class="o-btn">Get Directions</a>
+        </div>
+        
+        <!-- Outlet 4 -->
+        <div class="o-card">
+          <div class="o-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="o-title">Edappally</h3>
+          <p class="o-address">Edappally Toll,<br>Kochi, Kerala</p>
+          <a href="#" class="o-btn">Get Directions</a>
+        </div>
+
+      </div>
+      <button class="slider-btn next-btn" onclick="scrollOutlets(1)">›</button>
+    </div>
+
+    <!-- Contact Info Box -->
+    <div class="contact-info-box">
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div class="info-content">
+          <h4>CALL US</h4>
+          <p>+91 90616 10002 | +91 9048 297772 | +91 9048 297773</p>
+        </div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-item">
+        <div class="info-icon">🕒</div>
+        <div class="info-content">
+          <h4>OPENING HOURS</h4>
+          <p>12:00 PM – 11:30 PM - Everyday</p>
+        </div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-item">
+        <div class="info-icon">
+           <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="currentColor">
+             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+           </svg>
+        </div>
+        <div class="info-content">
+          <h4>INSTAGRAM / EMAIL</h4>
+          <p><a href="https://instagram.com/club_shawaya" style="color:#fff;text-decoration:none;">@club_shawaya</a> - Follow for daily updates<br><a href="mailto:info@arabianpalace.com" style="color:#fff;text-decoration:none;">info@arabianpalace.com</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="main-footer">
+  <div class="footer-content">
+    <div class="footer-logo">🏰 Arabian Palace</div>
+    <p class="footer-tagline">Authentic Mandi &amp; Shawaya - Kerala's Favourite Charcoal Grill</p>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#contacts">Locations</a>
+      <a href="#contacts">Instagram</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Arabian Palace Restaurant. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="#" class="whatsapp-btn">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.878-.788-1.472-1.761-1.645-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<style>
+  /* ── CAROUSEL WRAPPER ── */
+  .menu-section {
+    width: 100%;
+    background: var(--green);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,100,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 90% 80%, rgba(0,60,30,0.25) 0%, transparent 60%);
+    padding: 90px 0 120px;
+    overflow: hidden;
+  }
+  .menu-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .menu-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 40px;
+  }
+  .menu-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    padding: 8px 24px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .menu-heading {
+    font-family: 'Rye', Georgia, serif;
+    font-size: clamp(36px, 5vw, 64px);
+    color: #ffffff;
+    margin-bottom: 14px;
+    line-height: 1.1;
+  }
+  .menu-subtext {
+    color: rgba(255,255,255,0.75);
+    font-size: 17px;
+    line-height: 1.7;
+    font-family: 'Inter', sans-serif;
+  }
+  .menu-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    padding: 0 40px;
+  }
+  .menu-tab {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.4);
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+  }
+  .menu-tab.active,
+  .menu-tab:hover {
+    background: #ffffff;
+    color: var(--green);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  /* ── CAROUSEL TRACK ── */
+  .carousel-track-wrap {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 40px 40px 60px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+  .carousel-track-wrap::-webkit-scrollbar { display: none; }
+
+  .carousel-track {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* ── CARD ── */
+  .c-card {
+    position: relative;
+    flex: 0 0 calc((100% - 3 * 20px) / 4);
+    min-width: 0;
+    height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    scroll-snap-align: start;
+    background: #ffffff;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── CARD IMAGE ── */
+  .c-card-img {
+    height: 220px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* ── CARD BODY (WHITE SECTION) ── */
+  .c-card-body {
+    padding: 24px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: #ffffff;
+  }
+  .c-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--green);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .c-card-desc {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .c-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .c-pill {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: #f1f5f9;
+    color: #475569;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+  }
+  .c-pill.spicy   { background: #fee2e2;  color: #dc2626; }
+  .c-pill.bestseller { background: #b91c1c; color: #ffffff; }
+  .c-pill.healthy { background: #dcfce7;   color: #166534; }
+  .c-pill.sweet   { background: #ffedd5;  color: #c2410c; }
+
+  /* hidden during filter */
+  .c-card.hidden { display: none; }
+
+  @media (max-width: 768px) {
+    .carousel-track {
+      justify-content: flex-start;
+    }
+    .c-card { transform: scale(1); opacity: 1; filter: brightness(1); }
+    .menu-section { padding: 60px 0 80px; }
+    .carousel-track-wrap { padding: 30px 20px 50px; }
+  }
+
+  /* ── REVIEWS SECTION ── */
+  .reviews-section {
+    width: 100%;
+    background: var(--green-dark); /* Darker green for contrast */
+    padding: 100px 56px 120px;
+    font-family: 'Inter', sans-serif;
+  }
+  .reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .reviews-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 6px 20px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .reviews-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .reviews-subtext {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .r-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .r-card:hover { transform: translateY(-4px); }
+  .r-top-review {
+    border-color: #facc15;
+    background: rgba(250, 204, 21, 0.05);
+  }
+  .r-top-badge {
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: #facc15;
+    color: #854d0e;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+  .r-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .r-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .r-user { flex: 1; }
+  .r-user h4 {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .r-user p {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .r-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .r-dot.zomato { background: #ef4444; }
+  .r-dot.swiggy { background: #f97316; }
+  .r-dot.google { background: #3b82f6; }
+  .r-stars {
+    color: #facc15;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .r-quote {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.6;
+    font-style: italic;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+  .r-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .r-item {
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-weight: 500;
+  }
+  .r-time { color: rgba(255,255,255,0.6); }
+
+  .reviews-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 40px;
+  }
+  .r-stat {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .r-stat-val {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -1px;
+  }
+  .r-stat-stars { color: #facc15; font-size: 16px; letter-spacing: 2px; }
+  .r-stat-icon { font-size: 20px; }
+  .r-stat-label {
+    color: rgba(255,255,255,0.8);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-top: 8px;
+  }
+  .r-stat-divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 992px) {
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-stats { flex-direction: column; gap: 30px; }
+    .r-stat-divider { width: 80%; height: 1px; }
+  }
+  @media (max-width: 600px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── OUTLETS & FOOTER SECTION ── */
+  .outlets-section {
+    width: 100%;
+    background: var(--green);
+    padding: 100px 56px 60px;
+    font-family: 'Inter', sans-serif;
+  }
+  .outlets-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .outlets-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .outlets-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 6px 20px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .outlets-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .outlets-subtext {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+  
+  .outlets-slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .slider-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+  .slider-btn:hover { background: rgba(255,255,255,0.2); }
+  
+  .outlets-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    flex: 1;
+    padding: 10px 0;
+  }
+  .outlets-track::-webkit-scrollbar { display: none; }
+  
+  .o-card {
+    min-width: calc(33.333% - 14px);
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 100%);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+  }
+  .o-card:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.4); 
+    border-color: rgba(255,255,255,0.5);
+  }
+  .o-card.main-branch {
+    border-color: #facc15;
+    background: linear-gradient(135deg, rgba(250,204,21,0.15) 0%, rgba(250,204,21,0.03) 100%);
+  }
+  .o-badge {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    background: #facc15;
+    color: #854d0e;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+  .o-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px;
+    color: #ffffff;
+  }
+  .o-title {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .o-address {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    height: 44px;
+  }
+  .o-btn {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.05);
+  }
+  .o-btn:hover { background: #ffffff; color: var(--green); border-color: #ffffff; }
+
+  .contact-info-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 30px 40px;
+  }
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1;
+  }
+  .info-icon {
+    font-size: 20px;
+    margin-top: 2px;
+    color: #fff;
+  }
+  .info-content h4 {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .info-content p {
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .info-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.15);
+    margin: 0 30px;
+  }
+
+  .main-footer {
+    background: var(--green-dark);
+    padding: 60px 20px 40px;
+    text-align: center;
+  }
+  .footer-logo {
+    color: #fff;
+    font-family: 'Rye', serif;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .footer-tagline {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+  }
+  .footer-links a:hover { opacity: 0.7; }
+  .footer-copy {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+  
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: transform 0.3s;
+  }
+  .whatsapp-btn:hover { transform: scale(1.1); }
+  .whatsapp-btn svg { width: 32px; height: 32px; }
+
+  @media (max-width: 1024px) {
+    .o-card { min-width: calc(50% - 10px); }
+    .contact-info-box { flex-direction: column; gap: 30px; align-items: flex-start; }
+    .info-divider { width: 100%; height: 1px; margin: 0; }
+  }
+  @media (max-width: 600px) {
+    .o-card { min-width: 100%; }
+    .slider-btn { display: none; }
+  }
+</style>
+
+<script>
+  // Tab filter
+  function filterMenu(cat, btn) {
+    if (btn) {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    document.querySelectorAll('.c-card').forEach(card => {
+      if (card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeTabBtn = document.querySelector('.menu-tab.active');
+    filterMenu('mandi', activeTabBtn);
+  });
+
+  // Outlets scroller
+  function scrollOutlets(dir) {
+    const track = document.getElementById('outletsTrack');
+    const cardWidth = track.querySelector('.o-card').offsetWidth + 20;
+    track.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
