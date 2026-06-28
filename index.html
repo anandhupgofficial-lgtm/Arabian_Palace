@@ -583,7 +583,7 @@
       .hero-body {
         flex-direction: column;
         align-items: center;
-        padding: 0 16px 40px;
+        padding: 0 16px 20px;
       }
       .hero-right {
         position: relative;
@@ -634,28 +634,44 @@
       /* STORY mobile */
       .story-container {
         flex-direction: column !important;
-        text-align: center;
+        text-align: left;
       }
-      .story-section { padding: 60px 20px; }
-      .story-left { max-width: 100%; align-items: center; display: flex; flex-direction: column; }
+      .story-section { padding: 50px 20px; }
+      .story-left {
+        max-width: 100%;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+      .story-heading {
+        font-size: clamp(44px, 13vw, 60px) !important;
+        white-space: nowrap;
+      }
+      .story-text { text-align: left; }
       .story-right { display: none !important; }
       .camel-img-mobile {
         display: block !important;
         width: 100%;
-        max-width: 380px;
+        max-width: 440px;
         height: auto;
-        margin: 20px auto 30px;
+        margin: 16px auto 24px;
         filter: drop-shadow(0 30px 50px rgba(0,0,0,0.25));
         animation: camelFloat 5s ease-in-out infinite;
       }
 
       /* BANNER mobile - fix overflow, stack Swiggy/Zomato vertically */
       .banner-delivery { display: none; }
-      .banner-section { padding: 16px; }
-      .banner-box { padding: 20px 16px; border-radius: 12px; }
+      .banner-section { padding: 10px 16px; }
+      .banner-box { padding: 18px 16px; border-radius: 12px; }
+      .banner-label {
+        font-size: 11px !important;
+        letter-spacing: 1px !important;
+        white-space: nowrap;
+      }
       .banner-logos {
         flex-direction: column !important;
-        gap: 14px !important;
+        gap: 12px !important;
         align-items: center;
         width: 100%;
       }
@@ -666,8 +682,11 @@
         margin: 0;
       }
       .swiggy-wrap, .zomato-wrap {
-        justify-content: center;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         width: 100%;
+        gap: 10px;
       }
       .swiggy-wordmark, .zomato-wordmark { font-size: 20px; }
       .swiggy-logo-svg, .zomato-logo-svg { width: 30px; height: 30px; }
