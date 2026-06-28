@@ -641,37 +641,41 @@
       }
       .story-section { padding: 40px 0 40px; }
       .story-left {
-        max-width: 100%;
-        width: 100%;
-        align-items: flex-start;
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        padding: 0 12px;       /* minimal padding = max words per line */
-        box-sizing: border-box;
+        max-width: 100% !important;
+        width: 100% !important;
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: left !important;
+        padding: 0 16px !important;
+        box-sizing: border-box !important;
       }
       .story-heading {
         font-size: clamp(44px, 13vw, 60px) !important;
-        white-space: nowrap;
+        white-space: nowrap !important;
+        margin-bottom: 0px !important;
+      }
+      .divider-wrap-white {
+        margin: 8px 0 0px 0 !important;
       }
       .story-text {
         text-align: left !important;
         width: 100% !important;
         max-width: 100% !important;
         padding: 0 !important;
-        margin: 0 0 14px 0 !important;
-        line-height: 1.7;
-        font-size: 15px;
+        margin: 5px 0 14px 0 !important;
+        line-height: 1.6 !important;
+        font-size: 15px !important;
       }
       .story-right { display: none !important; }
       .camel-img-mobile {
         display: block !important;
-        width: 120%;
-        max-width: 120%;
-        height: auto;
-        margin: 4px 0 18px -10%;
-        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
-        animation: camelFloat 5s ease-in-out infinite;
+        width: 160% !important;
+        max-width: 160% !important;
+        height: auto !important;
+        margin: 5px 0 5px -30% !important;
+        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2)) !important;
+        animation: camelFloat 5s ease-in-out infinite !important;
       }
 
       /* BANNER mobile – full width card, small side margins */
@@ -1556,6 +1560,9 @@
       </div>
       <button class="slider-btn next-btn" onclick="scrollOutlets(1)">›</button>
     </div>
+    
+    <!-- Mobile dots indicator for Outlets -->
+    <div class="mobile-dots" id="outletDots" style="margin-top: 20px;"></div>
 
     <!-- Prominent Insta Banner -->
     <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin: 40px auto 50px; padding: 30px 40px; background: var(--green); border-radius: 16px; max-width: 800px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.2); flex-wrap: wrap;">
@@ -2764,6 +2771,44 @@
     return card.offsetWidth + gap;
   }
 
+  function setupOutletDots() {
+    if (!isMobile()) return;
+    const dotsEl = document.getElementById('outletDots');
+    if (!dotsEl) return;
+    const track = document.getElementById('outletsTrack');
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll('.o-card:not(.o-clone)'));
+    dotsEl.innerHTML = '';
+    cards.forEach((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'mobile-dot' + (i === 0 ? ' active' : '');
+      dotsEl.appendChild(d);
+    });
+  }
+
+  function updateOutletDots() {
+    if (!isMobile()) return;
+    const dotsEl = document.getElementById('outletDots');
+    if (!dotsEl) return;
+    const track = document.getElementById('outletsTrack');
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll('.o-card:not(.o-clone)'));
+    const total = cards.length;
+    if (total === 0) return;
+    
+    let activeIdx = outletSlideIndex - 1;
+    if (activeIdx < 0) activeIdx = total - 1;
+    if (activeIdx >= total) activeIdx = 0;
+    
+    dotsEl.querySelectorAll('.mobile-dot').forEach((dot, i) => {
+      if (i === activeIdx) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
   function updateOutletPosition(animate = true) {
     const track = document.getElementById('outletsTrack');
     if (!track) return;
@@ -2781,6 +2826,8 @@
       allCards.forEach(c => c.style.transition = 'none');
     }
     track.style.transform = `translateX(${oCurrentTranslate}px)`;
+    
+    updateOutletDots();
     
     if (!animate) {
       track.offsetHeight;
@@ -2884,6 +2931,7 @@
       showReviewPage(0);
       startReviewAutoRotate();
       buildInfiniteOutlets();
+      setupOutletDots();
       startOutletAutoRotate();
     } else {
       buildInfiniteOutlets(); // Handles desktop reset
