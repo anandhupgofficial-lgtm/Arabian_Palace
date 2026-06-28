@@ -647,7 +647,7 @@
         display: flex;
         flex-direction: column;
         text-align: left;
-        padding: 0 16px;       /* tighter padding = more words per line */
+        padding: 0 12px;       /* minimal padding = max words per line */
         box-sizing: border-box;
       }
       .story-heading {
@@ -659,26 +659,31 @@
         width: 100% !important;
         max-width: 100% !important;
         padding: 0 !important;
-        margin: 0 0 16px 0 !important;
-        line-height: 1.75;
+        margin: 0 0 14px 0 !important;
+        line-height: 1.7;
         font-size: 15px;
       }
       .story-right { display: none !important; }
       .camel-img-mobile {
         display: block !important;
-        width: 95%;             /* slightly larger */
-        max-width: 500px;
+        width: 100%;            /* full width of container */
+        max-width: 100%;        /* no cap - fill the space */
         height: auto;
-        margin: 4px auto 20px;
+        margin: 4px auto 18px;
         filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
         animation: camelFloat 5s ease-in-out infinite;
       }
 
-      /* BANNER mobile – perfect Swiggy/Zomato alignment */
+      /* BANNER mobile – full width card, small side margins */
       .banner-delivery { display: none; }
-      .banner-section { padding: 12px 16px; }
-      .banner-box { padding: 18px 20px; border-radius: 14px; }
-      .banner-center { gap: 10px; width: 100%; align-items: center; }
+      .banner-section { padding: 12px 12px; }  /* 12px = small margin each side */
+      .banner-box {
+        padding: 20px 24px;
+        border-radius: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .banner-center { gap: 12px; width: 100%; align-items: center; }
       .banner-label {
         font-size: 11px !important;
         letter-spacing: 1px !important;
@@ -691,33 +696,31 @@
         align-items: center !important;
         width: 100%;
       }
-      /* Each link row same height */
+      /* Each row fixed same width = perfect vertical alignment */
       .banner-logos > a {
         display: flex !important;
         justify-content: flex-start;
         align-items: center;
-        width: 160px;           /* fixed width so both rows start at same x */
+        width: 170px;
         padding: 10px 0;
         text-decoration: none;
       }
-      /* Divider between rows */
       .banner-divider {
-        width: 160px !important;
+        width: 170px !important;
         height: 1px !important;
         background: rgba(255,255,255,0.25);
         margin: 0;
       }
-      /* Both wraps identical layout */
       .swiggy-wrap, .zomato-wrap {
         display: flex !important;
         justify-content: flex-start !important;
         align-items: center !important;
         gap: 12px;
-        width: 160px;
+        width: 170px;
       }
-      .swiggy-logo-svg, .zomato-logo-svg { width: 32px !important; height: 32px !important; flex-shrink: 0; }
-      .swiggy-wordmark { font-size: 20px !important; letter-spacing: 1px !important; }
-      .zomato-wordmark { font-size: 22px !important; letter-spacing: -0.5px !important; }
+      .swiggy-logo-svg, .zomato-logo-svg { width: 34px !important; height: 34px !important; flex-shrink: 0; }
+      .swiggy-wordmark { font-size: 21px !important; letter-spacing: 1px !important; }
+      .zomato-wordmark { font-size: 23px !important; letter-spacing: -0.5px !important; }
 
     }
 
