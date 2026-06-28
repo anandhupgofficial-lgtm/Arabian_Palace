@@ -2682,47 +2682,16 @@
     reviewTimer = setInterval(() => showReviewPage(reviewIndex + REVIEW_PAGE_SIZE), 4000);
   }
 
-  // ── OUTLETS continuous loop ──
-  let outletRaf;
-  let outletScrollPos = 0;
+  // ── OUTLETS auto-rotate (mobile) ──
+  let outletTimer = null;
 
   function startOutletAutoRotate() {
-    const track = document.getElementById('outletsTrack');
-    if (!track) return;
+    clearInterval(outletTimer);
+    if (!isMobile()) return;
     
-    // Duplicate cards for seamless loop
-    const cards = Array.from(track.querySelectorAll('.o-card'));
-    cards.forEach(c => {
-      const clone = c.cloneNode(true);
-      clone.classList.add('o-clone');
-      track.appendChild(clone);
-    });
-
-    let isHovered = false;
-    track.addEventListener('mouseenter', () => isHovered = true);
-    track.addEventListener('mouseleave', () => isHovered = false);
-    track.addEventListener('touchstart', () => isHovered = true);
-    track.addEventListener('touchend', () => isHovered = false);
-    
-    // Listen for manual scrolling to keep sync
-    track.addEventListener('scroll', () => {
-      if (isHovered) outletScrollPos = track.scrollLeft;
-    });
-
-    function step() {
-      if (!isHovered) {
-        outletScrollPos += 0.6; // Speed of the loop
-        track.scrollLeft = outletScrollPos;
-        
-        // If scrolled past the first original set, reset to start seamlessly
-        if (outletScrollPos >= track.scrollWidth / 2) {
-          outletScrollPos = 0;
-          track.scrollLeft = 0;
-        }
-      }
-      outletRaf = requestAnimationFrame(step);
-    }
-    outletRaf = requestAnimationFrame(step);
+    outletTimer = setInterval(() => {
+      scrollOutlets(1);
+    }, 3000);
   }
 
   // Run on page load
@@ -2730,35 +2699,45 @@
     const activeTabBtn = document.querySelector('.menu-tab.active');
     filterMenu('mandi', activeTabBtn);
     
-    // Setup carousel scroll listener
-    const wrap = document.querySelector('.carousel-track-wrap');
-    if (wrap) {
-      wrap.addEventListener('scroll', () => {
-          requestAnimationFrame(updateActiveMenuCard);
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(checkInfiniteJump, 150);
-      });
-    }
-
     // Build the infinite loop initially
     buildInfiniteCarousel();
     setupMenuDots();
     startMenuAutoRotate();
 
-    // Run outlet loop on all devices
-    // startOutletAutoRotate();
-
     if (isMobile()) {
       showReviewPage(0);
       startReviewAutoRotate();
+      startOutletAutoRotate();
     }
   });
 
   // Outlets scroller (arrow buttons)
   function scrollOutlets(dir) {
     const track = document.getElementById('outletsTrack');
-    const cardWidth = track.querySelector('.o-card').offsetWidth + 20;
-    track.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+    if (!track) return;
+    const card = track.querySelector('.o-card');
+    if (!card) return;
+    
+    // Include gap in card width if applicable
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 0;
+    const cardWidth = card.offsetWidth + gap;
+    
+    if (dir > 0 && Math.ceil(track.scrollLeft + track.clientWidth) >= track.scrollWidth - 10) {
+        // Reached the end, rewind smoothly to the start
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else if (dir < 0 && track.scrollLeft <= 10) {
+        // At start, go to the end
+        track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+    } else {
+        track.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+    }
+    
+    // Restart timer if user clicks
+    if (isMobile()) {
+        clearInterval(outletTimer);
+        outletTimer = setInterval(() => { scrollOutlets(1); }, 3000);
+    }
   }
 </script>
 
