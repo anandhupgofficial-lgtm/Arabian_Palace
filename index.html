@@ -1813,18 +1813,24 @@
       white-space: nowrap;
     }
 
-    /* Menu: mobile single card focused - reduce height */
+    /* Menu: mobile single card focused - custom transform logic */
     .carousel-track-wrap {
       padding: 20px 0 40px;
       position: relative;
+      overflow-x: hidden !important; /* disabled native scroll */
+      scroll-snap-type: none !important;
+      touch-action: pan-y;
+    }
+    .carousel-track {
+      will-change: transform;
+      justify-content: flex-start !important;
     }
     .c-card {
       flex: 0 0 75% !important;
       min-width: 75% !important;
       height: 320px !important;
       border-radius: 20px;
-      scroll-snap-align: center;
-      scroll-snap-stop: always;
+      scroll-snap-align: none !important;
       transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                   opacity 0.6s ease,
                   box-shadow 0.6s ease;
@@ -2419,12 +2425,16 @@
   // ═══ MOBILE AUTO-ROTATE LOGIC ═══
   const isMobile = () => window.innerWidth <= 768;
 
-  // ── MENU auto-rotate (1 card) ──
-  let menuSlideIndex = 0;
+  let menuSlideIndex = 2; 
   let menuTimer = null;
-
-  function getVisibleMenuCards() {
-    // Only return real cards for logical purposes (like dots)
+  let isDragging = false;
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID = 0;
+  let isTransitioning = false;
+  
+  function getRealMenuCards() {
     return Array.from(document.querySelectorAll('.c-card:not(.hidden):not(.c-card-clone)'));
   }
 
@@ -2432,101 +2442,196 @@
     if (!isMobile()) return;
     const dotsEl = document.getElementById('menuDots');
     if (!dotsEl) return;
-    const cards = getVisibleMenuCards();
+    const cards = getRealMenuCards();
     dotsEl.innerHTML = '';
     cards.forEach((_, i) => {
       const d = document.createElement('span');
-      d.className = 'mobile-dot' + (i === menuSlideIndex ? ' active' : '');
+      d.className = 'mobile-dot' + (i === (menuSlideIndex - 2) ? ' active' : '');
       dotsEl.appendChild(d);
     });
   }
 
-  function updateActiveMenuCard() {
-    if (!isMobile() || isJumping) return;
-    const wrap = document.querySelector('.carousel-track-wrap');
+  function buildInfiniteCarousel() {
     const track = document.getElementById('menuGrid');
-    if (!wrap || !track) return;
+    if (!track) return;
+    
+    track.querySelectorAll('.c-card-clone').forEach(el => el.remove());
+    track.style.transform = '';
+    track.style.transition = '';
+    cancelAnimationFrame(animationID);
+    
+    const newTrack = track.cloneNode(true);
+    track.parentNode.replaceChild(newTrack, track);
+    
+    if (!isMobile()) {
+        const wrap = document.querySelector('.carousel-track-wrap');
+        if(wrap) {
+            wrap.style.overflowX = 'auto';
+            wrap.style.scrollSnapType = 'x mandatory';
+        }
+        return;
+    }
+    
+    const realCards = Array.from(newTrack.querySelectorAll('.c-card:not(.hidden)'));
+    if (realCards.length < 2) return;
+    
+    const cloneLast1 = realCards[realCards.length - 2].cloneNode(true);
+    const cloneLast2 = realCards[realCards.length - 1].cloneNode(true);
+    cloneLast1.classList.add('c-card-clone');
+    cloneLast2.classList.add('c-card-clone');
+    newTrack.insertBefore(cloneLast2, newTrack.firstChild);
+    newTrack.insertBefore(cloneLast1, newTrack.firstChild);
+    
+    const cloneFirst1 = realCards[0].cloneNode(true);
+    const cloneFirst2 = realCards[1].cloneNode(true);
+    cloneFirst1.classList.add('c-card-clone');
+    cloneFirst2.classList.add('c-card-clone');
+    newTrack.appendChild(cloneFirst1);
+    newTrack.appendChild(cloneFirst2);
+    
+    menuSlideIndex = 2; 
+    
+    newTrack.addEventListener('touchstart', touchStart, { passive: true });
+    newTrack.addEventListener('touchend', touchEnd);
+    newTrack.addEventListener('touchmove', touchMove, { passive: false });
+    newTrack.addEventListener('transitionend', handleTransitionEnd);
+    
+    const wrap = document.querySelector('.carousel-track-wrap');
+    if(wrap) {
+        wrap.style.overflowX = 'hidden';
+        wrap.style.scrollSnapType = 'none';
+    }
+    
+    setTimeout(() => {
+        updateCarouselPosition(false);
+    }, 50);
+  }
+
+  function getCardWidth() {
+    const track = document.getElementById('menuGrid');
+    const card = track.querySelector('.c-card:not(.hidden)');
+    if (!card) return 0;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 0;
+    return card.offsetWidth + gap;
+  }
+
+  function getCenterOffset() {
+    const wrap = document.querySelector('.carousel-track-wrap');
+    const card = document.querySelector('.c-card:not(.hidden)');
+    if (!wrap || !card) return 0;
+    return (wrap.offsetWidth - card.offsetWidth) / 2;
+  }
+
+  function updateCarouselPosition(animate = true) {
+    const track = document.getElementById('menuGrid');
+    if (!track) return;
+    
+    const cardWidth = getCardWidth();
+    const offset = getCenterOffset();
+    currentTranslate = -(menuSlideIndex * cardWidth) + offset;
+    prevTranslate = currentTranslate;
+    
+    if (animate) {
+      track.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+    } else {
+      track.style.transition = 'none';
+    }
+    track.style.transform = `translateX(${currentTranslate}px)`;
     
     const allCards = Array.from(track.querySelectorAll('.c-card:not(.hidden)'));
-    if (!allCards.length) return;
+    allCards.forEach((c, i) => c.classList.toggle('active-card', i === menuSlideIndex));
     
-    let minDistance = Infinity;
-    let centerCardIndex = 0;
-    const wrapCenter = wrap.scrollLeft + wrap.offsetWidth / 2;
+    const dots = document.querySelectorAll('#menuDots .mobile-dot');
+    const realCardsCount = getRealMenuCards().length;
+    let dotIndex = menuSlideIndex - 2;
+    if (dotIndex < 0) dotIndex = realCardsCount - 1;
+    if (dotIndex >= realCardsCount) dotIndex = 0;
+    dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+  }
+
+  let touchStartY = 0;
+  let isScrolling = false;
+
+  function touchStart(e) {
+    if (isTransitioning) return;
+    clearInterval(menuTimer);
+    isDragging = true;
+    isScrolling = false;
+    startPos = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    animationID = requestAnimationFrame(animationLoop);
+    const track = document.getElementById('menuGrid');
+    track.style.transition = 'none';
+  }
+
+  function touchMove(e) {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const diffX = currentX - startPos;
+    const diffY = currentY - touchStartY;
     
-    allCards.forEach((card, index) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const distance = Math.abs(wrapCenter - cardCenter);
-      if (distance < minDistance) {
-        minDistance = distance;
-        centerCardIndex = index;
-      }
-      card.classList.remove('active-card');
-    });
+    if (Math.abs(diffY) > Math.abs(diffX) && !isScrolling) {
+        isDragging = false;
+        return;
+    }
     
-    const activeCard = allCards[centerCardIndex];
-    if (activeCard) {
-      activeCard.classList.add('active-card');
-      
-      const isClone = activeCard.classList.contains('c-card-clone');
-      const realIndex = isClone 
-          ? parseInt(activeCard.dataset.cloneIndex) 
-          : Array.from(track.querySelectorAll('.c-card:not(.hidden):not(.c-card-clone)')).indexOf(activeCard);
-          
-      menuSlideIndex = realIndex;
-      
-      // Update dots
-      const dots = document.querySelectorAll('#menuDots .mobile-dot');
-      dots.forEach((d, i) => d.classList.toggle('active', i === realIndex));
+    isScrolling = true;
+    if(e.cancelable) e.preventDefault();
+    currentTranslate = prevTranslate + diffX;
+  }
+
+  function touchEnd() {
+    if(!isDragging && !isScrolling) return;
+    isDragging = false;
+    isScrolling = false;
+    cancelAnimationFrame(animationID);
+    
+    const movedBy = currentTranslate - prevTranslate;
+    const threshold = getCardWidth() / 4;
+    
+    if (movedBy < -threshold) menuSlideIndex += 1;
+    else if (movedBy > threshold) menuSlideIndex -= 1;
+    
+    isTransitioning = true;
+    updateCarouselPosition(true);
+    startMenuAutoRotate();
+  }
+
+  function animationLoop() {
+    if (isDragging) {
+      const track = document.getElementById('menuGrid');
+      track.style.transform = `translateX(${currentTranslate}px)`;
+      requestAnimationFrame(animationLoop);
     }
   }
 
-  function checkInfiniteJump() {
-    const wrap = document.querySelector('.carousel-track-wrap');
-    const track = document.getElementById('menuGrid');
-    if (!wrap || !track) return;
-    
-    const activeCard = track.querySelector('.c-card.active-card');
-    if (activeCard && activeCard.classList.contains('c-card-clone')) {
-        isJumping = true;
-        wrap.style.scrollSnapType = 'none';
-        
-        const realIndex = parseInt(activeCard.dataset.cloneIndex);
-        const realCards = track.querySelectorAll('.c-card:not(.hidden):not(.c-card-clone)');
-        const correspondingRealCard = realCards[realIndex];
-        
-        wrap.scrollLeft = correspondingRealCard.offsetLeft - (wrap.offsetWidth / 2) + (correspondingRealCard.offsetWidth / 2);
-        
-        // Force layout
-        wrap.offsetHeight; 
-        
-        wrap.style.scrollSnapType = 'x mandatory';
-        setTimeout(() => { isJumping = false; updateActiveMenuCard(); }, 50);
+  function handleTransitionEnd() {
+    isTransitioning = false;
+    const realCardsCount = getRealMenuCards().length;
+    if (menuSlideIndex >= realCardsCount + 2) {
+      menuSlideIndex = 2;
+      updateCarouselPosition(false);
+    } else if (menuSlideIndex <= 1) {
+      menuSlideIndex = realCardsCount + 1;
+      updateCarouselPosition(false);
     }
   }
 
   function showMenuSlide(idx) {
-    if (isJumping) return;
-    const realCards = getVisibleMenuCards();
-    if (!realCards.length) return;
-    
-    // Instead of selecting real cards, we should just scroll to the immediate next physical card to keep loop smooth
-    const track = document.getElementById('menuGrid');
-    const allVisible = Array.from(track.querySelectorAll('.c-card:not(.hidden)'));
-    const activeIdx = allVisible.findIndex(c => c.classList.contains('active-card'));
-    
-    let targetCard = allVisible[activeIdx + 1];
-    
-    if (!targetCard) targetCard = allVisible[0]; // Fallback
-    
-    const wrap = document.querySelector('.carousel-track-wrap');
-    const scrollPos = targetCard.offsetLeft - (wrap.offsetWidth / 2) + (targetCard.offsetWidth / 2);
-    wrap.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    if (isTransitioning || isDragging) return;
+    isTransitioning = true;
+    menuSlideIndex = idx;
+    updateCarouselPosition(true);
   }
 
   function startMenuAutoRotate() {
     clearInterval(menuTimer);
-    menuTimer = setInterval(() => showMenuSlide(menuSlideIndex + 1), 4000);
+    if (!isMobile()) return;
+    menuTimer = setInterval(() => {
+      showMenuSlide(menuSlideIndex + 1);
+    }, 4000);
   }
 
   function scrollMenu(dir) {
@@ -2536,24 +2641,7 @@
         if(wrap && firstCard) {
             wrap.scrollBy({ left: dir * (firstCard.offsetWidth + 20), behavior: 'smooth' });
         }
-        return;
     }
-
-    clearInterval(menuTimer);
-    if (isJumping) return;
-    
-    const track = document.getElementById('menuGrid');
-    const allVisible = Array.from(track.querySelectorAll('.c-card:not(.hidden)'));
-    const activeIdx = allVisible.findIndex(c => c.classList.contains('active-card'));
-    
-    let targetCard = allVisible[activeIdx + dir];
-    if (!targetCard) return;
-    
-    const wrap = document.querySelector('.carousel-track-wrap');
-    const scrollPos = targetCard.offsetLeft - (wrap.offsetWidth / 2) + (targetCard.offsetWidth / 2);
-    wrap.scrollTo({ left: scrollPos, behavior: 'smooth' });
-    
-    startMenuAutoRotate();
   }
 
   // ── REVIEWS auto-rotate (show 2 at a time) ──
