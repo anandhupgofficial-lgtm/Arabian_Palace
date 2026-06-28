@@ -582,15 +582,15 @@
       .hero-body {
         flex-direction: column;
         align-items: center;
-        padding: 0 20px 40px;
+        padding: 0 16px 40px;
       }
       .hero-right {
         position: relative;
         right: auto; top: auto;
         transform: none;
         width: 100%;
-        margin: 0 0 20px 0;
-        order: -1; /* image FIRST */
+        margin: 0 0 10px 0;
+        order: -1;
       }
       .hero-left {
         width: 100%;
@@ -600,8 +600,31 @@
         flex-direction: column;
         z-index: 10;
       }
-      .hero-heading { font-size: clamp(42px, 12vw, 64px); }
-      .hero-btns { justify-content: center; flex-wrap: wrap; }
+      .hero-heading { font-size: clamp(38px, 11vw, 60px); }
+      /* Make both hero buttons same width */
+      .hero-btns {
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        text-align: center;
+      }
+      .dropdown-wrapper {
+        width: 100%;
+        max-width: 280px;
+        display: flex;
+        justify-content: center;
+      }
+      .dropdown-wrapper .btn-primary {
+        width: 100%;
+      }
       .mandi-wrapper {
         animation: fadeIn 0.9s ease forwards 0.4s;
         opacity: 0;
@@ -612,20 +635,26 @@
         flex-direction: column !important;
         text-align: center;
       }
+      .story-section { padding: 60px 20px; }
       .story-left { max-width: 100%; align-items: center; display: flex; flex-direction: column; }
       .story-right { display: none !important; }
       .camel-img-mobile {
         display: block !important;
         width: 100%;
-        max-width: 450px;
+        max-width: 380px;
         height: auto;
-        margin: 20px auto 40px;
+        margin: 20px auto 30px;
         filter: drop-shadow(0 30px 50px rgba(0,0,0,0.25));
         animation: camelFloat 5s ease-in-out infinite;
       }
 
-      /* BANNER mobile */
+      /* BANNER mobile - fix overflow */
       .banner-delivery { display: none; }
+      .banner-section { padding: 16px; }
+      .banner-box { padding: 20px 16px; border-radius: 12px; }
+      .banner-logos { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      .swiggy-wordmark, .zomato-wordmark { font-size: 18px; }
+      .swiggy-logo-svg, .zomato-logo-svg { width: 28px; height: 28px; }
     }
 
     @keyframes fadeIn {
@@ -1701,21 +1730,34 @@
   .c-card.hidden { display: none; }
 
   @media (max-width: 768px) {
-    .menu-section { padding: 60px 0 80px; }
+    .menu-section { padding: 40px 0 60px; }
     
-    /* Menu: mobile single card focused */
+    /* Menu tabs - put them in a row */
+    .menu-tabs {
+      flex-direction: row !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px !important;
+      padding: 0 16px;
+    }
+    .menu-tab {
+      font-size: 13px !important;
+      padding: 8px 16px !important;
+      white-space: nowrap;
+    }
+
+    /* Menu: mobile single card focused - reduce height */
     .carousel-track-wrap {
-      padding: 40px 0 60px;
+      padding: 20px 0 40px;
       position: relative;
     }
     .c-card {
-      flex: 0 0 60% !important;
-      min-width: 60% !important;
-      height: 420px; /* slightly taller for premium feel */
-      border-radius: 24px;
+      flex: 0 0 75% !important;
+      min-width: 75% !important;
+      height: 320px !important;
+      border-radius: 20px;
       scroll-snap-align: center;
       scroll-snap-stop: always;
-      /* Spring animation for 3D depth */
       transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                   opacity 0.6s ease,
                   box-shadow 0.6s ease;
@@ -1724,11 +1766,13 @@
       z-index: 1;
     }
     .c-card.active-card {
-      transform: scale(1.05);
+      transform: scale(1.02);
       opacity: 1;
       z-index: 2;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
+    .c-name { font-size: 20px !important; }
+    .c-price { font-size: 16px !important; }
   }
 
   /* ── REVIEWS SECTION ── */
@@ -2166,6 +2210,41 @@
   }
   .whatsapp-btn:hover { transform: scale(1.1); }
   .whatsapp-btn svg { width: 32px; height: 32px; }
+
+  @media (max-width: 768px) {
+    /* Reviews section mobile */
+    .reviews-section { padding: 60px 16px 80px; }
+    .reviews-heading { font-size: 30px !important; }
+    .reviews-subtext { font-size: 14px; }
+
+    /* Menu header mobile */
+    .menu-section { padding: 50px 0 60px !important; }
+    .menu-header { padding: 0 16px; margin-bottom: 28px; }
+    .menu-subtext { font-size: 14px; }
+
+    /* Outlets section mobile */
+    .outlets-section { padding: 50px 16px 40px; }
+    .outlets-container { padding: 0; }
+    .outlets-heading { font-size: 30px !important; }
+    .outlets-subtext { font-size: 14px; }
+    .outlets-header { margin-bottom: 30px; }
+    /* Outlet cards: full width on mobile */
+    .o-card { min-width: calc(100% - 0px) !important; }
+    .slider-btn { display: flex !important; }
+
+    /* Insta banner mobile - stack vertically */
+    .contact-info-box { flex-direction: column; gap: 20px; padding: 24px 16px; }
+    .info-divider { width: 80%; height: 1px; margin: 0 auto; }
+    .info-content p a { color: #ffffff !important; }
+    .info-item { justify-content: center; }
+
+    /* Footer links wrap */
+    .footer-links { flex-wrap: wrap; gap: 12px; }
+
+    /* WhatsApp + scroll btn spacing on mobile */
+    .whatsapp-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+    #scrollTopBtn { bottom: 80px; right: 20px; width: 46px; height: 46px; }
+  }
 
   @media (max-width: 1024px) {
     .o-card { min-width: calc(50% - 10px); }
