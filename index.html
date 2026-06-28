@@ -7,7 +7,7 @@
   <title>Arabian Palace | Authentic Mandi Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Rye&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -23,6 +23,7 @@
       height: 100%;
       overflow-x: hidden;
       font-family: 'Inter', sans-serif;
+      background: var(--green);
     }
 
     /* ─── HERO SECTION ─── */
@@ -194,6 +195,53 @@
     .divider-star {
       color: rgba(255,255,255,0.9);
       font-size: 14px;
+    }
+
+    /* ─── DROPDOWN MENU ─── */
+    .dropdown-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 140px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .dropdown-wrapper:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      color: #333333;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+    .dropdown-item:hover {
+      background: #f5f5f5;
     }
 
     .hero-sub {
@@ -825,8 +873,9 @@
       position: relative;
     }
     .camel-img {
-      width: 100%;
-      max-width: 650px;
+      width: 120%;
+      max-width: 850px;
+      margin-right: -15%;
       height: auto;
       object-fit: contain;
       filter: drop-shadow(0 30px 50px rgba(0,0,0,0.25));
@@ -871,9 +920,21 @@
         <li><a href="#contacts">Contacts</a></li>
       </ul>
       <!-- CTA -->
-      <a href="#" class="nav-order-btn">
-        Order Now <span class="arrow">&rarr;</span>
-      </a>
+      <div class="dropdown-wrapper">
+        <a href="#" class="nav-order-btn">
+          Order Now <span class="arrow">&rarr;</span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="https://www.swiggy.com/" target="_blank" class="dropdown-item">
+            <div style="width:24px; height:24px; background:#fc8019; border-radius:12px 12px 0 12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; font-size:14px; font-family:sans-serif;">S</div>
+            <span style="color:#fc8019; font-weight:900; font-size:16px; letter-spacing:-0.5px; font-family:'Arial Black', sans-serif;">swiggy</span>
+          </a>
+          <a href="https://www.zomato.com/" target="_blank" class="dropdown-item">
+            <div style="width:24px; height:24px; background:#cb202d; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:16px; font-style:italic; font-family:sans-serif; padding-right:2px;">z</div>
+            <span style="color:#cb202d; font-weight:800; font-size:17px; font-style:italic; letter-spacing:-0.5px; font-family:'Arial Black', sans-serif;">zomato</span>
+          </a>
+        </div>
+      </div>
       <!-- Hamburger (mobile only) -->
       <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Open Menu" style="display:none;">
         <span></span><span></span><span></span>
@@ -894,7 +955,19 @@
       <li><a href="#reviews" onclick="toggleMobileMenu()">Reviews</a></li>
       <li><a href="#contacts" onclick="toggleMobileMenu()">Contacts</a></li>
       <li style="margin-top:12px;">
-        <a href="#" onclick="toggleMobileMenu()" style="background:#ffffff;color:var(--green);border-radius:50px;font-weight:800;text-align:center;padding:16px;display:block;">Order Now &rarr;</a>
+        <div class="dropdown-wrapper" style="display:block;">
+          <a href="#" style="background:#ffffff;color:var(--green);border-radius:50px;font-weight:800;text-align:center;padding:16px;display:block;">Order Now &rarr;</a>
+          <div class="dropdown-menu" style="left:50%; width: 80%;">
+            <a href="https://www.swiggy.com/" target="_blank" class="dropdown-item">
+              <div style="width:24px; height:24px; background:#fc8019; border-radius:12px 12px 0 12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; font-size:14px; font-family:sans-serif;">S</div>
+              <span style="color:#fc8019; font-weight:900; font-size:16px; letter-spacing:-0.5px; font-family:'Arial Black', sans-serif;">swiggy</span>
+            </a>
+            <a href="https://www.zomato.com/" target="_blank" class="dropdown-item">
+              <div style="width:24px; height:24px; background:#cb202d; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:16px; font-style:italic; font-family:sans-serif; padding-right:2px;">z</div>
+              <span style="color:#cb202d; font-weight:800; font-size:17px; font-style:italic; letter-spacing:-0.5px; font-family:'Arial Black', sans-serif;">zomato</span>
+            </a>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -927,9 +1000,21 @@
       <p class="hero-sub">Authentic Mandi Experience</p>
 
       <div class="hero-btns">
-        <a href="#" class="btn-primary">
-          Order Now <span class="btn-arrow">→</span>
-        </a>
+        <div class="dropdown-wrapper">
+          <a href="#" class="btn-primary">
+            Order Now <span class="btn-arrow">→</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="https://www.swiggy.com/" target="_blank" class="dropdown-item">
+              <div style="width:24px; height:24px; background:#fc8019; border-radius:12px 12px 0 12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; font-size:14px; font-family:sans-serif;">S</div>
+              <span style="color:#fc8019; font-weight:900; font-size:16px; letter-spacing:-0.5px; font-family:'Arial Black', sans-serif;">swiggy</span>
+            </a>
+            <a href="https://www.zomato.com/" target="_blank" class="dropdown-item">
+              <div style="width:24px; height:24px; background:#cb202d; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:16px; font-style:italic; font-family:sans-serif; padding-right:2px;">z</div>
+              <span style="color:#cb202d; font-weight:800; font-size:17px; font-style:italic; letter-spacing:-0.5px; font-family:'Arial Black', sans-serif;">zomato</span>
+            </a>
+          </div>
+        </div>
         <a href="#" class="btn-secondary">
           Explore Menu <span class="btn-arrow">→</span>
         </a>
@@ -967,25 +1052,29 @@
       <div class="banner-logos">
 
         <!-- Swiggy -->
-        <div class="swiggy-wrap">
-          <!-- Official-style Swiggy icon: orange drop shape with S -->
-          <svg class="swiggy-logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="20" fill="#fc8019"/>
-            <text x="20" y="27" text-anchor="middle" fill="white" font-size="18" font-weight="900" font-family="Arial, sans-serif">S</text>
-          </svg>
-          <span class="swiggy-wordmark">SWIGGY</span>
-        </div>
+        <a href="https://www.swiggy.com/" target="_blank" style="text-decoration:none;">
+          <div class="swiggy-wrap">
+            <!-- Official-style Swiggy icon: orange drop shape with S -->
+            <svg class="swiggy-logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="20" fill="#fc8019"/>
+              <text x="20" y="27" text-anchor="middle" fill="white" font-size="18" font-weight="900" font-family="Arial, sans-serif">S</text>
+            </svg>
+            <span class="swiggy-wordmark">SWIGGY</span>
+          </div>
+        </a>
 
         <div class="banner-divider"></div>
 
         <!-- Zomato -->
-        <div class="zomato-wrap">
-          <svg class="zomato-logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="20" fill="#e23744"/>
-            <text x="20" y="26" text-anchor="middle" fill="white" font-size="14" font-weight="900" font-family="Arial, sans-serif">Z</text>
-          </svg>
-          <span class="zomato-wordmark">zomato</span>
-        </div>
+        <a href="https://www.zomato.com/" target="_blank" style="text-decoration:none;">
+          <div class="zomato-wrap">
+            <svg class="zomato-logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="20" fill="#e23744"/>
+              <text x="20" y="26" text-anchor="middle" fill="white" font-size="14" font-weight="900" font-family="Arial, sans-serif">Z</text>
+            </svg>
+            <span class="zomato-wordmark">zomato</span>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -1057,43 +1146,27 @@
         <!-- ══ MANDI SPECIALS ══ -->
 
         <!-- Card 1 -->
-        <div class="c-card" data-cat="mandi">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Lamb Mandi</h3>
-            <p class="c-card-desc">Slow-cooked whole lamb over aromatic saffron rice with herbs &amp; nuts.</p>
-            <div class="c-card-tags"><span class="c-pill">Classic</span></div>
-          </div>
+        <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Chicken Mandi</h3>
+          <img src="menu/chicken_mandi.png" alt="Chicken Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card 2 -->
-        <div class="c-card" data-cat="mandi">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Chicken Mandi</h3>
-            <p class="c-card-desc">Whole roasted golden chicken on fragrant Yemeni-style Mandi rice.</p>
-            <div class="c-card-tags"><span class="c-pill spicy">🌶️ Spicy</span><span class="c-pill bestseller">Best Seller</span></div>
-          </div>
+        <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Beef Mandi</h3>
+          <img src="menu/beef_mandi.png" alt="Beef Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card 3 -->
-        <div class="c-card" data-cat="mandi">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Kabsa Rice Bowl</h3>
-            <p class="c-card-desc">Spiced Arabian Kabsa rice topped with pulled chicken, onions &amp; almonds.</p>
-            <div class="c-card-tags"><span class="c-pill">Classic</span></div>
-          </div>
+        <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Alfam Mandi</h3>
+          <img src="menu/alfam_mandi.png" alt="Alfam Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card 4 -->
-        <div class="c-card" data-cat="mandi">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Mandi Soup</h3>
-            <p class="c-card-desc">Rich golden broth from slow-cooked lamb bones with warm Arabian spices.</p>
-            <div class="c-card-tags"><span class="c-pill healthy">🥣 Comfort</span></div>
-          </div>
+        <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Shawaya Mandi</h3>
+          <img src="menu/shawaya_mandi.png" alt="Shawaya Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
 
@@ -1101,95 +1174,53 @@
         <!-- ══ GRILL ITEMS ══ -->
 
         <!-- Card G1 -->
-        <div class="c-card" data-cat="grill">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1558030006-450675393462?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Mixed Grill Platter</h3>
-            <p class="c-card-desc">Seekh kebabs, shish tawook &amp; lamb chops with hummus &amp; pita.</p>
-            <div class="c-card-tags"><span class="c-pill spicy">🔥 Extra Spicy</span></div>
-          </div>
+        <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Alfam</h3>
+          <img src="menu/alfam.png" alt="Alfam" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card G2 -->
-        <div class="c-card" data-cat="grill">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Lamb Seekh Kebab</h3>
-            <p class="c-card-desc">Minced lamb with fresh herbs &amp; spices, grilled on skewers over live charcoal.</p>
-            <div class="c-card-tags"><span class="c-pill spicy">🌶️ Spicy</span></div>
-          </div>
+        <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Tandoori Chicken</h3>
+          <img src="menu/Tandoori Chicken.png" alt="Tandoori Chicken" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card G3 -->
-        <div class="c-card" data-cat="grill">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Tandoori Chicken</h3>
-            <p class="c-card-desc">Marinated whole chicken in yoghurt &amp; spices, cooked in a clay tandoor.</p>
-            <div class="c-card-tags"><span class="c-pill bestseller">Best Seller</span></div>
-          </div>
+        <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Kebab</h3>
+          <img src="menu/kebab.png" alt="Kebab" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card G4 -->
-        <div class="c-card" data-cat="grill">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1615937722923-67f6deaf2cc9?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Grilled Lamb Chops</h3>
-            <p class="c-card-desc">Juicy premium lamb chops marinated in saffron, grilled to smoky perfection.</p>
-            <div class="c-card-tags"><span class="c-pill">Premium Cut</span></div>
-          </div>
+        <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Fish Grill</h3>
+          <img src="menu/fish_grill.png" alt="Fish Grill" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- ══ OTHER FAVORITES ══ -->
 
-        <!-- Card 7 -->
-        <div class="c-card" data-cat="other">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1541529086526-db283c563270?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Hummus with Pita</h3>
-            <p class="c-card-desc">Creamy chickpea puree served with freshly baked soft pita bread.</p>
-            <div class="c-card-tags"><span class="c-pill">Classic</span></div>
-          </div>
-        </div>
-
         <!-- Card O1 -->
-        <div class="c-card" data-cat="other">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Spiced Grilled Prawns</h3>
-            <p class="c-card-desc">Jumbo prawns in saffron marinade, chargrilled to smoky perfection.</p>
-            <div class="c-card-tags"><span class="c-pill sweet">🍯 Smoky</span></div>
-          </div>
+        <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Burger</h3>
+          <img src="menu/burger.png" alt="Burger" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card O2 -->
-        <div class="c-card" data-cat="other">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Classic Hummus</h3>
-            <p class="c-card-desc">Creamy hummus drizzled with olive oil &amp; paprika, served with warm pita.</p>
-            <div class="c-card-tags"><span class="c-pill healthy">🌿 Healthy</span></div>
-          </div>
+        <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Shawarma</h3>
+          <img src="menu/shawarma.png" alt="Shawarma" style="width: 100%; max-width: 210px; height: auto; object-fit: contain; margin: -10px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card O3 -->
-        <div class="c-card" data-cat="other">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Chicken Shawarma</h3>
-            <p class="c-card-desc">Slow-roasted shawarma chicken wrapped in fresh flatbread with garlic sauce.</p>
-            <div class="c-card-tags"><span class="c-pill bestseller">Fan Favourite</span></div>
-          </div>
+        <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Special Shake</h3>
+          <img src="menu/special_shake.png" alt="Special Shake" style="width: 100%; max-width: 175px; height: auto; object-fit: contain; margin: -25px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
         <!-- Card O4 -->
-        <div class="c-card" data-cat="other">
-          <div class="c-card-img" style="background-image:url('https://images.unsplash.com/photo-1519676867240-f03562e64548?w=700&q=85&fit=crop')"></div>
-          <div class="c-card-body">
-            <h3 class="c-card-title">Baklava</h3>
-            <p class="c-card-desc">Crisp filo pastry layered with nuts &amp; soaked in rose water honey syrup.</p>
-            <div class="c-card-tags"><span class="c-pill sweet">🍮 Dessert</span></div>
-          </div>
+        <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
+          <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Fresh Lime</h3>
+          <img src="menu/fresh_lime.png" alt="Fresh Lime" style="width: 100%; max-width: 190px; height: auto; object-fit: contain; margin: -20px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
         </div>
 
       </div>
@@ -1354,13 +1385,12 @@
       <div class="outlets-track" id="outletsTrack">
         
         <!-- Outlet 1 -->
-        <div class="o-card main-branch">
-          <div class="o-badge">Main Branch ⭐</div>
+        <div class="o-card">
           <div class="o-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
-          <h3 class="o-title">Thammanam</h3>
-          <p class="o-address">Pullepady Road, DD Village,<br>Kochi - 682032</p>
+          <h3 class="o-title">Edappally</h3>
+          <p class="o-address">Arabian Palace<br>Edappally</p>
           <a href="#" class="o-btn">Get Directions</a>
         </div>
 
@@ -1369,8 +1399,8 @@
           <div class="o-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
-          <h3 class="o-title">Muvattupuzha</h3>
-          <p class="o-address">Muvattupuzha,<br>Kerala</p>
+          <h3 class="o-title">Kaloor</h3>
+          <p class="o-address">Arabian Palace<br>Kaloor</p>
           <a href="#" class="o-btn">Get Directions</a>
         </div>
 
@@ -1379,8 +1409,8 @@
           <div class="o-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
-          <h3 class="o-title">Kakkanad</h3>
-          <p class="o-address">Kakkanad,<br>Kochi, Kerala</p>
+          <h3 class="o-title">Fort Kochi</h3>
+          <p class="o-address">Arabian Palace<br>Fort Kochi</p>
           <a href="#" class="o-btn">Get Directions</a>
         </div>
         
@@ -1389,8 +1419,38 @@
           <div class="o-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
-          <h3 class="o-title">Edappally</h3>
-          <p class="o-address">Edappally Toll,<br>Kochi, Kerala</p>
+          <h3 class="o-title">Kakkanad</h3>
+          <p class="o-address">Arabian Palace<br>Kakkanad</p>
+          <a href="#" class="o-btn">Get Directions</a>
+        </div>
+
+        <!-- Outlet 5 -->
+        <div class="o-card">
+          <div class="o-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="o-title">Kalamassery</h3>
+          <p class="o-address">Arabian Palace<br>Kalamassery</p>
+          <a href="#" class="o-btn">Get Directions</a>
+        </div>
+
+        <!-- Outlet 6 -->
+        <div class="o-card">
+          <div class="o-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="o-title">Perumbavoor</h3>
+          <p class="o-address">Arabian Palace<br>Perumbavoor</p>
+          <a href="#" class="o-btn">Get Directions</a>
+        </div>
+
+        <!-- Outlet 7 -->
+        <div class="o-card">
+          <div class="o-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="o-title">Kuravankonam</h3>
+          <p class="o-address">Arabian Palace<br>Thiruvananthapuram</p>
           <a href="#" class="o-btn">Get Directions</a>
         </div>
 
@@ -1399,14 +1459,19 @@
     </div>
 
     <!-- Prominent Insta Banner -->
-    <div style="text-align: center; margin: 40px auto 50px; padding: 30px 20px; background: rgba(255,255,255,0.05); border-radius: 16px; max-width: 600px; border: 1px solid rgba(255,255,255,0.1);">
-      <h3 style="color: #fff; font-family: 'Inter', sans-serif; font-size: 22px; margin-bottom: 20px; font-weight: 600;">For daily updates and offers</h3>
-      <a href="https://instagram.com/club_shawaya" target="_blank" style="display: inline-flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-size: 18px; font-weight: bold; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 14px 32px; border-radius: 50px; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4); transition: transform 0.2s;">
-        <svg style="width:24px;height:24px;" viewBox="0 0 24 24" fill="currentColor">
-             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-        </svg>
-        Follow us on Instagram
-      </a>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin: 40px auto 50px; padding: 30px 40px; background: var(--green); border-radius: 16px; max-width: 800px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.2); flex-wrap: wrap;">
+      <div style="position: relative; width: 64px; height: 110px; border: 3px solid #ffffff; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+        <svg style="width:32px;height:32px;color:#ffffff;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        <div style="position:absolute; top: -6px; left: -12px; width:18px; height:18px; background:#ffffff; border-radius:50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"></div>
+        <div style="position:absolute; bottom: 8px; right: -12px; width:18px; height:18px; background:rgba(255,255,255,0.2); border-radius:50%; border: 2px solid #ffffff;"></div>
+      </div>
+      <div style="text-align: left;">
+        <h3 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 22px; margin: 0 0 12px 0; font-weight: 700;">For daily updates and offers</h3>
+        <a href="https://instagram.com/club_shawaya" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-size: 16px; font-weight: bold; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 12px 32px; border-radius: 50px; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3); transition: transform 0.2s;">
+          <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Follow us on Instagram
+        </a>
+      </div>
     </div>
 
     <!-- Contact Info Box -->
@@ -1431,7 +1496,7 @@
         <div class="info-icon">✉️</div>
         <div class="info-content">
           <h4>EMAIL</h4>
-          <p><a href="mailto:info@arabianpalace.com" style="color:#fff;text-decoration:none;">info@arabianpalace.com</a></p>
+          <p><a href="mailto:info@arabianpalace.com" style="color:#ffffff;text-decoration:none;">info@arabianpalace.com</a></p>
         </div>
       </div>
     </div>
@@ -1454,12 +1519,6 @@
   </div>
 </footer>
 
-<!-- WhatsApp Floating Button -->
-<a href="#" class="whatsapp-btn">
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.878-.788-1.472-1.761-1.645-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
 
 <style>
   /* ── CAROUSEL WRAPPER ── */
@@ -1555,6 +1614,7 @@
     flex-direction: row;
     gap: 20px;
     align-items: stretch;
+    justify-content: center;
     width: 100%;
     min-width: 0;
   }
@@ -1562,9 +1622,9 @@
   /* ── CARD ── */
   .c-card {
     position: relative;
-    flex: 0 0 calc((100% - 3 * 20px) / 4);
+    flex: 0 0 calc((100% - 4 * 20px) / 4.5);
     min-width: 0;
-    height: 420px;
+    height: 380px;
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
@@ -1573,6 +1633,12 @@
     box-shadow: 0 6px 24px rgba(0,0,0,0.12);
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .c-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
   }
 
   /* ── CARD IMAGE ── */
@@ -1643,9 +1709,9 @@
       position: relative;
     }
     .c-card {
-      flex: 0 0 68% !important;
-      min-width: 68% !important;
-      height: 460px; /* slightly taller for premium feel */
+      flex: 0 0 60% !important;
+      min-width: 60% !important;
+      height: 420px; /* slightly taller for premium feel */
       border-radius: 24px;
       scroll-snap-align: center;
       scroll-snap-stop: always;
@@ -1930,21 +1996,19 @@
   .outlets-track::-webkit-scrollbar { display: none; }
   
   .o-card {
-    min-width: calc(33.333% - 14px);
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 100%);
-    border: 1px solid rgba(255,255,255,0.3);
+    min-width: calc(25% - 15px);
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: 16px;
-    padding: 40px 30px;
+    padding: 30px 20px;
     text-align: center;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
   }
   .o-card:hover { 
     transform: translateY(-6px); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.4); 
-    border-color: rgba(255,255,255,0.5);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12); 
   }
   .o-card.main-branch {
     border-color: #facc15;
@@ -1964,44 +2028,51 @@
   .o-icon {
     width: 50px;
     height: 50px;
-    margin: 0 auto 20px;
-    color: #ffffff;
+    margin: 0 auto 16px;
+    color: var(--green);
+    background: #e8f5e9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .o-icon svg { width: 24px; height: 24px; }
   .o-title {
-    color: #ffffff;
-    font-size: 22px;
+    color: #333333;
+    font-size: 18px;
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .o-address {
-    color: rgba(255,255,255,0.8);
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    height: 44px;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    height: 40px;
   }
   .o-btn {
     display: inline-block;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: none;
     color: #ffffff;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
-    padding: 10px 24px;
+    padding: 12px 28px;
     border-radius: 50px;
     transition: all 0.3s;
-    background: rgba(255,255,255,0.05);
+    background: var(--green);
   }
-  .o-btn:hover { background: #ffffff; color: var(--green); border-color: #ffffff; }
+  .o-btn:hover { background: var(--green-dark); }
 
   .contact-info-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255,255,255,0.06);
+    background: var(--green);
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 16px;
     padding: 30px 40px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   }
   .info-item {
     display: flex;
@@ -2010,21 +2081,28 @@
     flex: 1;
   }
   .info-icon {
-    font-size: 20px;
-    margin-top: 2px;
-    color: #fff;
+    font-size: 24px;
+    color: #ffffff;
+    background: rgba(255,255,255,0.15);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .info-content h4 {
-    color: #ffffff;
+    color: rgba(255,255,255,0.7);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 1.5px;
     margin-bottom: 8px;
   }
   .info-content p {
-    color: rgba(255,255,255,0.85);
-    font-size: 13px;
+    color: #ffffff;
+    font-size: 14px;
     line-height: 1.6;
+    font-weight: 500;
   }
   .info-divider {
     width: 1px;
@@ -2356,23 +2434,47 @@
     reviewTimer = setInterval(() => showReviewPage(reviewIndex + REVIEW_PAGE_SIZE), 4000);
   }
 
-  // ── OUTLETS auto-rotate (1 card) ──
-  let outletTimer = null;
+  // ── OUTLETS continuous loop ──
+  let outletRaf;
+  let outletScrollPos = 0;
 
   function startOutletAutoRotate() {
-    clearInterval(outletTimer);
-    if (!isMobile()) return;
-    outletTimer = setInterval(() => {
-      const track = document.getElementById('outletsTrack');
-      if (!track) return;
-      const cardWidth = track.querySelector('.o-card').offsetWidth + 20;
-      // If reached end, scroll back to start
-      if (track.scrollLeft + track.offsetWidth >= track.scrollWidth - 10) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    const track = document.getElementById('outletsTrack');
+    if (!track) return;
+    
+    // Duplicate cards for seamless loop
+    const cards = Array.from(track.querySelectorAll('.o-card'));
+    cards.forEach(c => {
+      const clone = c.cloneNode(true);
+      clone.classList.add('o-clone');
+      track.appendChild(clone);
+    });
+
+    let isHovered = false;
+    track.addEventListener('mouseenter', () => isHovered = true);
+    track.addEventListener('mouseleave', () => isHovered = false);
+    track.addEventListener('touchstart', () => isHovered = true);
+    track.addEventListener('touchend', () => isHovered = false);
+    
+    // Listen for manual scrolling to keep sync
+    track.addEventListener('scroll', () => {
+      if (isHovered) outletScrollPos = track.scrollLeft;
+    });
+
+    function step() {
+      if (!isHovered) {
+        outletScrollPos += 0.6; // Speed of the loop
+        track.scrollLeft = outletScrollPos;
+        
+        // If scrolled past the first original set, reset to start seamlessly
+        if (outletScrollPos >= track.scrollWidth / 2) {
+          outletScrollPos = 0;
+          track.scrollLeft = 0;
+        }
       }
-    }, 3000);
+      outletRaf = requestAnimationFrame(step);
+    }
+    outletRaf = requestAnimationFrame(step);
   }
 
   // Run on page load
@@ -2395,10 +2497,12 @@
     setupMenuDots();
     startMenuAutoRotate();
 
+    // Run outlet loop on all devices
+    // startOutletAutoRotate();
+
     if (isMobile()) {
       showReviewPage(0);
       startReviewAutoRotate();
-      startOutletAutoRotate();
     }
   });
 
@@ -2408,6 +2512,60 @@
     const cardWidth = track.querySelector('.o-card').offsetWidth + 20;
     track.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
   }
+</script>
+
+<!-- Scroll to Top Button -->
+<style>
+  #scrollTopBtn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 54px;
+    height: 54px;
+    background: var(--green, #2e7d32);
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s;
+  }
+  #scrollTopBtn.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  #scrollTopBtn:hover {
+    background: #1b5e20;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  }
+</style>
+
+<a href="#home" id="scrollTopBtn" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</a>
+
+<script>
+  (function() {
+    var btn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    });
+  })();
 </script>
 
 </body>
