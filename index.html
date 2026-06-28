@@ -666,25 +666,31 @@
         display: flex !important;
         flex-direction: column !important;
         text-align: left !important;
-        padding: 0 6px !important;   /* minimal side gaps = max words per line */
+        padding: 0 !important;
         box-sizing: border-box !important;
+        overflow: hidden;
       }
       .story-heading {
         font-size: clamp(44px, 13vw, 60px) !important;
         white-space: nowrap !important;
         margin-bottom: 0px !important;
+        padding: 0 16px !important;
       }
       .divider-wrap-white {
-        margin: 8px 0 0px 0 !important;
+        margin: 8px 16px 0px !important;
       }
       .story-text {
         text-align: left !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0 !important;
+        padding: 0 16px !important;
         margin: 5px 0 14px 0 !important;
-        line-height: 1.6 !important;
-        font-size: 17px !important;
+        line-height: 1.7 !important;
+        font-size: 16px !important;
+        box-sizing: border-box !important;
+      }
+      .btn-story {
+        margin-left: 16px !important;
       }
       .story-right { display: none !important; }
       .camel-img-mobile {
@@ -1478,21 +1484,21 @@
     </div>
 
     <!-- Stats Box -->
-    <div class="reviews-stats">
+    <div class="reviews-stats" id="statsBox">
       <div class="r-stat">
-        <div class="r-stat-val">4.8</div>
+        <div class="r-stat-val" id="stat-rating">0</div>
         <div class="r-stat-stars">★★★★★</div>
         <div class="r-stat-label">AVG. RATING</div>
       </div>
       <div class="r-stat-divider"></div>
       <div class="r-stat">
-        <div class="r-stat-val">1000+</div>
+        <div class="r-stat-val" id="stat-customers">0</div>
         <div class="r-stat-icon">🍽️</div>
         <div class="r-stat-label">DAILY HAPPY CUSTOMERS</div>
       </div>
       <div class="r-stat-divider"></div>
       <div class="r-stat">
-        <div class="r-stat-val">10</div>
+        <div class="r-stat-val" id="stat-outlets">0</div>
         <div class="r-stat-icon">📍</div>
         <div class="r-stat-label">OUTLETS IN KERALA</div>
       </div>
@@ -3041,6 +3047,53 @@
         btn.classList.remove('visible');
       }
     });
+  })();
+</script>
+
+<!-- ── COUNT-UP ANIMATION ── -->
+<script>
+  (function() {
+    function animateCount(el, target, duration, suffix, decimals) {
+      var start = 0;
+      var startTime = null;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        // ease-out cubic
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var current = start + (target - start) * ease;
+        el.textContent = decimals
+          ? current.toFixed(1) + suffix
+          : Math.floor(current) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = decimals ? target.toFixed(1) + suffix : target + suffix;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    var statsBox = document.getElementById('statsBox');
+    if (!statsBox) return;
+
+    var animated = false;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          // Rating: 0 → 4.8
+          animateCount(document.getElementById('stat-rating'),    4.8,  1800, '', true);
+          // Customers: 0 → 1000+
+          animateCount(document.getElementById('stat-customers'), 1000, 2000, '+', false);
+          // Outlets: 0 → 10
+          animateCount(document.getElementById('stat-outlets'),   10,   1500, '', false);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(statsBox);
   })();
 </script>
 
