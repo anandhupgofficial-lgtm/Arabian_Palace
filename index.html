@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Arabian Palace - Authentic Mandi Experience. Premium Arabian restaurant serving the finest Mandi cuisine." />
-  <title>Arabian Palace | Authentic Mandi Experience</title>
+  <title>Arabian Palace</title>
+  <!-- Favicon: use existing logo.png (no rename). Query string added for cache-bust on hard refresh -->
+  <link rel="icon" href="logo.png?v=1" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Rye&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Rye&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -160,10 +162,10 @@
 
     .hero-heading {
       font-family: 'Rye', Georgia, serif;
-      font-size: clamp(64px, 8.5vw, 118px);
+      font-size: clamp(28px, 3.2vw, 48px);
       font-weight: 400;
       color: #ffffff;
-      line-height: 1.0;
+      line-height: 1.25;
       letter-spacing: 0.01em;
       opacity: 0;
       transform: translateY(40px);
@@ -246,15 +248,17 @@
 
     .hero-sub {
       font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
       color: rgba(255,255,255,0.85);
-      text-transform: uppercase;
+      text-transform: none;
+      line-height: 1.75;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.7s ease forwards 0.75s;
       margin-bottom: 36px;
+      max-width: 520px;
     }
 
     /* ─── BUTTONS ─── */
@@ -593,14 +597,14 @@
         display: contents; /* Allows children to be flex items of hero-body */
       }
       .mobile-hero-logo { order: 1; }
-      .hero-heading { font-size: clamp(38px, 11vw, 60px); order: 2; }
+      .hero-heading { font-size: clamp(22px, 6vw, 38px); order: 2; }
       .divider-wrap { order: 3; }
       .hero-right {
         position: relative;
         right: auto; top: auto;
         transform: none;
         width: 100%;
-        margin: 16px 0 0px 0;
+        margin: 0px 0 0px 0;
         order: 4; /* Below the title and divider */
       }
       .hero-sub { margin-bottom: 20px !important; margin-top: 16px !important; order: 5; /* Below the image */ }
@@ -914,7 +918,7 @@
       background-image:
         radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,196,96,0.2) 0%, transparent 70%),
         radial-gradient(ellipse 40% 60% at 10% 30%, rgba(0,100,50,0.2) 0%, transparent 60%);
-      padding: 100px 56px;
+      padding: 100px 56px 100px 16px;
       position: relative;
       overflow: hidden;
     }
@@ -925,6 +929,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 60px;
+      padding-left: 24px;
     }
     .story-left {
       flex: 1;
@@ -981,6 +986,7 @@
       padding: 16px 40px;
       background: #ffffff;
       color: var(--green);
+      border: none;
       border-radius: 50px;
       font-weight: 700;
       font-size: 16px;
@@ -989,10 +995,15 @@
       margin-top: 20px;
       font-family: 'Inter', sans-serif;
       box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      cursor: pointer;
     }
     .btn-story:hover {
       transform: translateY(-3px);
       box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    }
+    .btn-story.active {
+      background: #f7f7f7;
+      color: #005f35;
     }
     .story-right {
       flex: 1;
@@ -1053,8 +1064,8 @@
       <ul class="nav-links">
         <li class="active"><a href="#home">Home</a></li>
         <li><a href="#story">Our Story</a></li>
+        <li><a href="#about">About Us</a></li>
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contacts">Contacts</a></li>
       </ul>
       <!-- CTA -->
@@ -1089,8 +1100,8 @@
     <ul>
       <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
       <li><a href="#story" onclick="toggleMobileMenu()">Our Story</a></li>
+      <li><a href="#about" onclick="toggleMobileMenu()">About Us</a></li>
       <li><a href="#menu" onclick="toggleMobileMenu()">Menu</a></li>
-      <li><a href="#reviews" onclick="toggleMobileMenu()">Reviews</a></li>
       <li><a href="#contacts" onclick="toggleMobileMenu()">Contacts</a></li>
       <li style="margin-top:12px;">
         <div class="dropdown-wrapper" style="display:block;">
@@ -1125,17 +1136,18 @@
     <!-- LEFT -->
     <div class="hero-left">
       <h1 class="hero-heading">
-        <span>Arabian</span>
-        <span>Palace</span>
+        <span>Best Mandhi in Kerala –</span>
+        <span>Authentic Arabian Flavours</span>
+        <span>at Arabian Palace</span>
       </h1>
 
       <div class="divider-wrap">
         <div class="divider-line"></div>
-        <span class="divider-star">✦</span>
+        <span class="divider-star">✶</span>
         <div class="divider-line"></div>
       </div>
 
-      <p class="hero-sub">Authentic Mandi Experience</p>
+      <p class="hero-sub">Experience the rich taste of our signature Spicy Kuzhimandhi, prepared with premium ingredients, authentic Arabian spices, and traditional cooking techniques. Loved by thousands of food enthusiasts across Kerala.</p>
 
       <div class="hero-btns">
         <div class="dropdown-wrapper">
@@ -1220,7 +1232,7 @@
   <div class="story-container">
 
     <div class="story-left">
-      <span class="story-badge">✦ Since 2018 ✦</span>
+      <span class="story-badge">✦ Since 2017 ✦</span>
       <h2 class="story-heading">Our Story</h2>
 
       <div class="divider-wrap-white">
@@ -1232,15 +1244,39 @@
       <img src="camel.png" alt="Arabian Camel" class="camel-img-mobile" loading="lazy" />
 
       <p class="story-text">
-        At Arabian Palace, we bring the true essence of Middle Eastern culinary heritage to your table. Our journey began with a simple passion: to recreate the authentic flavors of Mandi, slow-cooked to perfection in traditional underground pits.
+        Arabian Palace started its journey in 2017 with a simple mission — to serve authentic Arabian cuisine and become the destination for the best Mandhi in Kerala.
       </p>
       <p class="story-text">
-        Every dish we serve is a celebration of rich spices, tender meats, and fragrant rice — crafted with recipes passed down through generations. Step into our palace and experience hospitality that treats every guest like royalty.
+        Our first outlet was established in Perumbavoor, where our passion for quality, consistency, and customer satisfaction quickly earned the trust of food lovers. What began as a single restaurant has now grown into a successful restaurant brand with multiple outlets across Kerala.
+      </p>
+      <p class="story-text">
+        The introduction of our signature Spicy Kuzhimandhi became a turning point in our journey. Prepared using premium ingredients, traditional cooking methods, and a special blend of Arabian spices, it helped Arabian Palace build a reputation as one of the best places for Chicken Mandhi in Kerala.
+      </p>
+      <p class="story-text">
+        Today, Arabian Palace continues to serve thousands of happy customers who visit us for authentic Arabian flavours, delicious Shawarmas, Broasted Chicken, and the best Kuzhimandhi in Kerala. Our growth is driven by one promise: delivering exceptional taste, outstanding service, and a memorable dining experience in every visit.
       </p>
 
-      <a href="#" class="btn-story">
+      <a class="btn-story" href="ourstory.html" id="read-more-btn" onclick="smoothNavigate(event, 'ourstory.html')">
         Read More <span class="btn-arrow">→</span>
       </a>
+
+      <style>
+        @keyframes pageFadeOut {
+          from { opacity: 1; transform: translateY(0); }
+          to   { opacity: 0; transform: translateY(-18px); }
+        }
+        body.page-exit {
+          animation: pageFadeOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          pointer-events: none;
+        }
+      </style>
+      <script>
+        function smoothNavigate(e, url) {
+          e.preventDefault();
+          document.body.classList.add('page-exit');
+          setTimeout(function() { window.location.href = url; }, 500);
+        }
+      </script>
     </div>
 
     <div class="story-right">
@@ -1258,7 +1294,8 @@
     <div class="menu-header">
       <span class="menu-badge">✦ OUR FOOD ✦</span>
       <h2 class="menu-heading">Our Signature Dishes</h2>
-      <p class="menu-subtext">Every dish is crafted with love, authentic spices,<br>and the magic of slow-cooked Mandi.</p>
+      <p class="menu-subtext" style="font-style:italic; opacity:0.85;">Kerala's Favourite Mandhi Specials</p>
+      <p class="menu-subtext">Experience the taste of the Best Mandhi in Kerala,<br>prepared with premium ingredients, aromatic rice, and authentic Arabian spices.</p>
     </div>
 
     <!-- Tabs -->
@@ -1363,273 +1400,1567 @@
   </div>
 </section>
 
-<!-- ═══ REVIEWS SECTION ═══ -->
-<section class="reviews-section" id="reviews">
-  <div class="reviews-container">
-    <div class="reviews-header">
-      <span class="reviews-badge">HAPPY CUSTOMERS</span>
-      <h2 class="reviews-heading">What Our Guests Say</h2>
-      <p class="reviews-subtext">Thousands of happy customers. Here's what they're saying<br>about us.</p>
+<!-- ═══ ABOUT US SECTION ═══ -->
+<section class="about-section" id="about">
+
+  <!-- Big centred title at top -->
+  <div class="about-title-wrap">
+    <h2 class="about-main-title">About Us</h2>
+  </div>
+
+  <!-- Two-column: text left, image right -->
+  <div class="about-container">
+    <div class="about-top">
+      <h3 class="about-heading">Who We Are</h3>
+      <p class="about-text">
+        Arabian Palace was founded in 2017 by two college friends who shared a vision of bringing authentic Arabian flavours to food lovers across Kerala.
+      </p>
+      <p class="about-text">
+        Their journey began with the first Arabian Palace outlet in Edappally. Through dedication, innovation, and a commitment to quality, the brand quickly gained popularity, especially for its signature Spicy Kuzhimandhi, which became a favourite among customers.
+      </p>
+      <p class="about-text">
+        Today, what started as a single restaurant has grown into a thriving hospitality group with <strong>15+ outlets across Kerala</strong> operating under three successful brands.
+      </p>
+      <p class="about-text">
+        With a growing presence across Kerala, Arabian Palace Group continues to serve thousands of customers every day while maintaining its commitment to quality, consistency, and customer satisfaction.
+      </p>
     </div>
 
-    <div class="reviews-grid">
-      <!-- Card 1 -->
-      <div class="r-card">
-        <div class="r-card-top">
-          <div class="r-avatar">A</div>
-          <div class="r-user">
-            <h4>Arjun Menon</h4>
-            <p><span class="r-dot zomato"></span> Zomato</p>
-          </div>
-          <div class="r-stars">★★★★★</div>
-        </div>
-        <p class="r-quote">"Hands down the best shawaya in Kochi! The masala chicken is absolutely out of this world — perfectly charred, juicy inside. Been coming here every week for 6 months!"</p>
-        <div class="r-card-bottom">
-          <span class="r-item">🍗 Masala Shawaya</span>
-          <span class="r-time">2 weeks ago</span>
-        </div>
-      </div>
+    <!-- RIGHT: Founders Image -->
+    <div class="about-img-wrap">
+      <img src="founders.png.png" alt="Founders of Arabian Palace" class="about-founders-img" />
+    </div>
+  </div>
 
-      <!-- Card 2 -->
-      <div class="r-card r-top-review">
-        <div class="r-top-badge">Top Review ⭐</div>
-        <div class="r-card-top">
-          <div class="r-avatar">S</div>
-          <div class="r-user">
-            <h4>Sneha Krishnan</h4>
-            <p><span class="r-dot swiggy"></span> Swiggy</p>
-          </div>
-          <div class="r-stars">★★★★★</div>
-        </div>
-        <p class="r-quote">"The Mandi rice is a dream! Saffron-scented, fluffy, and goes so perfectly with the charcoal chicken. Never disappoints. Best budget-friendly Arabic food in Kerala, no contest!"</p>
-        <div class="r-card-bottom">
-          <span class="r-item">🍛 Mandi Rice Meal</span>
-          <span class="r-time">1 week ago</span>
-        </div>
-      </div>
+</section>
 
-      <!-- Card 3 -->
-      <div class="r-card">
-        <div class="r-card-top">
-          <div class="r-avatar">M</div>
-          <div class="r-user">
-            <h4>Mohammed Farhan</h4>
-            <p><span class="r-dot google"></span> Google</p>
-          </div>
-          <div class="r-stars">★★★★★</div>
-        </div>
-        <p class="r-quote">"Authentic Arabic taste right here in Kochi. The alfaham and the peri-peri are amazing. Decent pricing, generous portions, fast delivery. Highly recommend Arabian Palace!"</p>
-        <div class="r-card-bottom">
-          <span class="r-item">🔥 Alfaham</span>
-          <span class="r-time">3 weeks ago</span>
-        </div>
-      </div>
 
-      <!-- Card 4 -->
-      <div class="r-card">
-        <div class="r-card-top">
-          <div class="r-avatar">P</div>
-          <div class="r-user">
-            <h4>Priya Nair</h4>
-            <p><span class="r-dot zomato"></span> Zomato</p>
-          </div>
-          <div class="r-stars">★★★★★</div>
-        </div>
-        <p class="r-quote">"The shawarma here is absolutely to die for. Tried literally every shawarma place in town — nothing comes close. The garlic sauce is insane!"</p>
-        <div class="r-card-bottom">
-          <span class="r-item">🌯 Shawarma</span>
-          <span class="r-time">5 days ago</span>
-        </div>
-      </div>
+<!-- ═══ OUR BRANDS SECTION ═══ -->
+<section class="brands-section" id="brands">
+  <div class="brands-container">
 
-      <!-- Card 5 -->
-      <div class="r-card">
-        <div class="r-card-top">
-          <div class="r-avatar">R</div>
-          <div class="r-user">
-            <h4>Rahul Varma</h4>
-            <p><span class="r-dot google"></span> Google</p>
-          </div>
-          <div class="r-stars">★★★★★</div>
-        </div>
-        <p class="r-quote">"Visited the new branch last weekend. Atmosphere, food, and service — everything was top notch. The honey shawaya is a hidden gem. Queue outside tells you everything!"</p>
-        <div class="r-card-bottom">
-          <span class="r-item">🍯 Honey Shawaya</span>
-          <span class="r-time">1 month ago</span>
-        </div>
-      </div>
+    <!-- Section Header -->
+    <div class="brands-header">
+      <span class="brands-badge">❖ OUR FAMILY ❖</span>
+      <h2 class="brands-heading">Our Brands</h2>
+      <p class="brands-subtext">Three unique brands, one shared passion — delivering the finest Arabian dining experience across Kerala.</p>
+    </div>
 
-      <!-- Card 6 -->
-      <div class="r-card">
-        <div class="r-card-top">
-          <div class="r-avatar">F</div>
-          <div class="r-user">
-            <h4>Fathima Sherin</h4>
-            <p><span class="r-dot swiggy"></span> Swiggy</p>
+    <!-- White outer container -->
+    <div class="brands-white-wrap">
+      <div class="brands-grid">
+
+        <!-- Card 1: Arabian Palace -->
+        <div class="brand-card brand-ap">
+          <div class="bc-img-wrap">
+            <img src="arabian_palace_card.png" alt="Arabian Palace" class="bc-img bc-img-lg" />
           </div>
-          <div class="r-stars">★★★★☆</div>
+          <div class="bc-body">
+            <h3 class="bc-name">Arabian<br>Palace</h3>
+            <p class="bc-tagline">Home of the Best Mandhi in Kerala</p>
+            <p class="bc-desc">Serving authentic Arabian cuisine and our signature Spicy Chicken Mandhi, crafted with premium ingredients, traditional recipes, and unforgettable flavours.</p>
+            <div class="bc-divider">
+              <svg width="120" height="22" viewBox="0 0 120 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="11" x2="48" y2="11" stroke="#FFD166" stroke-width="1.5"/>
+                <circle cx="52" cy="11" r="2" fill="#FFD166"/>
+                <path d="M60 4 L64.5 11 L60 18 L55.5 11 Z" fill="#FFD166"/>
+                <circle cx="68" cy="11" r="2" fill="#FFD166"/>
+                <line x1="72" y1="11" x2="120" y2="11" stroke="#FFD166" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <p class="r-quote">"Ordered the peri-peri shawaya for the first time — absolute fireworks of flavor! Delivery was on time and the food was still hot. Will definitely order again soon!"</p>
-        <div class="r-card-bottom">
-          <span class="r-item">🌶️ Peri-Peri Shawaya</span>
-          <span class="r-time">2 days ago</span>
+
+        <!-- Card 2: Shawaya Palace -->
+        <div class="brand-card brand-sp">
+          <div class="bc-img-wrap">
+            <img src="shawaya_palace_card.png" alt="Shawaya Palace" class="bc-img bc-img-md" />
+          </div>
+          <div class="bc-body">
+            <h3 class="bc-name">Shawaya<br>Palace</h3>
+            <p class="bc-tagline">Authentic Shawaya, Rich Arabian Flavours</p>
+            <p class="bc-desc">Dedicated to serving flavourful Shawaya, signature Shawaya Mandhi, Mathhuth, and authentic Arabian favourites loved by food enthusiasts across Kerala.</p>
+            <div class="bc-divider">
+              <svg width="120" height="22" viewBox="0 0 120 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="11" x2="48" y2="11" stroke="#FFD166" stroke-width="1.5"/>
+                <circle cx="52" cy="11" r="2" fill="#FFD166"/>
+                <path d="M60 4 L64.5 11 L60 18 L55.5 11 Z" fill="#FFD166"/>
+                <circle cx="68" cy="11" r="2" fill="#FFD166"/>
+                <line x1="72" y1="11" x2="120" y2="11" stroke="#FFD166" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
         </div>
+
+        <!-- Card 3: Broastino Palace -->
+        <div class="brand-card brand-bp">
+          <div class="bc-img-wrap">
+            <img src="broastino_palace_card.png" alt="Broastino Palace" class="bc-img bc-img-md" />
+          </div>
+          <div class="bc-body">
+            <h3 class="bc-name bc-name-dark">Broastino<br>Palace</h3>
+            <p class="bc-tagline bc-tagline-dark">Crispy, Bold &amp; Flavour-Packed</p>
+            <p class="bc-desc bc-desc-dark">Known for its crispy Broasted Chicken, juicy burgers, loaded meals, crispy fries, and bold flavours, Broastino Palace delivers a delicious fast-food experience loved by food enthusiasts across Kerala.</p>
+            <div class="bc-divider bc-divider-dark">
+              <svg width="120" height="22" viewBox="0 0 120 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="11" x2="48" y2="11" stroke="#5a3a00" stroke-width="1.5"/>
+                <circle cx="52" cy="11" r="2" fill="#5a3a00"/>
+                <path d="M60 4 L64.5 11 L60 18 L55.5 11 Z" fill="#5a3a00"/>
+                <circle cx="68" cy="11" r="2" fill="#5a3a00"/>
+                <line x1="72" y1="11" x2="120" y2="11" stroke="#5a3a00" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Stats Box -->
-    <div class="reviews-stats" id="statsBox">
-      <div class="r-stat">
-        <div class="r-stat-val" id="stat-rating">0</div>
-        <div class="r-stat-stars">★★★★★</div>
-        <div class="r-stat-label">AVG. RATING</div>
-      </div>
-      <div class="r-stat-divider"></div>
-      <div class="r-stat">
-        <div class="r-stat-val" id="stat-customers">0</div>
-        <div class="r-stat-icon">🍽️</div>
-        <div class="r-stat-label">DAILY HAPPY CUSTOMERS</div>
-      </div>
-      <div class="r-stat-divider"></div>
-      <div class="r-stat">
-        <div class="r-stat-val" id="stat-outlets">0</div>
-        <div class="r-stat-icon">📍</div>
-        <div class="r-stat-label">OUTLETS IN KERALA</div>
+
+    <!-- ═══ STATS BANNER ═══ -->
+    <div class="stats-banner" style="margin-top: 60px;">
+      <div class="stats-banner-inner">
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="8" width="36" height="34" rx="4" stroke="#1a7a4a" stroke-width="2.5" fill="none"/>
+              <path d="M16 8V4M32 8V4" stroke="#1a7a4a" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M6 18h36" stroke="#1a7a4a" stroke-width="2"/>
+              <circle cx="24" cy="30" r="5" stroke="#1a7a4a" stroke-width="2" fill="none"/>
+              <path d="M21 30l2 2 4-4" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="stat-text">
+            <span class="stat-label">Founded in</span>
+            <span class="stat-value">2017</span>
+          </div>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="14" r="7" stroke="#1a7a4a" stroke-width="2.5" fill="none"/>
+              <path d="M24 21c-8 0-14 4-14 10v2h28v-2c0-6-6-10-14-10z" stroke="#1a7a4a" stroke-width="2.5" fill="none"/>
+              <circle cx="38" cy="12" r="4" stroke="#1a7a4a" stroke-width="2" fill="none"/>
+              <path d="M38 16c4 0 6 2 6 5v1" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="stat-text">
+            <span class="stat-value">15+</span>
+            <span class="stat-label">Outlets Across Kerala</span>
+          </div>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="20" r="10" stroke="#1a7a4a" stroke-width="2.5" fill="none"/>
+              <path d="M18 20c0-3.3 2.7-6 6-6" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round"/>
+              <path d="M10 40c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="#1a7a4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M20 20l2 2 4-5" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="stat-text">
+            <span class="stat-label">Thousands of</span>
+            <span class="stat-value">Happy Customers</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ OUTLETS SECTION ═══ -->
-<section class="outlets-section" id="contacts">
-  <div class="outlets-container">
-    <div class="outlets-header">
-      <span class="outlets-badge">FIND US</span>
-      <h2 class="outlets-heading">Our Outlets</h2>
-      <p class="outlets-subtext">Visit us at any of our 10 locations in Kerala for the full Arabian Palace experience.</p>
-    </div>
-
-    <!-- Outlet Cards Scrollable Container -->
-    <div class="outlets-slider-wrapper">
-      <button class="slider-btn prev-btn" onclick="scrollOutlets(-1)">‹</button>
-      <div class="outlets-track" id="outletsTrack">
-        
-        <!-- Outlet 1 -->
-        <div class="o-card">
-          <div class="o-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<!-- ═══ WHY CUSTOMERS CHOOSE (NEW PREMIUM) ═══ -->
+<section class="wcu-premium-section">
+  <div class="wcu-premium-texture"></div>
+  <div class="wcu-premium-particles"></div>
+  
+  <div class="wcu-premium-container">
+    <!-- Left Content -->
+    <div class="wcu-premium-left">
+      <h2 class="wcu-premium-title">Why Customers<br>Choose Arabian Palace</h2>
+      <div class="wcu-premium-divider"></div>
+      
+      <div class="wcu-premium-features">
+        <!-- Feature 1 -->
+        <div class="wcu-premium-feature">
+          <div class="wcu-premium-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 17v4M7 4h10M5 4h14v4a7 7 0 0 1-14 0V4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 class="o-title">Edappally</h3>
-          <p class="o-address">Arabian Palace<br>Edappally</p>
-          <a href="#" class="o-btn">Get Directions</a>
-        </div>
-
-        <!-- Outlet 2 -->
-        <div class="o-card">
-          <div class="o-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <div class="wcu-premium-text">
+            <h3>Home of the Best Mandhi in Kerala</h3>
+            <p>Our famous Spicy, steamer-cooked Mandhi has become a customer favourite, known for its unique taste, quality ingredients, and authentic preparation.</p>
           </div>
-          <h3 class="o-title">Kaloor</h3>
-          <p class="o-address">Arabian Palace<br>Kaloor</p>
-          <a href="#" class="o-btn">Get Directions</a>
-        </div>
-
-        <!-- Outlet 3 -->
-        <div class="o-card">
-          <div class="o-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          </div>
-          <h3 class="o-title">Fort Kochi</h3>
-          <p class="o-address">Arabian Palace<br>Fort Kochi</p>
-          <a href="#" class="o-btn">Get Directions</a>
         </div>
         
-        <!-- Outlet 4 -->
-        <div class="o-card">
-          <div class="o-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <!-- Feature 2 -->
+        <div class="wcu-premium-feature">
+          <div class="wcu-premium-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 class="o-title">Kakkanad</h3>
-          <p class="o-address">Arabian Palace<br>Kakkanad</p>
-          <a href="#" class="o-btn">Get Directions</a>
-        </div>
-
-        <!-- Outlet 5 -->
-        <div class="o-card">
-          <div class="o-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <div class="wcu-premium-text">
+            <h3>Founded by Passion, Built on Trust</h3>
+            <p>From two college friends with a dream to a growing restaurant brand, Arabian Palace has earned customer trust through consistency and dedication.</p>
           </div>
-          <h3 class="o-title">Kalamassery</h3>
-          <p class="o-address">Arabian Palace<br>Kalamassery</p>
-          <a href="#" class="o-btn">Get Directions</a>
         </div>
-
-        <!-- Outlet 6 -->
-        <div class="o-card">
-          <div class="o-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        
+        <!-- Feature 3 -->
+        <div class="wcu-premium-feature">
+          <div class="wcu-premium-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 class="o-title">Perumbavoor</h3>
-          <p class="o-address">Arabian Palace<br>Perumbavoor</p>
-          <a href="#" class="o-btn">Get Directions</a>
-        </div>
-
-        <!-- Outlet 7 -->
-        <div class="o-card">
-          <div class="o-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <div class="wcu-premium-text">
+            <h3>Authentic Arabian Specialties</h3>
+            <p>From Chicken Mandhi and Beef Mandhi to Shawarma, Alfaham, and BBQ, every dish reflects our commitment to authentic Arabian flavours.</p>
           </div>
-          <h3 class="o-title">Kuravankonam</h3>
-          <p class="o-address">Arabian Palace<br>Thiruvananthapuram</p>
-          <a href="#" class="o-btn">Get Directions</a>
         </div>
-
+        
+        <!-- Feature 4 -->
+        <div class="wcu-premium-feature">
+          <div class="wcu-premium-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="wcu-premium-text">
+            <h3>Growing Across Kerala</h3>
+            <p>From our first outlet in Edappally, Arabian Palace has expanded to multiple locations, bringing the taste of authentic Arabian cuisine to more communities.</p>
+          </div>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="wcu-premium-feature">
+          <div class="wcu-premium-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="wcu-premium-text">
+            <h3>Customer Satisfaction Above Everything</h3>
+            <p>The trust and loyalty of our customers continue to inspire us to serve better every day.</p>
+          </div>
+        </div>
       </div>
-      <button class="slider-btn next-btn" onclick="scrollOutlets(1)">›</button>
     </div>
     
-    <!-- Mobile dots indicator for Outlets -->
-    <div class="mobile-dots" id="outletDots" style="margin-top: 20px;"></div>
-
-    <!-- Prominent Insta Banner -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin: 40px auto 50px; padding: 30px 40px; background: var(--green); border-radius: 16px; max-width: 800px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.2); flex-wrap: wrap;">
-      <div style="position: relative; width: 84px; height: 84px; border: 3px solid #ffffff; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
-        <svg style="width:40px;height:40px;color:#ffffff;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        <div style="position:absolute; top: -8px; left: -8px; width:22px; height:22px; background:#ffffff; border-radius:50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"></div>
-        <div style="position:absolute; bottom: -8px; right: -8px; width:22px; height:22px; background:rgba(255,255,255,0.2); border-radius:50%; border: 2px solid #ffffff;"></div>
+    <!-- Right Image -->
+    <div class="wcu-premium-right">
+      <div class="wcu-premium-img-wrapper">
+        <img src="why_cutomers.png" alt="Mandhi Plate" class="wcu-premium-img">
       </div>
-      <div style="text-align: left;">
-        <h3 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 22px; margin: 0 0 12px 0; font-weight: 700;">For daily updates and offers</h3>
-        <a href="https://www.instagram.com/arabianpalace_" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-size: 16px; font-weight: bold; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 12px 32px; border-radius: 50px; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3); transition: transform 0.2s;">
-          <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          Follow us on Instagram
-        </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MISSION, VISION & VALUES ═══ -->
+<section class="mvv-wrapper">
+  <div class="mvv-texture-overlay"></div>
+  <div class="mvv-section">
+    <!-- Left Column: Mission -->
+    <div class="mvv-column">
+      <div class="mvv-icon-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+        </svg>
+      </div>
+      <h2 class="mvv-heading">Our Mission</h2>
+      <div class="mvv-divider"></div>
+      <p class="mvv-description">
+        To serve the Best Mandhi in Kerala while maintaining exceptional quality, authentic Arabian flavours, and outstanding customer service in every outlet.
+      </p>
+      <div class="mvv-image-container">
+        <div class="mvv-image-glow"></div>
+        <img src="our_mission.png" alt="Best Mandhi" class="mvv-mission-img">
       </div>
     </div>
 
-    <!-- Contact Info Box -->
-    <div class="contact-info-box">
-      <div class="info-item">
-        <div class="info-icon">📞</div>
-        <div class="info-content">
-          <h4>CALL US</h4>
-          <p>+91 90616 10002 | +91 9048 297772 | +91 9048 297773</p>
+    <!-- Center Column: Vision -->
+    <div class="mvv-column">
+      <div class="mvv-icon-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </div>
+      <h2 class="mvv-heading">Our Vision</h2>
+      <div class="mvv-divider"></div>
+      <p class="mvv-description">
+        To become Kerala's most loved Arabian restaurant brand by delivering authentic food experiences, expanding our reach, and building lasting relationships with our customers.
+      </p>
+      <div class="mvv-image-container">
+        <div class="mvv-image-glow"></div>
+        <img src="ourmission.png" alt="Arabian Palace Building" class="mvv-vision-img">
+      </div>
+    </div>
+
+    <!-- Right Column: Values -->
+    <div class="mvv-column">
+      <div class="mvv-icon-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </div>
+      <h2 class="mvv-heading">Our Values</h2>
+      <div class="mvv-divider"></div>
+      <div class="mvv-values-list">
+        <div class="mvv-value-item">
+          <div class="mvv-bullet"></div>
+          <div class="mvv-value-content">
+            <h4>Authenticity</h4>
+            <p>We preserve authentic Arabian flavours using premium ingredients.</p>
+          </div>
+        </div>
+        <div class="mvv-value-item">
+          <div class="mvv-bullet"></div>
+          <div class="mvv-value-content">
+            <h4>Quality</h4>
+            <p>Every dish is prepared with precision, freshness, and care.</p>
+          </div>
+        </div>
+        <div class="mvv-value-item">
+          <div class="mvv-bullet"></div>
+          <div class="mvv-value-content">
+            <h4>Customer First</h4>
+            <p>Customer satisfaction is always our highest priority.</p>
+          </div>
+        </div>
+        <div class="mvv-value-item">
+          <div class="mvv-bullet"></div>
+          <div class="mvv-value-content">
+            <h4>Growth Through Excellence</h4>
+            <p>We continuously innovate while maintaining traditional Arabian taste.</p>
+          </div>
         </div>
       </div>
-      <div class="info-divider"></div>
-      <div class="info-item">
-        <div class="info-icon">🕒</div>
-        <div class="info-content">
-          <h4>OPENING HOURS</h4>
-          <p>12:00 PM – 11:30 PM - Everyday</p>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ═══ MISSION, VISION & VALUES CSS ═══ */
+.mvv-wrapper {
+  background-color: #019E53;
+  background: radial-gradient(circle at 50% -20%, #02BA62 0%, #019E53 40%, #016D3A 100%);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mvv-texture-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mvv-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  padding: 100px 60px 80px 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+.mvv-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mvv-column:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(212, 175, 55, 0.25);
+}
+
+.mvv-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #D4AF37;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.mvv-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+.mvv-heading {
+  font-family: 'Playfair Display', serif;
+  color: #FFFFFF;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.mvv-divider {
+  width: 50px;
+  height: 2px;
+  background-color: #D4AF37;
+  margin-bottom: 24px;
+  border-radius: 1px;
+}
+
+.mvv-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 400;
+  flex-grow: 1;
+}
+
+.mvv-image-container {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+
+.mvv-image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 60%);
+  filter: blur(20px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mvv-mission-img {
+  width: 100%;
+  max-width: 290px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  position: relative;
+  transform: translateX(-20px);
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4));
+}
+
+.mvv-vision-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  position: relative;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)) contrast(1.15) brightness(1.05);
+}
+
+.mvv-values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mvv-value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.mvv-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #D4AF37;
+  flex-shrink: 0;
+  margin-top: 5px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.mvv-value-content h4 {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+  margin-top: 0;
+}
+
+.mvv-value-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .mvv-section {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 80px 40px;
+  }
+  .mvv-column:not(:last-child)::after {
+    width: 100%;
+    height: 1px;
+    top: auto;
+    bottom: -30px;
+    right: 0;
+  }
+}
+</style>
+
+<!-- ── ABOUT + BRANDS CSS ── -->
+<style>
+/* ═══ WHY CUSTOMERS CHOOSE NEW PREMIUM CSS ═══ */
+.wcu-premium-section {
+  position: relative;
+  background: radial-gradient(circle at 60% 50%, #018b48 0%, #019E53 100%);
+  padding: 60px 6% 100px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+.wcu-premium-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+.wcu-premium-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle, rgba(212,175,55,0.4) 1px, transparent 1px),
+    radial-gradient(circle, rgba(212,175,55,0.3) 1px, transparent 1px);
+  background-size: 120px 120px, 180px 180px;
+  background-position: 0 0, 60px 60px;
+  opacity: 0.15;
+  z-index: 1;
+}
+.wcu-premium-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  gap: 60px;
+}
+.wcu-premium-left {
+  flex: 1;
+  max-width: 50%;
+}
+.wcu-premium-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 4vw, 48px);
+  color: #FFFFFF;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  line-height: 1.15;
+}
+.wcu-premium-divider {
+  width: 70px;
+  height: 1.5px;
+  background-color: #D4AF37;
+  margin-bottom: 44px;
+}
+.wcu-premium-features {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.wcu-premium-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+.wcu-premium-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #016D3A;
+  border: 1px solid #D4AF37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+.wcu-premium-feature:hover .wcu-premium-icon {
+  transform: scale(1.05);
+}
+.wcu-premium-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.wcu-premium-text h3 {
+  font-size: 19px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.2px;
+}
+.wcu-premium-text p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.65;
+  margin: 0;
+}
+.wcu-premium-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.wcu-premium-img-wrapper {
+  position: relative;
+  width: 125%;
+  right: -25%;
+}
+.wcu-premium-img-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 75%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 65%);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+.wcu-premium-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Improvements: Higher contrast, Better sharpness, Warm lighting, Soft realistic shadow underneath */
+  filter: contrast(1.18) saturate(1.1) sepia(0.05) drop-shadow(0 40px 45px rgba(0,0,0,0.45));
+  position: relative;
+  z-index: 2;
+  transform: translateY(-40px) scale(1.15);
+  transform-origin: right center;
+  transition: transform 0.5s ease;
+}
+.wcu-premium-img:hover {
+  transform: translateY(-40px) scale(1.17);
+}
+@media (max-width: 1024px) {
+  .wcu-premium-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .wcu-premium-left {
+    max-width: 100%;
+  }
+  .wcu-premium-img-wrapper {
+    width: 100%;
+    right: 0;
+  }
+}
+@media (max-width: 600px) {
+  .wcu-premium-section {
+    padding: 60px 5%;
+  }
+  .wcu-premium-title {
+    font-size: 32px;
+  }
+  .wcu-premium-feature {
+    gap: 16px;
+  }
+  .wcu-premium-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .wcu-premium-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .wcu-premium-text h3 {
+    font-size: 17px;
+  }
+  .wcu-premium-text p {
+    font-size: 14px;
+  }
+}
+
+/* ── ABOUT + BRANDS CSS ── */
+<style>
+  /* ══ ABOUT US ══ */
+  .about-section {
+    background: var(--green);
+    padding: 56px 60px 70px 60px;
+  }
+
+  /* ── Centred main title ── */
+  .about-title-wrap {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .about-main-title {
+    font-family: 'Rye', Georgia, serif;
+    font-size: clamp(37px, 4.8vw, 62px);
+    color: #ffffff;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  /* ── Two-column container ── */
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+    padding-left: 20px;
+  }
+
+  /* ── Left: text column ── */
+  .about-top {
+    flex: 1;
+    min-width: 0;
+    max-width: 630px;
+  }
+
+  /* ── "WHO WE ARE" sub-heading ── */
+  .about-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 18px 0;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-left: 3px solid rgba(255,255,255,0.5);
+    padding-left: 12px;
+  }
+
+  /* ── Paragraph text ── */
+  .about-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.8;
+    margin-bottom: 26px;
+  }
+  .about-text:last-child { margin-bottom: 0; }
+  .about-text strong {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* ── Right: founders image ── */
+  .about-img-wrap {
+    flex: 0 0 440px;
+    width: 440px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-top: 20px;
+  }
+  .about-founders-img {
+    width: 100%;
+    max-width: 430px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .about-section { padding: 48px 24px; }
+    .about-container { flex-direction: column; gap: 32px; align-items: center; }
+    .about-top { max-width: 100%; }
+    .about-img-wrap { flex: none; width: 100%; max-width: 360px; margin-top: 0; }
+  }
+
+  /* ══ STATS BANNER ══ */
+  .stats-banner {
+    width: calc(100% - 48px);
+    margin: 0 24px;
+    background: #f0f5f0;
+    padding: 32px 40px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border-radius: 14px;
+  }
+  .stats-banner-inner {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 16px;
+  }
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    justify-content: center;
+  }
+  .stat-icon {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+  .stat-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .stat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.3;
+  }
+  .stat-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a3a2a;
+    line-height: 1.2;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 52px;
+    background: rgba(26,122,74,0.2);
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .stats-banner { padding: 24px 20px; margin: 0 14px; width: calc(100% - 28px); border-radius: 12px; }
+    .stats-banner-inner { flex-direction: column; gap: 24px; }
+    .stat-divider { width: 80px; height: 1px; }
+  }
+
+  /* ══ OUR BRANDS ══ */
+  .brands-section {
+    background: var(--green);
+    padding: 90px 40px 40px;
+  }
+  .brands-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .brands-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .brands-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .brands-heading {
+    font-family: 'Rye', Georgia, serif;
+    font-size: clamp(36px, 5vw, 56px);
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+  .brands-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* White outer wrapper */
+  /* White outer wrapper — extra top padding accommodates large overlapping images */
+  .brands-white-wrap {
+    background: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    padding: 70px 40px 40px;   /* 70px top = 50px image overlap + 20px breathing room */
+  }
+
+  /* Grid — all columns same height */
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: stretch;
+  }
+
+  /* ── Brand Card — auto height, content-driven ── */
+  .brand-card {
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    height: auto;              /* no fixed height — fits content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .brand-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.20);
+  }
+  .brand-ap { background: #136936; }
+  .brand-sp { background: #F68B1F; }
+  .brand-bp { background: #F2C91D; }
+
+  /* ── Food images — all 100% static, no animation ── */
+  .bc-img-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;         /* overlap 50px above card top */
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  /* Arabian Palace — largest */
+  .bc-img-lg {
+    width: 340px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,0.24));
+    display: block;
+    animation: none !important;
+    transition: none !important;
+  }
+  /* Shawaya Palace & Broastino Palace */
+  .bc-img-md {
+    width: 310px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,0.24));
+    display: block;
+    animation: none !important;
+    transition: none !important;
+  }
+  /* Kill any lingering animation on base class */
+  .bc-img {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* ── Card body ── */
+  .bc-body {
+    width: 100%;
+    padding: 15px 35px 30px;   /* 15px top gap after image, 30px bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Brand name — reduced 10% */
+  .bc-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 37px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px;          /* 10px gap to tagline */
+    line-height: 1.15;
+  }
+  .bc-name-dark { color: #1a3a00; }
+
+  /* Tagline */
+  .bc-tagline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #FFD166;
+    margin: 0 0 18px;          /* 18px gap to description */
+    line-height: 1.4;
+  }
+  .bc-tagline-dark { color: #5a3a00; }
+
+  /* Description — full text, no clamp */
+  .bc-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    margin: 0 0 24px;          /* 24px gap to divider */
+    overflow: visible;
+    display: block;
+  }
+  .bc-desc-dark { color: rgba(30,20,0,0.82); }
+
+  /* Gold decorative divider */
+  .bc-divider {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0;             /* gap already set by bc-desc margin-bottom */
+    margin-bottom: 10px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .brands-white-wrap { padding: 70px 24px 32px; }
+    .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 100px 24px; }
+    .bc-img-lg { width: 280px; }
+    .bc-img-md { width: 250px; }
+  }
+  @media (max-width: 600px) {
+    .brands-section { padding: 60px 16px; }
+    .brands-white-wrap { padding: 70px 16px 24px; border-radius: 20px; }
+    .brands-grid { grid-template-columns: 1fr; gap: 100px; }
+    .bc-img-lg { width: 240px; }
+    .bc-img-md { width: 220px; }
+    .bc-name { font-size: 34px; }
+    .brands-subtext { font-size: 14px; }
+  }
+</style>
+
+<!-- ═══ WHY CHOOSE US SECTION (REMOVED) ═══ -->
+<section class="wcu-section" id="why-choose-us" style="display: none !important;">
+  <div class="wcu-container">
+    <!-- Main Premium Container -->
+    <div class="wcu-white-wrap">
+
+      <!-- Section Header -->
+      <div class="wcu-header">
+        <span class="wcu-badge">✦ &nbsp; WHY CHOOSE US &nbsp; ✦</span>
+        <div class="wcu-gold-divider">
+          <svg width="240" height="16" viewBox="0 0 240 16" fill="none">
+            <line x1="0" y1="8" x2="90" y2="8" stroke="#C89B3C" stroke-width="1"/>
+            <path d="M104 8 L108 4 L112 8 L108 12 Z" fill="#C89B3C"/>
+            <path d="M116 8 L120 4 L124 8 L120 12 Z" fill="#C89B3C" opacity="0.6"/>
+            <path d="M128 8 L132 4 L136 8 L132 12 Z" fill="#C89B3C" opacity="0.3"/>
+            <line x1="150" y1="8" x2="240" y2="8" stroke="#C89B3C" stroke-width="1"/>
+          </svg>
         </div>
+        <h2 class="wcu-heading">Why Customers Choose<br>Arabian Palace Group</h2>
+        <div class="wcu-gold-divider" style="margin-top:18px;">
+          <svg width="160" height="12" viewBox="0 0 160 12" fill="none">
+            <line x1="0" y1="6" x2="64" y2="6" stroke="#C89B3C" stroke-width="1"/>
+            <path d="M72 2 L76 6 L72 10 L68 6 Z" fill="#C89B3C"/>
+            <path d="M84 2 L88 6 L84 10 L80 6 Z" fill="#C89B3C" opacity="0.5"/>
+            <line x1="96" y1="6" x2="160" y2="6" stroke="#C89B3C" stroke-width="1"/>
+          </svg>
+        </div>
+        <p class="wcu-subtext">Delivering authentic Arabian flavours, premium quality,<br>and unforgettable dining experiences across Kerala since 2017.</p>
       </div>
-      <div class="info-divider"></div>
-      <div class="info-item">
-        <div class="info-icon">✉️</div>
-        <div class="info-content">
-          <h4>EMAIL</h4>
-          <p><a href="mailto:info@arabianpalace.com" style="color:#ffffff;text-decoration:none;">info@arabianpalace.com</a></p>
+
+      <!-- Two Column Layout -->
+      <div class="wcu-layout">
+
+        <!-- LEFT: 6 Feature Cards -->
+        <div class="wcu-left">
+
+          <div class="wcu-feat-card">
+            <div class="wcu-feat-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="26" height="26">
+                <rect x="8" y="14" width="32" height="24" rx="3" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <path d="M16 14V10h16v4" stroke="#C89B3C" stroke-width="2" stroke-linecap="round"/>
+                <path d="M14 24h20M14 31h12" stroke="#C89B3C" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-feat-vline"></div>
+            <div class="wcu-feat-content">
+              <h4>15+ Outlets Across Kerala</h4>
+              <p>Serving customers across multiple locations with the same quality and authentic taste.</p>
+            </div>
+            <div class="wcu-feat-arrow">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 18l6-6-6-6" stroke="#C89B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div class="wcu-feat-card">
+            <div class="wcu-feat-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="26" height="26">
+                <path d="M24 6 C18 6 12 10 12 16 L12 20 C12 24 16 26 24 26 C32 26 36 24 36 20 L36 16 C36 10 30 6 24 6Z" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <path d="M12 20 L12 28 C12 34 17 38 24 38 C31 38 36 34 36 28 L36 20" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <path d="M18 42 L30 42" stroke="#C89B3C" stroke-width="2" stroke-linecap="round"/>
+                <path d="M24 38 L24 42" stroke="#C89B3C" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-feat-vline"></div>
+            <div class="wcu-feat-content">
+              <h4>3 Successful Restaurant Brands</h4>
+              <p>Arabian Palace, Shawaya Palace &amp; Broastino Palace.</p>
+            </div>
+            <div class="wcu-feat-arrow">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 18l6-6-6-6" stroke="#C89B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div class="wcu-feat-card">
+            <div class="wcu-feat-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="26" height="26">
+                <ellipse cx="24" cy="30" rx="15" ry="8" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <path d="M9 30 L9 20 C9 14 16 10 24 10 C32 10 39 14 39 20 L39 30" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <path d="M16 22 Q24 18 32 22" stroke="#C89B3C" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-feat-vline"></div>
+            <div class="wcu-feat-content">
+              <h4>Home of the Best Mandhi in Kerala</h4>
+              <p>Famous for our signature Mandhi loved by thousands.</p>
+            </div>
+            <div class="wcu-feat-arrow">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 18l6-6-6-6" stroke="#C89B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div class="wcu-feat-card">
+            <div class="wcu-feat-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="26" height="26">
+                <path d="M24 10C24 10 16 16 16 26C16 32 20 36 24 36C28 36 32 32 32 26C32 16 24 10 24 10Z" stroke="#C89B3C" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                <path d="M24 20C24 20 20 24 20 28C20 31 22 33 24 33C26 33 28 31 28 28C28 24 24 20 24 20Z" stroke="#C89B3C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="wcu-feat-vline"></div>
+            <div class="wcu-feat-content">
+              <h4>Signature Spicy Chicken Mandhi</h4>
+              <p>& Arabian Specialties</p>
+            </div>
+            <div class="wcu-feat-arrow">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 18l6-6-6-6" stroke="#C89B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div class="wcu-feat-card">
+            <div class="wcu-feat-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="26" height="26">
+                <path d="M24 8 C16 8 10 14 10 22 C10 32 24 42 24 42 C24 42 38 32 38 22 C38 14 32 8 24 8Z" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <circle cx="24" cy="22" r="5" stroke="#C89B3C" stroke-width="1.5" fill="none"/>
+                <path d="M20 14 Q24 11 28 14" stroke="#C89B3C" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-feat-vline"></div>
+            <div class="wcu-feat-content">
+              <h4>Unique In-House Spice Blend</h4>
+              <p>Crafted by Our Experts.</p>
+            </div>
+            <div class="wcu-feat-arrow">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 18l6-6-6-6" stroke="#C89B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div class="wcu-feat-card">
+            <div class="wcu-feat-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="26" height="26">
+                <circle cx="17" cy="14" r="6" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <circle cx="31" cy="14" r="6" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <path d="M5 40 C5 32 10 26 17 26 L31 26 C38 26 43 32 43 40" stroke="#C89B3C" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-feat-vline"></div>
+            <div class="wcu-feat-content">
+              <h4>Trusted by Thousands</h4>
+              <p>Of Happy Customers Since 2017.</p>
+            </div>
+            <div class="wcu-feat-arrow">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 18l6-6-6-6" stroke="#C89B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div class="wcu-feat-card">
+            <div class="wcu-feat-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="26" height="26">
+                <path d="M24 6 L28 17 L40 17 L31 24 L34 36 L24 29 L14 36 L17 24 L8 17 L20 17 Z" stroke="#C89B3C" stroke-width="2" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="wcu-feat-vline"></div>
+            <div class="wcu-feat-content">
+              <h4>Authentic Arabian Flavours</h4>
+              <p>& Memorable Dining Experiences.</p>
+            </div>
+            <div class="wcu-feat-arrow">
+              <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 18l6-6-6-6" stroke="#C89B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+        </div><!-- /wcu-left -->
+
+        <!-- RIGHT: Mission, Vision, Values -->
+        <div class="wcu-right">
+
+          <!-- Mission Card -->
+          <div class="wcu-mv-card">
+            <div class="wcu-mv-corner-pattern">
+              <svg viewBox="0 0 80 80" fill="none" width="80" height="80">
+                <path d="M60,0 L80,0 L80,80 L0,80 Q20,60 20,40 Q20,20 60,0Z" fill="#C89B3C" opacity="0.05"/>
+                <circle cx="70" cy="10" r="15" stroke="#C89B3C" stroke-width="0.5" opacity="0.2" fill="none"/>
+                <circle cx="70" cy="10" r="8" stroke="#C89B3C" stroke-width="0.5" opacity="0.15" fill="none"/>
+                <path d="M55,0 L80,25" stroke="#C89B3C" stroke-width="0.5" opacity="0.2"/>
+                <path d="M65,0 L80,15" stroke="#C89B3C" stroke-width="0.5" opacity="0.2"/>
+              </svg>
+            </div>
+            <div class="wcu-mv-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="30" height="30">
+                <circle cx="24" cy="24" r="16" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <circle cx="24" cy="24" r="8" stroke="#C89B3C" stroke-width="1.5" fill="none"/>
+                <circle cx="24" cy="24" r="2" fill="#C89B3C"/>
+                <path d="M24 8 L24 4 M24 44 L24 40 M8 24 L4 24 M44 24 L40 24" stroke="#C89B3C" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-mv-body">
+              <h4 class="wcu-mv-title">Our Mission</h4>
+              <div class="wcu-mv-underline"></div>
+              <p class="wcu-mv-text">To serve the Best Mandhi in Kerala while maintaining exceptional quality, authentic Arabian flavours, and outstanding customer service in every outlet.</p>
+            </div>
+          </div>
+
+          <!-- Vision Card -->
+          <div class="wcu-mv-card">
+            <div class="wcu-mv-corner-pattern">
+              <svg viewBox="0 0 80 80" fill="none" width="80" height="80">
+                <path d="M60,0 L80,0 L80,80 L0,80 Q20,60 20,40 Q20,20 60,0Z" fill="#C89B3C" opacity="0.05"/>
+                <circle cx="70" cy="10" r="15" stroke="#C89B3C" stroke-width="0.5" opacity="0.2" fill="none"/>
+                <circle cx="70" cy="10" r="8" stroke="#C89B3C" stroke-width="0.5" opacity="0.15" fill="none"/>
+                <path d="M55,0 L80,25" stroke="#C89B3C" stroke-width="0.5" opacity="0.2"/>
+              </svg>
+            </div>
+            <div class="wcu-mv-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="30" height="30">
+                <path d="M4 24 C4 24 12 10 24 10 C36 10 44 24 44 24 C44 24 36 38 24 38 C12 38 4 24 4 24Z" stroke="#C89B3C" stroke-width="2" fill="none"/>
+                <circle cx="24" cy="24" r="6" stroke="#C89B3C" stroke-width="1.5" fill="none"/>
+                <circle cx="24" cy="24" r="2" fill="#C89B3C"/>
+              </svg>
+            </div>
+            <div class="wcu-mv-body">
+              <h4 class="wcu-mv-title">Our Vision</h4>
+              <div class="wcu-mv-underline"></div>
+              <p class="wcu-mv-text">To become Kerala's most loved Arabian restaurant brand by delivering authentic food experiences, expanding our reach, and building lasting relationships with our customers.</p>
+            </div>
+          </div>
+
+          <!-- Values Section -->
+          <div class="wcu-values-box">
+            <div class="wcu-values-header">
+              <h4 class="wcu-values-title">Our Values</h4>
+              <div class="wcu-values-divider">
+                <svg width="120" height="12" viewBox="0 0 120 12" fill="none">
+                  <line x1="0" y1="6" x2="46" y2="6" stroke="#C89B3C" stroke-width="1"/>
+                  <path d="M52 3 L56 6 L52 9 L48 6 Z" fill="#C89B3C"/>
+                  <path d="M62 3 L66 6 L62 9 L58 6 Z" fill="#C89B3C" opacity="0.5"/>
+                  <path d="M72 3 L76 6 L72 9 L68 6 Z" fill="#C89B3C" opacity="0.2"/>
+                  <line x1="78" y1="6" x2="120" y2="6" stroke="#C89B3C" stroke-width="1"/>
+                </svg>
+              </div>
+            </div>
+            <div class="wcu-values-grid">
+
+              <div class="wcu-val-card">
+                <div class="wcu-val-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <path d="M18 4 L22 4 L28 8 L28 20 C28 26 23 30 18 32 C13 30 8 26 8 20 L8 8 L14 4 Z" stroke="#C89B3C" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+                    <path d="M13 18 L17 22 L23 14" stroke="#C89B3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="wcu-val-content">
+                  <h5>Authenticity</h5>
+                  <p>We preserve the rich taste of Arabian cuisine through carefully crafted recipes and premium ingredients.</p>
+                </div>
+              </div>
+
+              <div class="wcu-val-card">
+                <div class="wcu-val-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <path d="M18 4 C14 4 10 6 10 10 L10 14 C10 18 13 20 18 20 C23 20 26 18 26 14 L26 10 C26 6 22 4 18 4Z" stroke="#C89B3C" stroke-width="1.8" fill="none"/>
+                    <path d="M10 14 L10 20 C10 25 13 28 18 28 C23 28 26 25 26 20 L26 14" stroke="#C89B3C" stroke-width="1.8" fill="none"/>
+                    <path d="M14 31 L22 31" stroke="#C89B3C" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="wcu-val-content">
+                  <h5>Quality</h5>
+                  <p>Every dish is prepared with attention to freshness, flavour, and consistency.</p>
+                </div>
+              </div>
+
+              <div class="wcu-val-card">
+                <div class="wcu-val-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <path d="M18 6 C14 6 11 9 11 13 C11 17 13 19 18 22 C23 19 25 17 25 13 C25 9 22 6 18 6Z" stroke="#C89B3C" stroke-width="1.8" fill="none"/>
+                    <path d="M12 26 C12 22 15 20 18 22 C21 20 24 22 24 26 L24 30 L12 30 Z" stroke="#C89B3C" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+                  </svg>
+                </div>
+                <div class="wcu-val-content">
+                  <h5>Customer First</h5>
+                  <p>Our customers are the heart of Arabian Palace, and their satisfaction drives everything we do.</p>
+                </div>
+              </div>
+
+              <div class="wcu-val-card">
+                <div class="wcu-val-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <path d="M5 25 L11 17 L17 21 L23 11 L29 15" stroke="#C89B3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M25 9 L29 9 L29 13" stroke="#C89B3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 30 L31 30" stroke="#C89B3C" stroke-width="1" opacity="0.4"/>
+                  </svg>
+                </div>
+                <div class="wcu-val-content">
+                  <h5>Growth Through Excellence</h5>
+                  <p>We continuously strive to improve, innovate, and grow while maintaining the standards that define our brand.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /wcu-right -->
+      </div><!-- /wcu-layout -->
+    </div><!-- /wcu-white-wrap -->
+  </div><!-- /wcu-container -->
+</section>
+
+    <!-- White container -->
+    <div class="wcu-white-wrap" style="display: none;">
+      
+      <!-- Header -->
+      <div class="wcu-header">
+        <span class="wcu-badge">✦ WHY CHOOSE US ✦</span>
+        <h2 class="wcu-heading">Why Customers Choose<br>Arabian Palace Group</h2>
+        <div class="wcu-header-divider">
+          <svg width="100" height="12" viewBox="0 0 100 12" fill="none">
+            <line x1="0" y1="6" x2="40" y2="6" stroke="#C89B3C" stroke-width="1.5"/>
+            <path d="M50 2 L54 6 L50 10 L46 6 Z" fill="#C89B3C"/>
+            <line x1="60" y1="6" x2="100" y2="6" stroke="#C89B3C" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <p class="wcu-subtext">Delivering authentic Arabian flavours, premium quality,<br>and unforgettable dining experiences across Kerala since 2017.</p>
+      </div>
+
+      <div class="wcu-layout">
+
+        <!-- LEFT: 6 Feature Cards -->
+        <div class="wcu-left">
+          <div class="wcu-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="28" height="28">
+                <rect x="8" y="14" width="32" height="24" rx="3" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <path d="M16 14V10h16v4" stroke="#019E53" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M14 24h20M14 31h12" stroke="#019E53" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>15+ Outlets Across Kerala</h4>
+              <p>Serving customers across multiple locations with the same quality and authentic taste.</p>
+            </div>
+            <div class="wcu-card-arrow">›</div>
+          </div>
+
+          <div class="wcu-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="28" height="28">
+                <path d="M24 8 L28 18 L39 18 L30 25 L33 36 L24 29 L15 36 L18 25 L9 18 L20 18 Z" stroke="#019E53" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>3 Successful Restaurant Brands</h4>
+              <p>Arabian Palace, Shawaya Palace &amp; Broastino Palace.</p>
+            </div>
+            <div class="wcu-card-arrow">›</div>
+          </div>
+
+          <div class="wcu-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="28" height="28">
+                <ellipse cx="24" cy="28" rx="14" ry="8" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <path d="M10 28V20c0-4.4 6.3-8 14-8s14 3.6 14 8v8" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <path d="M10 24c0 4.4 6.3 8 14 8s14-3.6 14-8" stroke="#019E53" stroke-width="2" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>Home of the Best Mandhi in Kerala</h4>
+              <p>Famous for our signature Mandhi loved by thousands.</p>
+            </div>
+            <div class="wcu-card-arrow">›</div>
+          </div>
+
+          <div class="wcu-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="28" height="28">
+                <path d="M24 10 C18 10 12 15 12 22 C12 30 24 40 24 40 C24 40 36 30 36 22 C36 15 30 10 24 10Z" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <circle cx="24" cy="22" r="4" stroke="#019E53" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>Unique In-House Spice Blend</h4>
+              <p>Special recipes crafted by our expert chefs.</p>
+            </div>
+            <div class="wcu-card-arrow">›</div>
+          </div>
+
+          <div class="wcu-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="28" height="28">
+                <circle cx="18" cy="16" r="6" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <circle cx="32" cy="16" r="6" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <path d="M6 38c0-7 5-12 12-12h8c7 0 12 5 12 12" stroke="#019E53" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>Trusted by Thousands Since 2017</h4>
+              <p>Thousands of happy customers across Kerala.</p>
+            </div>
+            <div class="wcu-card-arrow">›</div>
+          </div>
+
+          <div class="wcu-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="28" height="28">
+                <path d="M24 8 L28 18 L39 18 L30 25 L33 36 L24 29 L15 36 L18 25 L9 18 L20 18 Z" stroke="#019E53" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+                <circle cx="24" cy="24" r="4" fill="#019E53" opacity="0.3"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>Authentic Arabian Flavours</h4>
+              <p>Premium ingredients, rich flavours, and memorable dining experiences.</p>
+            </div>
+            <div class="wcu-card-arrow">›</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Mission, Vision, Values -->
+        <div class="wcu-right">
+
+          <!-- Mission -->
+          <div class="wcu-card wcu-mv-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="34" height="34">
+                <circle cx="24" cy="24" r="14" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <circle cx="24" cy="24" r="6" stroke="#019E53" stroke-width="2" fill="none"/>
+                <path d="M24 10V6M24 42v-4M10 24H6M42 24h-4" stroke="#019E53" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>Our Mission</h4>
+              <p>To serve the Best Mandhi in Kerala while maintaining exceptional quality, authentic Arabian flavours, and outstanding customer service in every outlet.</p>
+            </div>
+          </div>
+
+          <!-- Vision -->
+          <div class="wcu-card wcu-mv-card">
+            <div class="wcu-card-icon">
+              <svg viewBox="0 0 48 48" fill="none" width="34" height="34">
+                <ellipse cx="24" cy="24" rx="18" ry="10" stroke="#019E53" stroke-width="2.5" fill="none"/>
+                <circle cx="24" cy="24" r="5" stroke="#019E53" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <div class="wcu-card-divider"></div>
+            <div class="wcu-card-content">
+              <h4>Our Vision</h4>
+              <p>To become Kerala's most loved Arabian restaurant brand by delivering authentic food experiences, expanding our reach, and building lasting relationships with our customers.</p>
+            </div>
+          </div>
+
+          <!-- Values Box -->
+          <div class="wcu-values-wrap">
+            <h4 class="wcu-values-heading">Our Values</h4>
+            <div class="wcu-values-divider">
+              <svg width="60" height="10" viewBox="0 0 60 10" fill="none">
+                <line x1="0" y1="5" x2="20" y2="5" stroke="#C89B3C" stroke-width="1"/>
+                <path d="M30 2 L33 5 L30 8 L27 5 Z" fill="#C89B3C"/>
+                <line x1="40" y1="5" x2="60" y2="5" stroke="#C89B3C" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="wcu-values-grid">
+              
+              <div class="wcu-mini-card">
+                <div class="wcu-mini-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <path d="M18 4 L22 13 L32 14 L25 21 L27 31 L18 26 L9 31 L11 21 L4 14 L14 13 Z" stroke="#019E53" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                  </svg>
+                </div>
+                <div class="wcu-mini-content">
+                  <h4>Authenticity</h4>
+                  <p>We preserve the rich taste of Arabian cuisine through carefully crafted recipes.</p>
+                </div>
+              </div>
+
+              <div class="wcu-mini-card">
+                <div class="wcu-mini-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <circle cx="18" cy="18" r="12" stroke="#019E53" stroke-width="2" fill="none"/>
+                    <path d="M12 18l4 4 8-8" stroke="#019E53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="wcu-mini-content">
+                  <h4>Quality</h4>
+                  <p>Every dish is prepared with attention to freshness, flavour, and consistency.</p>
+                </div>
+              </div>
+
+              <div class="wcu-mini-card">
+                <div class="wcu-mini-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <path d="M18 8 C14 8 10 11 10 15 C10 21 18 28 18 28 C18 28 26 21 26 15 C26 11 22 8 18 8Z" stroke="#019E53" stroke-width="2" fill="none"/>
+                    <circle cx="18" cy="15" r="3" stroke="#019E53" stroke-width="1.5" fill="none"/>
+                  </svg>
+                </div>
+                <div class="wcu-mini-content">
+                  <h4>Customer First</h4>
+                  <p>Our customers are the heart of Arabian Palace, driving everything we do.</p>
+                </div>
+              </div>
+
+              <div class="wcu-mini-card">
+                <div class="wcu-mini-icon">
+                  <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                    <path d="M6 26 L12 18 L18 22 L24 12 L30 16" stroke="#019E53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M26 10 L30 10 L30 14" stroke="#019E53" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="wcu-mini-content">
+                  <h4>Excellence</h4>
+                  <p>We continuously strive to improve, innovate, and grow our standards.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1637,18 +2968,1673 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="main-footer">
-  <div class="footer-content">
-    <div class="footer-logo">🏰 Arabian Palace</div>
-    <p class="footer-tagline">Authentic Mandi &amp; Shawaya - Kerala's Favourite Charcoal Grill</p>
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#menu">Menu</a>
-      <a href="#contacts">Locations</a>
-      <a href="#contacts">Instagram</a>
+<!-- WHY CHOOSE US CSS -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ══════════════════════════════════════
+   WHY CHOOSE US — LUXURY REDESIGN
+══════════════════════════════════════ */
+.wcu-section {
+  position: relative;
+  background: #008A44;
+  margin-top: 36px;
+  padding: 30px 40px 50px;
+  overflow: hidden;
+}
+
+/* Islamic geometric background pattern removed */
+/* Decorative leaf and corner designs removed */
+
+/* Main container */
+.wcu-container {
+  position: relative;
+  z-index: 3;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* White Premium Floating Box */
+.wcu-white-wrap {
+  background: #FFFDF8;
+  border-radius: 40px;
+  border: 1px solid rgba(200,155,60,0.25);
+  box-shadow:
+    0 40px 100px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(200,155,60,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  padding: 42px 40px;
+  margin: 24px auto 0;
+  width: 100%;
+}
+
+/* Fade-up animation */
+.wcu-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: wcuFadeUp 0.8s ease forwards 0.2s;
+}
+@keyframes wcuFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HEADER ── */
+.wcu-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.wcu-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: #C89B3C;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+.wcu-gold-divider {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+.wcu-heading {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 800;
+  color: #0B4A2F;
+  line-height: 1.12;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+.wcu-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.66;
+  max-width: 680px;
+  margin: 12px auto 0;
+}
+
+/* ── LAYOUT ── */
+.wcu-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.wcu-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wcu-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── FEATURE CARDS (LEFT) ── */
+.wcu-feat-card {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #fff;
+  border: 1px solid rgba(200,155,60,0.18);
+  border-radius: 18px;
+  padding: 16px 18px;
+  min-height: 80px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.wcu-feat-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #C89B3C, rgba(200,155,60,0.2));
+  border-radius: 18px 0 0 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.wcu-feat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(200,155,60,0.14), 0 4px 12px rgba(0,0,0,0.06);
+  border-color: rgba(200,155,60,0.45);
+}
+.wcu-feat-card:hover::before { opacity: 1; }
+.wcu-feat-card:hover .wcu-feat-icon { transform: scale(1.06); box-shadow: 0 6px 20px rgba(11,74,47,0.35); }
+.wcu-feat-card:hover .wcu-feat-arrow { transform: translateX(3px); }
+
+.wcu-feat-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0B4A2F 0%, #135D42 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(11,74,47,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-right: 14px;
+}
+
+.wcu-feat-vline {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, #C89B3C, transparent);
+  flex-shrink: 0;
+  opacity: 0.45;
+  margin: 0 14px;
+}
+
+.wcu-feat-content {
+  flex: 1;
+}
+.wcu-feat-content h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0B4A2F;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+.wcu-feat-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.wcu-feat-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+  opacity: 0.75;
+}
+
+/* ── MISSION & VISION CARDS (RIGHT) ── */
+.wcu-mv-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F5EFE0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C89B3C' fill-opacity='0.06'%3E%3Cpath d='M20 0 L22 9 L31 9 L24 14 L27 23 L20 18 L13 23 L16 14 L9 9 L18 9 Z'/%3E%3C/g%3E%3C/svg%3E");
+  border: 1px solid rgba(200,155,60,0.3);
+  border-radius: 20px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 24px rgba(200,155,60,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.wcu-mv-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(200,155,60,0.18);
+  border-color: rgba(200,155,60,0.5);
+}
+
+.wcu-mv-corner-pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.wcu-mv-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0B4A2F 0%, #135D42 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(11,74,47,0.3);
+}
+
+.wcu-mv-body {
+  flex: 1;
+  padding-top: 4px;
+}
+.wcu-mv-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0B4A2F;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.wcu-mv-underline {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #C89B3C, rgba(200,155,60,0.3));
+  margin-bottom: 10px;
+  border-radius: 2px;
+}
+.wcu-mv-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #4a4035;
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ── VALUES BOX ── */
+.wcu-values-box {
+  background: #fff;
+  border: 1px solid rgba(200,155,60,0.2);
+  border-radius: 20px;
+  padding: 20px 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+}
+.wcu-values-header {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.wcu-values-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0B4A2F;
+  margin: 0 0 8px;
+}
+.wcu-values-divider {
+  display: flex;
+  justify-content: center;
+}
+.wcu-values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Mini value cards */
+.wcu-val-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #FDFBF6;
+  border: 1px solid rgba(200,155,60,0.15);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.wcu-val-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(200,155,60,0.14);
+  border-color: rgba(200,155,60,0.4);
+}
+.wcu-val-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0B4A2F 0%, #135D42 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(11,74,47,0.2);
+  flex-shrink: 0;
+}
+.wcu-val-content h5 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0B4A2F;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+.wcu-val-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .wcu-white-wrap { padding: 42px 36px; }
+  .wcu-layout { gap: 20px; }
+}
+@media (max-width: 900px) {
+  .wcu-layout { grid-template-columns: 1fr; }
+  .wcu-white-wrap { padding: 34px 28px; }
+}
+@media (max-width: 600px) {
+  .wcu-section { padding: 40px 16px; }
+  .wcu-white-wrap { padding: 26px 16px; border-radius: 24px; }
+  .wcu-heading { font-size: 36px; }
+  .wcu-values-grid { grid-template-columns: 1fr; }
+  .wcu-feat-card { min-height: auto; }
+}
+</style>
+<style>
+  .new-page-section {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 32px;
+    background: #008A44;
+  }
+
+  .new-page-section::before,
+  .new-page-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .new-page-section::before {
+    background: radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08) 0%, transparent 24%);
+  }
+
+  .new-page-section::after {
+    background: radial-gradient(circle at 85% 85%, rgba(255,255,255,0.05) 0%, transparent 26%);
+  }
+
+  .new-page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-intro {
+    text-align: center;
+    margin: 0 auto 36px;
+    max-width: 960px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #D9A520;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 3.6vw, 64px);
+    font-weight: 700;
+    line-height: 1.06;
+    color: #FFFFFF;
+    margin: 0 0 12px;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+  }
+
+  .section-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+    margin: 0 auto;
+    max-width: 720px;
+  }
+
+  .wcu-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 28px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .wcu-left {
+    display: grid;
+    gap: 12px;
+  }
+
+  .wcu-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    min-height: 96px;
+    background: #FFFFFF;
+    border-radius: 22px;
+    box-shadow: 0 14px 36px rgba(2, 40, 20, 0.14);
+    border: 1px solid rgba(255,255,255,0.18);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .wcu-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #D9A520 0%, #F2C761 100%);
+  }
+
+  .wcu-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 22px 46px rgba(2, 40, 20, 0.2);
+  }
+
+  .card-icon-wrap {
+    flex-shrink: 0;
+  }
+
+  .card-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #045B39 0%, #019E53 100%);
+    border: 2px solid rgba(217,165,32,0.95);
+    box-shadow: inset 0 0 14px rgba(255,255,255,0.1);
+  }
+
+  .card-icon svg {
+    width: 30px;
+    height: 30px;
+    stroke: #FFFFFF;
+  }
+
+  .card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #045B39;
+    margin: 0 0 4px;
+    line-height: 1.2;
+  }
+
+  .card-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12.5px;
+    color: #606060;
+    margin: 0;
+    line-height: 1.45;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-arrow {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(217,165,32,0.12);
+    color: #D9A520;
+    font-size: 18px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .wcu-card:hover .card-arrow {
+    transform: translateX(6px);
+    background: rgba(217,165,32,0.2);
+  }
+
+  .wcu-right {
+    display: grid;
+    gap: 16px;
+  }
+
+  .wcu-large-card,
+  .wcu-values-card {
+    background: #FFFFFF;
+    border-radius: 22px;
+    box-shadow: 0 14px 36px rgba(2, 40, 20, 0.14);
+    border: 1px solid rgba(255,255,255,0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .wcu-large-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 44px rgba(2, 40, 20, 0.18);
+  }
+
+  .wcu-large-card {
+    padding: 24px;
+    min-height: 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .large-card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #045B39 0%, #019E53 100%);
+    border: 2px solid rgba(217,165,32,0.95);
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 14px rgba(255,255,255,0.12);
+  }
+
+  .large-card-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: #FFFFFF;
+  }
+
+  .large-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #045B39;
+    margin: 0 0 8px;
+  }
+
+  .large-card-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12.5px;
+    color: #606060;
+    margin: 0;
+    line-height: 1.55;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .wcu-values-card {
+    padding: 24px 20px;
+    min-height: 290px;
+  }
+
+  .values-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #045B39;
+    text-align: center;
+    margin: 0 0 10px;
+  }
+
+  .values-divider {
+    width: 64px;
+    height: 2px;
+    margin: 0 auto 14px;
+    background: linear-gradient(90deg, transparent, #D9A520, transparent);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .value-mini-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+    background: #F8F8F8;
+    border: 1px solid rgba(4,91,57,0.08);
+    box-shadow: 0 7px 16px rgba(4,91,57,0.06);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 160px;
+  }
+
+  .value-mini-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 22px rgba(4,91,57,0.1);
+  }
+
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 10px;
+    background: linear-gradient(135deg, #045B39 0%, #019E53 100%);
+    color: #FFFFFF;
+  }
+
+  .value-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: #FFFFFF;
+  }
+
+  .value-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #045B39;
+    margin: 0 0 6px;
+  }
+
+  .value-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11.5px;
+    color: #606060;
+    margin: 0;
+    line-height: 1.45;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1024px) {
+    .wcu-layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .new-page-section {
+      padding: 68px 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .new-page-section {
+      padding: 56px 18px;
+    }
+
+    .section-intro {
+      margin-bottom: 28px;
+    }
+
+    .wcu-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px 16px;
+      min-height: auto;
+    }
+
+    .card-arrow {
+      display: none;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .wcu-large-card,
+    .wcu-values-card {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .new-page-section {
+      padding: 48px 14px;
+    }
+
+    .section-title {
+      font-size: 30px;
+    }
+
+    .section-description {
+      font-size: 13px;
+    }
+
+    .card-icon {
+      width: 64px;
+      height: 64px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+    }
+
+    .card-description,
+    .large-card-text,
+    .value-text {
+      font-size: 11px;
+    }
+  }
+</style>
+
+
+<!-- ═══ OUTLETS SECTION ═══ -->
+<section class="outlets-section" id="contacts" style="display: none;">
+  <div class="outlets-container">
+  </div>
+</section>
+
+<!-- ═══ PREMIUM FOOTER (from premium_footer.html) ═══ -->
+<style>
+  :root {
+    --primary-green: #019e53;
+    --dark-green: #01663d;
+    --bg-color: #FAF8F2;
+    --gold: #D4AF37;
+    --text-dark: #333333;
+    --text-gray: #666666;
+    --white: #ffffff;
+    --border-radius: 24px;
+    --transition: 0.3s ease-in-out;
+  }
+
+  /* --- Footer Container --- */
+  .premium-footer {
+    position: relative;
+    width: 100%;
+    color: var(--text-dark);
+    overflow: hidden;
+  }
+
+  /* --- Top Section (Green with Wave) --- */
+  .footer-top {
+    position: relative;
+    background: var(--primary-green);
+    background: radial-gradient(circle at center, #01b45f 0%, var(--primary-green) 70%, var(--dark-green) 100%);
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
+
+  .footer-top-wave {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .footer-top-wave svg {
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+  }
+  .footer-top-wave path { fill: var(--bg-color); }
+
+  .footer-decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .pattern-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .mosque-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 300px;
+    height: 150px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M10 50 L10 20 A5 5 0 0 1 20 20 L20 50 M25 50 L25 15 A8 8 0 0 1 41 15 L41 50 M45 50 L45 25 A3 3 0 0 1 51 25 L51 50' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") no-repeat bottom left;
+    background-size: contain;
+  }
+  .palm-silhouette {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    width: 150px;
+    height: 150px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 100 C40 60 45 30 50 20 C60 40 80 50 90 60 C70 50 60 40 50 20 C40 40 20 50 10 60 C20 50 40 60 50 100' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E") no-repeat bottom right;
+    background-size: contain;
+  }
+  .radial-light {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+    z-index: 1;
+  }
+  .corner-leaf {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Cpath d='M0 50 C0 20 20 0 50 0 C50 30 30 50 0 50' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+  }
+  .leaf-left { top: 20px; left: 20px; transform: rotate(-45deg); }
+  .leaf-right { top: 20px; right: 20px; transform: rotate(45deg) scaleX(-1); }
+
+  .footer-mid-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 3;
+    filter: drop-shadow(0 -5px 15px rgba(212,175,55,0.3));
+  }
+  .footer-mid-wave svg {
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+  }
+  .footer-mid-wave path { fill: var(--bg-color); }
+
+  /* --- Logo Overlap --- */
+  .footer-logo-center {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 140px;
+    height: 140px;
+    background: var(--white);
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 0 0 2px var(--gold) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: floatLogo 6s ease-in-out infinite;
+  }
+  @keyframes floatLogo {
+    0% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
+    100% { transform: translate(-50%, 0); }
+  }
+  .footer-logo-center img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+  }
+
+  /* --- Main Footer White Area --- */
+  .footer-main-content {
+    background: var(--bg-color);
+    padding: 100px 5% 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Column 1 */
+  .brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--primary-green);
+    margin-bottom: 4px;
+    font-weight: 800;
+  }
+  .brand-subtitle {
+    font-size: 14px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .brand-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    font-weight: 400;
+  }
+  .follow-us-text {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+  }
+  .social-icons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    text-decoration: none;
+    border: 1px solid rgba(1, 158, 83, 0.1);
+  }
+  .social-icon:hover {
+    background: var(--primary-green);
+    color: var(--white);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(1, 158, 83, 0.2);
+  }
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 1.5px solid var(--primary-green);
+    background: var(--white);
+    color: var(--primary-green);
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+  .btn-outline:hover {
+    background: var(--primary-green);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(1, 158, 83, 0.15);
+  }
+
+  /* Column 2 */
+  .col-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--dark-green);
+    margin-bottom: 15px;
+  }
+  .gold-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 25px;
+    border-radius: 2px;
+  }
+  .quick-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .quick-links li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+  }
+  .quick-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--primary-green);
+    transition: var(--transition);
+  }
+  .quick-links li a .icon {
+    color: var(--gold);
+    transition: var(--transition);
+  }
+  .quick-links li a:hover { color: var(--primary-green); }
+  .quick-links li a:hover .icon { transform: translateX(4px); }
+  .quick-links li a:hover::after { width: 100%; }
+
+  /* Column 3 */
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .contact-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+    flex-shrink: 0;
+    transition: var(--transition);
+  }
+  .contact-item:hover .contact-icon {
+    transform: scale(1.05);
+    background: var(--primary-green);
+    color: var(--white);
+  }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-info a, .contact-info span {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  .contact-info a:hover { color: var(--primary-green); }
+
+  /* --- Premium Feature Bar --- */
+  .feature-bar-wrapper {
+    background: var(--bg-color);
+    padding: 0 5% 40px;
+  }
+  .feature-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--dark-green);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 30px;
+    gap: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0L20 10L10 20L0 10z' fill='none' stroke='rgba(212,175,55,0.1)' stroke-width='0.5'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+  }
+  .feature-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+  }
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--gold);
+    background: rgba(0,0,0,0.2);
+    flex-shrink: 0;
+  }
+  .feature-text h4 {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .feature-text p {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+  }
+
+  /* --- Bottom Footer --- */
+  .pf-footer-bottom {
+    background: var(--dark-green);
+    padding: 25px 5%;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .pf-footer-bottom-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .copyright-text {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+  }
+  .legal-links {
+    display: flex;
+    gap: 20px;
+  }
+  .legal-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--transition);
+  }
+  .legal-links a:hover { color: var(--gold); }
+  .available-on {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .available-on span {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+  }
+  .app-logos {
+    display: flex;
+    gap: 10px;
+  }
+  .app-logo {
+    background: var(--white);
+    padding: 5px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--text-dark);
+  }
+  .app-logo.swiggy { color: #FC8019; }
+  .app-logo.zomato  { color: #CB202D; }
+
+  /* --- Responsive --- */
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .feature-bar { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .feature-bar { grid-template-columns: 1fr; }
+    .pf-footer-bottom-inner { flex-direction: column; text-align: center; justify-content: center; }
+    .footer-top { padding-top: 60px; padding-bottom: 80px; }
+  }
+</style>
+
+<footer class="premium-footer" style="display: none !important;">
+
+  <!-- Top Green Section -->
+  <div class="footer-top">
+    <!-- Top Wave Divider -->
+    <div class="footer-top-wave">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,0 C320,120 420,120 720,60 C1020,0 1120,0 1440,60 L1440,0 L0,0 Z"></path>
+      </svg>
     </div>
-    <p class="footer-copy">&copy; 2026 Arabian Palace Restaurant. All rights reserved.</p>
+
+    <div class="footer-decorations">
+      <div class="pattern-bg"></div>
+      <div class="radial-light"></div>
+      <div class="corner-leaf leaf-left"></div>
+      <div class="corner-leaf leaf-right"></div>
+      <div class="mosque-silhouette"></div>
+      <div class="palm-silhouette"></div>
+    </div>
+
+    <!-- Bottom Mid Wave Divider -->
+    <div class="footer-mid-wave">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,100 C480,0 960,0 1440,100 Z"></path>
+      </svg>
+    </div>
+
+    <!-- Floating Logo -->
+    <div class="footer-logo-center">
+      <img src="logo.png" alt="Arabian Palace Logo">
+    </div>
+  </div>
+
+  <!-- Main Footer Content -->
+  <div class="footer-main-content">
+    <div class="footer-grid">
+
+      <!-- Column 1: Brand -->
+      <div class="footer-col">
+        <h2 class="brand-title">Arabian Palace</h2>
+        <div class="brand-subtitle">Mandi &amp; Shawaya</div>
+        <p class="brand-desc">
+          Authentic Mandi &amp; Shawaya —<br>
+          Kerala's favourite charcoal grill experience.
+        </p>
+
+        <div class="follow-us-text">Follow Us</div>
+        <div class="social-icons">
+          <a href="#" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+          <a href="#" class="social-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </a>
+        </div>
+
+        <div class="action-buttons">
+          <a href="#" class="btn-outline">📷 Instagram</a>
+          <a href="#" class="btn-outline">📍 Locations</a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h3 class="col-heading">QUICK LINKS</h3>
+        <div class="gold-divider"></div>
+        <ul class="quick-links">
+          <li><a href="#"><span class="icon">🏠</span> Home</a></li>
+          <li><a href="#"><span class="icon">📖</span> Menu</a></li>
+          <li><a href="#"><span class="icon">👨‍🍳</span> Our Story</a></li>
+          <li><a href="#"><span class="icon">📍</span> Find Us</a></li>
+          <li><a href="#"><span class="icon">☎</span> Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact -->
+      <div class="footer-col">
+        <h3 class="col-heading">CONTACT US</h3>
+        <div class="gold-divider"></div>
+        <div class="contact-list">
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-info">
+              <a href="tel:+919061610002">+91 90616 10002</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-info">
+              <a href="tel:+919048297772">+91 90482 97772</a>
+              <a href="tel:+919048297773">+91 90482 97773</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉</div>
+            <div class="contact-info">
+              <a href="mailto:info@arabianpalace.com">info@arabianpalace.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-info">
+              <span>Edappally, Kochi</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">🕒</div>
+            <div class="contact-info">
+              <span>10:30 AM – 11:00 PM</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Premium Feature Bar -->
+  <div class="feature-bar-wrapper">
+    <div class="feature-bar">
+
+      <div class="feature-card">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-text">
+          <h4>100% Authentic</h4>
+          <p>Traditional Arabian Recipes</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔥</div>
+        <div class="feature-text">
+          <h4>Charcoal Grilled</h4>
+          <p>Smoky • Juicy • Delicious</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🛡</div>
+        <div class="feature-text">
+          <h4>Premium Quality</h4>
+          <p>Fresh Ingredients</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <div class="feature-text">
+          <h4>Made With Love</h4>
+          <p>For Mandi Lovers</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Footer -->
+  <div class="pf-footer-bottom">
+    <div class="pf-footer-bottom-inner">
+      <div class="copyright-text">
+        © 2026 Arabian Palace Restaurant. All Rights Reserved.
+      </div>
+
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+      </div>
+
+      <div class="available-on">
+        <span>Available On</span>
+        <div class="app-logos">
+          <div class="app-logo swiggy">Swiggy</div>
+          <div class="app-logo zomato">Zomato</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+<!--
+  .pattern-bg { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35 0L70 35L35 70L0 35L35 0z' fill='none' stroke='rgba(212,175,55,0.07)' stroke-width='1'/%3E%3C/svg%3E"); opacity: 0.9; }
+  .mosque-silhouette { position: absolute; bottom: 0; left: 2%; width: 280px; height: 130px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Cpath d='M10 80 L10 40 Q10 20 20 20 Q30 20 30 40 L30 80 M40 80 L40 30 Q40 5 60 5 Q80 5 80 30 L80 80 M85 80 L85 45 A8 8 0 0 1 101 45 L101 80 M108 80 L108 50 Q108 35 115 35 Q122 35 122 50 L122 80' fill='rgba(255,255,255,0.045)'/%3E%3C/svg%3E") no-repeat bottom left; background-size: contain; }
+  .palm-silhouette { position: absolute; bottom: 0; right: 2%; width: 140px; height: 140px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 100 C48 65 49 35 50 18 C58 35 76 44 88 55 C72 46 58 36 50 18 C42 36 28 46 12 55 C24 44 42 65 50 100' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") no-repeat bottom right; background-size: contain; }
+  .arabesque-right { position: absolute; top: 10px; right: 10%; width: 80px; height: 80px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(212,175,55,0.08)' stroke-width='1.5'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='rgba(212,175,55,0.06)' stroke-width='1'/%3E%3Cpath d='M50 5 L55 45 L95 50 L55 55 L50 95 L45 55 L5 50 L45 45 Z' fill='rgba(212,175,55,0.05)'/%3E%3C/svg%3E") no-repeat; background-size: contain; }
+  .arabesque-left { position: absolute; top: 10px; left: 10%; width: 80px; height: 80px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='rgba(212,175,55,0.08)' stroke-width='1.5'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='rgba(212,175,55,0.06)' stroke-width='1'/%3E%3Cpath d='M50 5 L55 45 L95 50 L55 55 L50 95 L45 55 L5 50 L45 45 Z' fill='rgba(212,175,55,0.05)'/%3E%3C/svg%3E") no-repeat; background-size: contain; }
+  .radial-glow { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); width: 380px; height: 380px; background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(212,175,55,0.12) 40%, transparent 70%); z-index: 1; pointer-events: none; }
+  .footer-mid-wave { position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 3; }
+  .footer-mid-wave svg { display: block; width: calc(100% + 1.3px); height: 88px; }
+  .footer-mid-wave path { fill: var(--bg-color); }
+  .footer-logo-center { position: absolute; bottom: -62px; left: 50%; transform: translateX(-50%); z-index: 10; width: 160px; height: 160px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--gold), 0 0 0 9px rgba(212,175,55,0.3), 0 0 0 12px rgba(212,175,55,0.12), 0 25px 50px rgba(0,0,0,0.22), 0 0 60px rgba(212,175,55,0.18); display: flex; align-items: center; justify-content: center; overflow: hidden; animation: floatLogo 5s ease-in-out infinite; transition: var(--transition); cursor: pointer; }
+  .footer-logo-center:hover { animation-play-state: paused; transform: translateX(-50%) scale(1.06); box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--gold), 0 0 0 9px rgba(212,175,55,0.4), 0 0 0 14px rgba(212,175,55,0.18), 0 30px 60px rgba(0,0,0,0.3), 0 0 80px rgba(212,175,55,0.28); }
+  @keyframes floatLogo { 0%, 100% { transform: translate(-50%, 0px); } 50% { transform: translate(-50%, -14px); } }
+  .footer-logo-center img { width: 82%; height: 82%; object-fit: contain; }
+  .footer-main-content { background: var(--bg-color); padding: 90px 4% 50px; position: relative; z-index: 2; }
+  .footer-main-content::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 90 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M45 0L90 45L45 90L0 45L45 0z' fill='none' stroke='rgba(1,158,83,0.03)' stroke-width='1.5'/%3E%3C/svg%3E"); opacity: 1; }
+  .footer-grid { display: grid; grid-template-columns: 1.15fr 0.9fr 1.15fr; gap: 24px; max-width: 1120px; margin: 0 auto; align-items: stretch; position: relative; z-index: 1; }
+  .footer-col { background: var(--white); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 10px 30px rgba(0,0,0,0.07), 0 20px 50px rgba(0,0,0,0.04); border-top: 3px solid var(--gold); position: relative; transition: var(--transition); }
+  .footer-col:hover { transform: translateY(-4px); box-shadow: 0 8px 12px rgba(0,0,0,0.06), 0 20px 50px rgba(0,0,0,0.1), 0 30px 70px rgba(0,0,0,0.06); }
+  .brand-title { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--primary-green); margin-bottom: 4px; font-weight: 800; line-height: 1.2; }
+  .brand-subtitle { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; margin-bottom: 18px; }
+  .brand-desc { font-size: 14.5px; line-height: 1.8; color: var(--text-gray); margin-bottom: 28px; font-weight: 400; }
+  .social-icons { display: flex; gap: 12px; margin-bottom: 24px; }
+  .social-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-color); display: flex; align-items: center; justify-content: center; color: var(--primary-green); box-shadow: 0 4px 12px rgba(0,0,0,0.07); transition: var(--transition); text-decoration: none; border: 1.5px solid rgba(1,158,83,0.15); }
+  .social-icon:hover { background: var(--primary-green); color: var(--white); transform: translateY(-6px); box-shadow: 0 12px 24px rgba(1,158,83,0.28); border-color: var(--primary-green); }
+  .action-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 50px; border: 1.5px solid var(--primary-green); background: transparent; color: var(--primary-green); font-weight: 600; font-size: 13.5px; text-decoration: none; transition: var(--transition); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .btn-outline:hover { background: var(--primary-green); color: var(--white); transform: translateY(-4px); box-shadow: 0 10px 22px rgba(1,158,83,0.22); }
+  .col-heading { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--dark-green); margin-bottom: 10px; font-weight: 700; }
+  .gold-divider { display: flex; align-items: center; gap: 8px; margin-bottom: 22px; }
+  .gold-divider::before { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(212,175,55,0.5), transparent); }
+  .gold-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to left, rgba(212,175,55,0.5), transparent); }
+  .gold-divider-gem { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; box-shadow: 0 0 6px rgba(212,175,55,0.5); display: inline-block; }
+  .quick-links { list-style: none; display: flex; flex-direction: column; gap: 13px; padding: 0; margin: 0; }
+  .quick-links li a { display: inline-flex; align-items: center; gap: 10px; color: var(--text-gray); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: var(--transition); position: relative; width: fit-content; }
+  .quick-links li a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1.5px; background: var(--primary-green); transition: var(--transition); }
+  .quick-links li a .icon { color: var(--gold); transition: var(--transition); font-size: 15px; }
+  .quick-links li a:hover { color: var(--primary-green); }
+  .quick-links li a:hover .icon { transform: translateX(5px); }
+  .quick-links li a:hover::after { width: 100%; }
+  .contact-list { display: flex; flex-direction: column; gap: 14px; }
+  .contact-item { display: flex; align-items: center; gap: 14px; }
+  .contact-icon { width: 42px; height: 42px; border-radius: 50%; background: var(--bg-color); display: flex; align-items: center; justify-content: center; color: var(--primary-green); box-shadow: 0 3px 10px rgba(0,0,0,0.06); flex-shrink: 0; transition: var(--transition); font-size: 16px; border: 1px solid rgba(1,158,83,0.1); }
+  .contact-item:hover .contact-icon { transform: scale(1.12); background: var(--primary-green); color: var(--white); }
+  .contact-info { display: flex; flex-direction: column; }
+  .contact-info a, .contact-info span { color: var(--text-dark); text-decoration: none; font-size: 14px; font-weight: 500; transition: var(--transition); }
+  .contact-info a:hover { color: var(--primary-green); }
+  .feature-bar-wrapper { background: var(--bg-color); padding: 0 4% 50px; position: relative; z-index: 2; }
+  .feature-bar { max-width: 1120px; margin: 0 auto; background: linear-gradient(135deg, #018a48 0%, var(--dark-green) 60%, #014d2e 100%); border-radius: 24px; display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 5px 20px rgba(1,158,83,0.2); border: 1px solid rgba(212,175,55,0.2); position: relative; }
+  .feature-bar::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0L30 15L15 30L0 15L15 0z' fill='none' stroke='rgba(212,175,55,0.07)' stroke-width='0.8'/%3E%3C/svg%3E"); z-index: 0; }
+  .feature-card { padding: 30px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; transition: var(--transition); position: relative; z-index: 1; }
+  .feature-card:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: linear-gradient(to bottom, transparent, rgba(212,175,55,0.2) 30%, rgba(212,175,55,0.2) 70%, transparent); }
+  .feature-card:hover { background: rgba(255,255,255,0.06); }
+  .feature-icon { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 24px; background: rgba(0,0,0,0.25); box-shadow: 0 0 0 6px rgba(212,175,55,0.08), 0 6px 20px rgba(0,0,0,0.2); transition: var(--transition); flex-shrink: 0; }
+  .feature-card:hover .feature-icon { transform: translateY(-6px); box-shadow: 0 0 0 8px rgba(212,175,55,0.15), 0 12px 30px rgba(1,158,83,0.4); border-color: var(--gold-light); }
+  .feature-text h4 { color: var(--white); font-size: 15px; font-weight: 700; margin: 0 0 4px 0; font-family: 'Inter', sans-serif; }
+  .feature-text p { color: rgba(255,255,255,0.75); font-size: 12px; margin: 0; font-family: 'Inter', sans-serif; }
+  .premium-footer-bottom { position: relative; background: var(--dark-green); padding: 22px 5%; border-top: 2px solid rgba(212,175,55,0.35); overflow: hidden; }
+  .premium-footer-bottom::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 0L50 25L25 50L0 25L25 0z' fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='1'/%3E%3C/svg%3E"); }
+  .premium-footer-bottom-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; position: relative; z-index: 2; }
+  .copyright-text { color: rgba(255,255,255,0.82); font-size: 13.5px; }
+  .legal-links { display: flex; gap: 22px; }
+  .legal-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; transition: var(--transition); position: relative; }
+  .legal-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--gold); transition: var(--transition); }
+  .legal-links a:hover { color: var(--gold); }
+  .legal-links a:hover::after { width: 100%; }
+  .available-on { display: flex; align-items: center; gap: 12px; }
+  .available-on span { color: rgba(255,255,255,0.65); font-size: 12.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+  .app-logos { display: flex; gap: 8px; }
+  .app-logo { background: var(--white); padding: 5px 14px; border-radius: 50px; display: flex; align-items: center; font-weight: 700; font-size: 13px; color: var(--text-dark); box-shadow: 0 3px 10px rgba(0,0,0,0.12); transition: var(--transition); }
+  .app-logo:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+  .app-logo.swiggy { color: #FC8019; }
+  .app-logo.zomato { color: #CB202D; }
+  @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 20px; } .feature-bar { grid-template-columns: 1fr 1fr; border-radius: 20px; } .footer-logo-center { bottom: -65px; } }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 18px; } .footer-col { border-radius: 16px; padding: 28px 24px; } .feature-bar { grid-template-columns: 1fr 1fr; border-radius: 18px; } .premium-footer-bottom-inner { flex-direction: column; text-align: center; justify-content: center; } .footer-top { padding-top: 45px; padding-bottom: 65px; } .footer-logo-center { width: 130px; height: 130px; bottom: -52px; } .footer-main-content { padding: 80px 4% 40px; } }
+  @media (max-width: 480px) { .feature-bar { grid-template-columns: 1fr; } }
+</style>
+-->
+
+<footer class="premium-footer" style="display: none !important;">
+
+  <!-- Green Wave Top -->
+  <div class="footer-top">
+    <div class="footer-top-wave">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,0 C300,100 600,100 720,50 C840,0 1140,0 1440,70 L1440,0 L0,0 Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-decorations">
+      <div class="pattern-bg"></div>
+      <div class="radial-glow"></div>
+      <div class="mosque-silhouette"></div>
+      <div class="palm-silhouette"></div>
+      <div class="arabesque-left"></div>
+      <div class="arabesque-right"></div>
+    </div>
+
+    <div class="footer-mid-wave">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,100 C360,10 1080,10 1440,100 Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-logo-center">
+      <img src="logo.png" alt="Arabian Palace Logo">
+    </div>
+  </div>
+
+  <!-- Three Column Cards -->
+  <div class="footer-main-content">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-col">
+        <h2 class="brand-title">Arabian Palace</h2>
+        <div class="brand-subtitle">Mandi &amp; Shawaya</div>
+        <p class="brand-desc">
+          Authentic Mandi &amp; Shawaya &mdash;<br>
+          Kerala&rsquo;s favourite charcoal grill experience.
+        </p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/arabianpalace_" target="_blank" class="social-icon" aria-label="Instagram">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Phone">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Location">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </a>
+        </div>
+        <div class="action-buttons">
+          <a href="https://www.instagram.com/arabianpalace_" target="_blank" class="btn-outline">&#128247; Instagram</a>
+          <a href="#" class="btn-outline">&#128205; Locations</a>
+        </div>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="footer-col">
+        <h3 class="col-heading">Quick Links</h3>
+        <div class="gold-divider"><span class="gold-divider-gem"></span></div>
+        <ul class="quick-links">
+          <li><a href="#"><span class="icon">&#127968;</span> Home</a></li>
+          <li><a href="#"><span class="icon">&#128214;</span> Menu</a></li>
+          <li><a href="#"><span class="icon">&#128104;&#8205;&#127859;</span> Our Story</a></li>
+          <li><a href="#"><span class="icon">&#128205;</span> Find Us</a></li>
+          <li><a href="#"><span class="icon">&#9742;</span> Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div class="footer-col">
+        <h3 class="col-heading">Contact Us</h3>
+        <div class="gold-divider"><span class="gold-divider-gem"></span></div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-icon">&#128222;</div>
+            <div class="contact-info"><a href="tel:+919061610002">+91 90616 10002</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128222;</div>
+            <div class="contact-info">
+              <a href="tel:+919048297772">+91 90482 97772</a>
+              <a href="tel:+919048297773">+91 90482 97773</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#9993;</div>
+            <div class="contact-info"><a href="mailto:info@arabianpalace.com">info@arabianpalace.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128205;</div>
+            <div class="contact-info"><span>Edappally, Kochi</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128338;</div>
+            <div class="contact-info"><span>10:30 AM &ndash; 11:00 PM</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Feature Bar -->
+  <div class="feature-bar-wrapper">
+    <div class="feature-bar">
+      <div class="feature-card">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-text">
+          <h4>100% Authentic</h4>
+          <p>Traditional Arabian Recipes</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔥</div>
+        <div class="feature-text">
+          <h4>Charcoal Grilled</h4>
+          <p>Smoky &bull; Juicy &bull; Delicious</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-text">
+          <h4>Premium Quality</h4>
+          <p>Fresh Ingredients Daily</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <div class="feature-text">
+          <h4>Made With Love</h4>
+          <p>For Every Mandi Lover</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="premium-footer-bottom">
+    <div class="premium-footer-bottom-inner">
+      <div class="copyright-text">
+        © 2026 Arabian Palace Restaurant. All Rights Reserved.
+      </div>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+      <div class="available-on">
+        <span>Available On</span>
+        <div class="app-logos">
+          <div class="app-logo swiggy">Swiggy</div>
+          <div class="app-logo zomato">Zomato</div>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -1661,7 +4647,7 @@
     background-image:
       radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,100,0.10) 0%, transparent 60%),
       radial-gradient(ellipse 50% 70% at 90% 80%, rgba(0,60,30,0.25) 0%, transparent 60%);
-    padding: 90px 0 120px;
+    padding: 90px 0 60px;
     overflow: hidden;
   }
   .menu-container {
@@ -1766,12 +4752,41 @@
     box-shadow: 0 6px 24px rgba(0,0,0,0.12);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+      box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
   }
-  
+
+  /* Shimmer overlay */
+  .c-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.45) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.55s ease;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 20px;
+  }
+
+  .c-card:hover::before {
+    transform: translateX(100%);
+  }
+
   .c-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    transform: perspective(800px) rotateX(4deg) rotateY(-3deg) scale(1.06) translateY(-10px);
+    box-shadow:
+      0 30px 60px rgba(0,0,0,0.22),
+      0 10px 20px rgba(0,128,0,0.12),
+      0 0 0 1.5px rgba(0,150,0,0.15);
   }
 
   /* ── CARD IMAGE ── */
@@ -1805,6 +4820,7 @@
     font-family: 'Inter', sans-serif;
     margin-bottom: 16px;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -2218,88 +5234,298 @@
   }
   .o-btn:hover { background: var(--green-dark); }
 
-  .contact-info-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--green);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 16px;
-    padding: 30px 40px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  /* contact-info-box styles removed */
+  .main-footer {
+    position: relative;
+    margin-top: 40px;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+    background-color: var(--green, #019753);
+    padding-top: 80px;
   }
-  .info-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    flex: 1;
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  .info-icon {
-    font-size: 24px;
-    color: #ffffff;
-    background: rgba(255,255,255,0.15);
-    width: 48px;
-    height: 48px;
+  .footer-logo-wrapper {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    background: transparent;
     border-radius: 50%;
+    border: 5px solid #FFFFFF;
     display: flex;
+    justify-content: center;
     align-items: center;
+    z-index: 20;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+  .footer-logo-wrapper:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+  .footer-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.4);
+  }
+  .footer-shell {
+    background-color: #FFFFFF;
+    border-radius: 45px 45px 0 0;
+    padding: 90px 40px 20px;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    filter: drop-shadow(0 -4px 12px rgba(0,0,0,0.05));
+  }
+  .footer-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, #F9FAFB 0, #F9FAFB 1px, transparent 1px, transparent 20px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .footer-columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-brand,
+  .footer-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
-  .info-content h4 {
-    color: rgba(255,255,255,0.7);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    margin-bottom: 8px;
+  .footer-brand {
+    gap: 16px;
+    padding: 0 40px 0 0;
   }
-  .info-content p {
-    color: #ffffff;
+  .footer-heading-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+  .footer-heading {
+    color: #0B7A43;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.1;
+  }
+  .palace-icon {
+    flex-shrink: 0;
+  }
+  .footer-desc {
+    color: #4B5563;
     font-size: 14px;
     line-height: 1.6;
-    font-weight: 500;
+    max-width: 280px;
+    margin-top: -8px;
   }
-  .info-divider {
-    width: 1px;
-    height: 60px;
-    background: rgba(255,255,255,0.15);
-    margin: 0 30px;
-  }
-
-  .main-footer {
-    background: var(--green-dark);
-    padding: 60px 20px 40px;
-    text-align: center;
-  }
-  .footer-logo {
-    color: #fff;
-    font-family: 'Rye', serif;
-    font-size: 24px;
-    margin-bottom: 12px;
-  }
-  .footer-tagline {
-    color: rgba(255,255,255,0.7);
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-  .footer-links {
+  .footer-actions {
     display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
   }
-  .footer-links a {
-    color: #ffffff;
+  .footer-button-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
     text-decoration: none;
     font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: opacity 0.3s;
+    font-weight: 500;
+    color: #0B7A43;
+    background: #FFFFFF;
+    border: 1px solid #0B7A43;
+    transition: all 0.3s ease;
+    gap: 8px;
   }
-  .footer-links a:hover { opacity: 0.7; }
+  .footer-button-outline:hover {
+    background: #0B7A43;
+    color: #FFFFFF;
+  }
+  .footer-button-outline:hover .btn-icon {
+    transform: scale(1.1);
+  }
+  .btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .footer-column--links {
+    padding: 0 40px;
+    margin: 0;
+    border-left: 1px solid #E5E7EB;
+    border-right: 1px solid #E5E7EB;
+  }
+  .footer-column--contact {
+    padding: 0 0 0 40px;
+  }
+  .footer-title-block {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .footer-title {
+    color: #0B7A43;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .footer-divider-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+  }
+  .footer-divider-line::before,
+  .footer-divider-line::after {
+    content: '';
+    height: 1px;
+    background: #E5E7EB;
+    width: 50px;
+  }
+  .footer-divider-line .dia {
+    width: 6px;
+    height: 6px;
+    background: #0B7A43;
+    transform: rotate(45deg);
+    margin: 0 4px;
+    display: inline-block;
+  }
+  .footer-nav-wrapper,
+  .footer-contact-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+  }
+  .footer-nav a {
+    color: #4B5563;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-nav .arr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .footer-nav a:hover {
+    color: #0FA34A;
+    transform: translateX(4px);
+  }
+  .footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+  }
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    flex-shrink: 0;
+  }
+  .footer-contact-item a,
+  .footer-contact-item span {
+    color: #4B5563;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .footer-contact-item a:hover {
+    color: #0FA34A;
+  }
+  .footer-bottom {
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-bottom-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .footer-bottom-divider::before,
+  .footer-bottom-divider::after {
+    content: '';
+    height: 1px;
+    background: #E5E7EB;
+    flex-grow: 1;
+  }
+  .footer-bottom-divider .dia {
+    width: 6px;
+    height: 6px;
+    background: #9CA3AF;
+    transform: rotate(45deg);
+    margin: 0 10px;
+    display: inline-block;
+  }
   .footer-copy {
-    color: rgba(255,255,255,0.5);
-    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .footer-copy .copy-text {
+    color: #6B7280;
+    font-size: 13px;
+  }
+  .footer-legal {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .footer-legal a {
+    color: #6B7280;
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer-legal a:hover {
+    color: #0FA34A;
   }
   
   .whatsapp-btn {
@@ -2356,8 +5582,32 @@
     .info-content p a { color: #ffffff !important; }
     .info-item { justify-content: center; }
 
-    /* Footer links wrap */
-    .footer-links { flex-wrap: wrap; gap: 12px; }
+    /* Footer stack mobile */
+    .main-footer {
+      padding-top: 60px;
+    }
+    .footer-shell { 
+      width: 100%;
+      padding: 70px 20px 20px; 
+      border-radius: 30px 30px 0 0;
+    }
+    .footer-logo-wrapper {
+      top: 10px;
+      width: 100px;
+      height: 100px;
+      border-width: 4px;
+    }
+    .footer-columns { flex-direction: column; gap: 30px; text-align: center; align-items: center; display: flex; }
+    .footer-column--links { padding: 30px 0 0 0; margin: 0; border: none; border-top: 1px solid #E5E7EB; border-left: none; border-right: none; }
+    .footer-column--contact { padding: 30px 0 0 0; margin: 0; border: none; border-top: 1px solid #E5E7EB; }
+    .footer-actions { flex-direction: column; align-items: center; }
+    .footer-button-outline { width: 100%; }
+    .footer-brand, .footer-column { align-items: center; justify-content: flex-start; }
+    .footer-desc { margin: 10px auto; text-align: center; }
+    .footer-contact-item { align-items: center; justify-content: flex-start; text-align: left; }
+    .footer-nav-wrapper { display: flex; justify-content: center; }
+    .footer-nav { align-items: flex-start; }
+    .footer-nav a { justify-content: flex-start; }
 
     /* WhatsApp + scroll btn spacing on mobile */
     .whatsapp-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
@@ -3140,6 +6390,471 @@
     font-family:'Inter',sans-serif;cursor:pointer;
   ">Cancel</button>
 </div>
+
+<style>
+/* =========================================
+   PREMIUM FOOTER STYLES
+   ========================================= */
+.footer-new {
+  background-color: #02894A; /* Vibrant solid green to match image */
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Column: Brand */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand img.footer-logo {
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+.footer-brand .brand-tagline {
+  color: #D4AF37; /* Gold */
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.footer-brand .brand-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 30px;
+  padding-right: 20px;
+}
+
+.footer-socials span {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  color: #D4AF37;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #D4AF37;
+  border-color: #D4AF37;
+  transform: translateY(-3px);
+  color: #0D5C3B;
+}
+
+.social-icons svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Common Headings */
+.footer-heading {
+  font-family: 'Playfair Display', serif;
+  color: #D4AF37;
+  font-size: 20px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Links & Lists */
+.footer-links ul,
+.footer-outlets ul,
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-outlets li,
+.footer-contact li {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links a::before {
+  content: '›';
+  color: #D4AF37;
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #D4AF37;
+  transform: translateX(5px);
+}
+
+.footer-links a:hover::before {
+  transform: translateX(3px);
+}
+
+.footer-outlets li svg,
+.footer-contact li svg {
+  width: 16px;
+  height: 16px;
+  fill: #D4AF37;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.btn-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  border: 1px solid #D4AF37;
+  padding: 8px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 13px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-view-all:hover {
+  background-color: #D4AF37;
+  color: #0D5C3B;
+}
+
+.more-outlets {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Newsletter */
+.footer-newsletter {
+  margin-top: 40px;
+}
+
+.footer-newsletter p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.newsletter-form {
+  display: flex;
+  position: relative;
+}
+
+.newsletter-form input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 50px 12px 15px;
+  border-radius: 30px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-form input:focus {
+  border-color: #D4AF37;
+}
+
+.newsletter-form button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  width: 36px;
+  border: none;
+  background: #D4AF37;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  transform: scale(1.05);
+  background: #f3c63a;
+}
+
+.newsletter-form button svg {
+  width: 14px;
+  height: 14px;
+  fill: #0D5C3B;
+  transform: translateX(1px);
+}
+
+/* Skyline Decoration */
+.footer-skyline {
+  width: 100%;
+  height: 350px;
+  margin-top: -80px;
+  margin-bottom: -120px;
+  background-image: url('footer.png');
+  background-size: auto 100%;
+  background-position: center center;
+  background-repeat: repeat-x;
+  opacity: 0.4;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px 0;
+  position: relative;
+  z-index: 2;
+  background-color: #02894A;
+}
+
+.footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bottom-center {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.gold-line {
+  width: 40px;
+  height: 1px;
+  background-color: #D4AF37;
+}
+
+.center-text {
+  color: #D4AF37;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.bottom-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.bottom-links a:hover {
+  color: #D4AF37;
+}
+
+.bottom-links .separator {
+  margin: 0 10px;
+  opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .footer-brand {
+    align-items: center;
+  }
+  
+  .footer-brand .brand-desc {
+    padding-right: 0;
+  }
+  
+  .footer-links a::before {
+    display: none;
+  }
+  .footer-links a,
+  .footer-outlets li,
+  .footer-contact li {
+    justify-content: center;
+  }
+  
+  .footer-bottom-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .bottom-center {
+    order: -1;
+  }
+}
+</style>
+
+<footer class="footer-new">
+  <div class="footer-container">
+    <!-- Left Column: Brand -->
+    <div class="footer-brand">
+      <img src="logo.png.png" alt="Arabian Palace" class="footer-logo">
+      <p class="brand-tagline">THE MANDHI EXPERTS</p>
+      <p class="brand-desc">
+        Serving the best Mandhi in Kerala while maintaining exceptional quality, authentic Arabian flavours, and outstanding customer service in every outlet.
+      </p>
+      <div class="footer-socials">
+        <span>Follow Us</span>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Column: Quick Links -->
+    <div class="footer-col footer-links">
+      <h3 class="footer-heading">Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ourstory.html">Our Story</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="outlets.html">Outlets</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Third Column: Our Outlets -->
+    <div class="footer-col footer-outlets">
+      <h3 class="footer-heading">Our Outlets</h3>
+      <ul class="outlet-list">
+        <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Edappally</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Kozhikode</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Thrissur</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Trivandrum</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Kottayam</li>
+        <li class="more-outlets"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> ...and 10+ more across Kerala & Bengaluru</li>
+      </ul>
+      <a href="#" class="btn-view-all">View All Outlets &rarr;</a>
+    </div>
+
+    <!-- Fourth Column: Contact Us -->
+    <div class="footer-col footer-contact">
+      <h3 class="footer-heading">Contact Us</h3>
+      <ul class="contact-list">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          +91 9995 72 5555
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          info@arabianpalace.com
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          www.arabianpalace.com
+        </li>
+      </ul>
+      
+      <div class="footer-newsletter">
+        <h3 class="footer-heading" style="font-size:18px;margin-bottom:15px;">Newsletter</h3>
+        <p>Subscribe to get updates on offers, new outlets and more.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" aria-label="Subscribe">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom decoration -->
+  <div class="footer-skyline"></div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <div class="copyright">&copy; 2026 Arabian Palace Group. All Rights Reserved.</div>
+      <div class="bottom-center">
+        <span class="gold-line"></span>
+        <span class="center-text">The Taste of Authentic Arabia</span>
+        <span class="gold-line"></span>
+      </div>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <span class="separator">|</span>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
   function toggleOrderPopup(e) {
