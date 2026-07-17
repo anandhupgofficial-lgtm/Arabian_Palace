@@ -459,6 +459,7 @@
     @media (max-width: 768px) {
       /* On mobile: hide full navbar, show fixed hamburger only */
       .navbar { display: none !important; }
+      .hide-on-mobile { display: none !important; }
       /* Fixed hamburger top-right */
       .mobile-hamburger-fixed {
         display: flex !important;
@@ -1183,9 +1184,6 @@
             class="mandi-img"
             loading="eager"
             fetchpriority="high"
-            width="1536"
-            height="1536"
-            style="aspect-ratio: 1/1; height: auto;"
           />
         </picture>
       </div>
@@ -1265,7 +1263,7 @@
       <p class="story-text">
         The introduction of our signature Spicy Kuzhimandhi became a turning point in our journey. Prepared using premium ingredients, traditional cooking methods, and a special blend of Arabian spices, it helped Arabian Palace build a reputation as one of the best places for Chicken Mandhi in Kerala.
       </p>
-      <p class="story-text">
+      <p class="story-text hide-on-mobile">
         Today, Arabian Palace continues to serve thousands of happy customers who visit us for authentic Arabian flavours, delicious Shawarmas, Broasted Chicken, and the best Kuzhimandhi in Kerala. Our growth is driven by one promise: delivering exceptional taste, outstanding service, and a memorable dining experience in every visit.
       </p>
 
@@ -2104,6 +2102,12 @@
   .wcu-premium-section {
     padding: 60px 5%;
   }
+  .wcu-premium-img {
+    transform: translate(5vw, 10px) scale(1.15);
+  }
+  .wcu-premium-img:hover {
+    transform: translate(5vw, 10px) scale(1.15);
+  }
   .wcu-premium-title {
     font-size: 32px;
   }
@@ -2280,9 +2284,11 @@
     flex-shrink: 0;
   }
   @media (max-width: 768px) {
-    .stats-banner { padding: 24px 20px; margin: 0 14px; width: calc(100% - 28px); border-radius: 12px; }
-    .stats-banner-inner { flex-direction: column; gap: 24px; }
-    .stat-divider { width: 80px; height: 1px; }
+    .stats-banner { padding: 32px 20px; margin: 0 14px; width: calc(100% - 28px); border-radius: 12px; }
+    .stats-banner-inner { flex-direction: column; gap: 24px; align-items: center; }
+    .stat-item { justify-content: flex-start; width: 100%; max-width: 220px; margin: 0 auto; }
+    .stat-text { text-align: left; }
+    .stat-divider { width: 80px; height: 1px; margin: 0 auto; }
   }
 
   /* ══ OUR BRANDS ══ */
@@ -6435,7 +6441,9 @@
 }
 
 .footer-brand img.footer-logo {
-  width: 250px;
+  width: 280px;
+  max-width: 100%;
+  margin-left: -15px;
   margin-bottom: 10px;
 }
 
