@@ -395,6 +395,19 @@
       background: radial-gradient(circle at top, rgba(255,255,255,0.06) 0%, transparent 60%);
       z-index: 1;
     }
+    .cta-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 180px;
+      background-image: url('images/footer.webp');
+      background-size: auto 100%;
+      background-position: center bottom;
+      background-repeat: repeat-x;
+      opacity: 0.35;
+      z-index: 1;
+    }
     .cta-content {
       position: relative;
       z-index: 2;
@@ -509,11 +522,11 @@
 
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="navbar-brand">
+      <a href="index.html" class="navbar-brand" onclick="if(document.referrer.includes('index.html')) { event.preventDefault(); history.back(); }">
         <img src="images/logo.webp" alt="Arabian Palace" loading="eager" width="200" height="133" />
         Arabian Palace
       </a>
-      <a href="index.html" class="nav-btn">Back to Home</a>
+      <a href="index.html" class="nav-btn" onclick="if(document.referrer.includes('index.html')) { event.preventDefault(); history.back(); }">Back to Home</a>
     </div>
   </nav>
 
@@ -646,19 +659,15 @@
       <div class="cta-box">
         <div class="cta-content">
           <h2 class="cta-title playfair">Thank You for Being a Part of Our Journey</h2>
+          <div class="gold-divider-center" style="margin: 15px auto 25px;"></div>
           <p class="cta-subtitle">Together, let's continue celebrating authentic Arabian flavours.</p>
-          <a href="index.html#story" class="cta-btn">Back to Home</a>
+          <a href="index.html" class="cta-btn" onclick="if(document.referrer.includes('index.html')) { event.preventDefault(); history.back(); }">Back to Home</a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <img src="images/logo.webp" alt="Arabian Palace" class="footer-logo" loading="eager" width="200" height="133" />
-      <p>&copy; 2026 Arabian Palace. All Rights Reserved.</p>
-    </div>
-  </footer>
+
 
 </body>
 </html>

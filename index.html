@@ -1287,6 +1287,13 @@
           document.body.classList.add('page-exit');
           setTimeout(function() { window.location.href = url; }, 500);
         }
+        
+        // Fix for mobile back swipe (bfcache)
+        window.addEventListener('pageshow', function(event) {
+          if (event.persisted) {
+            document.body.classList.remove('page-exit');
+          }
+        });
       </script>
     </div>
 
@@ -1421,8 +1428,10 @@
 
   <!-- Two-column: text left, image right -->
   <div class="about-container">
-    <div class="about-top">
+    <div class="about-heading-wrap">
       <h3 class="about-heading">Who We Are</h3>
+    </div>
+    <div class="about-top">
       <p class="about-text">
         Arabian Palace was founded in 2017 by two college friends who shared a vision of bringing authentic Arabian flavours to food lovers across Kerala.
       </p>
@@ -2161,6 +2170,14 @@
     align-items: flex-start;
     gap: 64px;
     padding-left: 20px;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  /* Heading wrapper — hidden on desktop (heading lives inside about-top via CSS order trick);
+     visible only on mobile where it becomes order:1 above the image */
+  .about-heading-wrap {
+    display: none;
   }
 
   /* ── Left: text column ── */
@@ -2220,9 +2237,13 @@
   /* ── Mobile ── */
   @media (max-width: 900px) {
     .about-section { padding: 48px 24px; }
-    .about-container { flex-direction: column; gap: 32px; align-items: center; }
-    .about-top { max-width: 100%; }
-    .about-img-wrap { flex: none; width: 100%; max-width: 360px; margin-top: 0; }
+    .about-container { flex-direction: column; gap: 24px; align-items: center; }
+    /* Show the standalone heading wrapper and reorder: heading → photo → text */
+    .about-heading-wrap { display: block; order: 1; width: 100%; }
+    .about-img-wrap { order: 2; flex: none; width: 100%; max-width: 360px; margin-top: 0; }
+    .about-top { order: 3; max-width: 100%; }
+    /* Hide the h3 inside about-top on mobile (the heading-wrap handles it) */
+    .about-top .about-heading { display: none; }
   }
 
   /* ══ STATS BANNER ══ */
@@ -3858,12 +3879,12 @@
   /* --- Logo Overlap --- */
   .footer-logo-center {
     position: absolute;
-    bottom: -60px;
+    bottom: -68px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    width: 140px;
-    height: 140px;
+    width: 175px;
+    height: 175px;
     background: var(--white);
     border-radius: 50%;
     border: 4px solid var(--white);
@@ -3880,9 +3901,10 @@
     100% { transform: translate(-50%, 0); }
   }
   .footer-logo-center img {
-    width: 85%;
-    height: 85%;
+    width: 88%;
+    height: auto;
     object-fit: contain;
+    display: block;
   }
 
   /* --- Main Footer White Area --- */
@@ -4243,7 +4265,7 @@
 
     <!-- Floating Logo -->
     <div class="footer-logo-center">
-      <img src="images/logo.webp" alt="Arabian Palace Logo" loading="eager" width="200" height="133">
+      <img src="images/logo_cropped.webp" alt="Arabian Palace Logo" loading="eager" width="314" height="391">
     </div>
   </div>
 
@@ -4425,10 +4447,10 @@
   .footer-mid-wave { position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 3; }
   .footer-mid-wave svg { display: block; width: calc(100% + 1.3px); height: 88px; }
   .footer-mid-wave path { fill: var(--bg-color); }
-  .footer-logo-center { position: absolute; bottom: -62px; left: 50%; transform: translateX(-50%); z-index: 10; width: 160px; height: 160px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--gold), 0 0 0 9px rgba(212,175,55,0.3), 0 0 0 12px rgba(212,175,55,0.12), 0 25px 50px rgba(0,0,0,0.22), 0 0 60px rgba(212,175,55,0.18); display: flex; align-items: center; justify-content: center; overflow: hidden; animation: floatLogo 5s ease-in-out infinite; transition: var(--transition); cursor: pointer; }
+  .footer-logo-center { position: absolute; bottom: -76px; left: 50%; transform: translateX(-50%); z-index: 10; width: 195px; height: 195px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--gold), 0 0 0 9px rgba(212,175,55,0.3), 0 0 0 12px rgba(212,175,55,0.12), 0 25px 50px rgba(0,0,0,0.22), 0 0 60px rgba(212,175,55,0.18); display: flex; align-items: center; justify-content: center; overflow: hidden; animation: floatLogo 5s ease-in-out infinite; transition: var(--transition); cursor: pointer; }
   .footer-logo-center:hover { animation-play-state: paused; transform: translateX(-50%) scale(1.06); box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--gold), 0 0 0 9px rgba(212,175,55,0.4), 0 0 0 14px rgba(212,175,55,0.18), 0 30px 60px rgba(0,0,0,0.3), 0 0 80px rgba(212,175,55,0.28); }
   @keyframes floatLogo { 0%, 100% { transform: translate(-50%, 0px); } 50% { transform: translate(-50%, -14px); } }
-  .footer-logo-center img { width: 82%; height: 82%; object-fit: contain; }
+  .footer-logo-center img { width: 88%; height: auto; object-fit: contain; display: block; }
   .footer-main-content { background: var(--bg-color); padding: 90px 4% 50px; position: relative; z-index: 2; }
   .footer-main-content::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 90 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M45 0L90 45L45 90L0 45L45 0z' fill='none' stroke='rgba(1,158,83,0.03)' stroke-width='1.5'/%3E%3C/svg%3E"); opacity: 1; }
   .footer-grid { display: grid; grid-template-columns: 1.15fr 0.9fr 1.15fr; gap: 24px; max-width: 1120px; margin: 0 auto; align-items: stretch; position: relative; z-index: 1; }
@@ -4520,7 +4542,7 @@
     </div>
 
     <div class="footer-logo-center">
-      <img src="images/logo.webp" alt="Arabian Palace Logo" loading="eager" width="200" height="133">
+      <img src="images/logo_cropped.webp" alt="Arabian Palace Logo" loading="eager" width="314" height="391">
     </div>
   </div>
 
@@ -6749,6 +6771,11 @@
     padding-right: 0;
   }
   
+  .footer-links,
+  .footer-outlets {
+    display: none;
+  }
+  
   .footer-links a::before {
     display: none;
   }
@@ -6820,7 +6847,7 @@
         <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Thrissur</li>
         <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Trivandrum</li>
         <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> Kottayam</li>
-        <li class="more-outlets"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> ...and 10+ more across Kerala & Bengaluru</li>
+        <li class="more-outlets"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg> ...and 10+ more across Kerala &amp; Bengaluru</li>
       </ul>
       <a href="#" class="btn-view-all">View All Outlets &rarr;</a>
     </div>
