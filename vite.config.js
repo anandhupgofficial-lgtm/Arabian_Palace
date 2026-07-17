@@ -1,5 +1,13 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 export default defineConfig({
-  // No plugins needed for plain HTML + Tailwind
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        ourstory: resolve(__dirname, 'ourstory.html')
+      }
+    }
+  }
 })
