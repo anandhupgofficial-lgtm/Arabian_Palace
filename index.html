@@ -1056,7 +1056,7 @@
   <nav class="navbar">
     <!-- Logo -->
     <div class="logo-wrap">
-      <img src="images/logo.png.png" alt="Arabian Palace Logo" class="logo-img" loading="eager" />
+      <img src="images/logo.webp" alt="Arabian Palace Logo" class="logo-img" loading="eager"  width="200" height="133" />
     </div>
 
     <!-- Nav Right Group -->
@@ -1131,7 +1131,7 @@
 
     <!-- Mobile logo (shown at top on mobile) -->
     <div class="mobile-hero-logo" style="display:none;">
-      <img src="images/logo.png.png" alt="Arabian Palace Logo" />
+      <img src="images/logo.webp" alt="Arabian Palace Logo" loading="eager" width="200" height="133" />
     </div>
     <!-- LEFT -->
     <div class="hero-left">
@@ -1167,12 +1167,25 @@
 
         <!-- Mandi Image -->
         <picture>
-          <source media="(max-width: 768px)" srcset="images/mobile_mani.png">
+          <source media="(max-width: 768px)" type="image/webp"
+                  srcset="images/hero-mobile-320.webp 320w,
+                          images/hero-mobile-480.webp 480w,
+                          images/hero-mobile-768.webp 768w"
+                  sizes="(max-width: 768px) 100vw">
+          <source media="(min-width: 769px)" type="image/webp"
+                  srcset="images/hero-mandi-768.webp 768w,
+                          images/hero-mandi-1024.webp 1024w,
+                          images/hero-mandi-1536.webp 1536w"
+                  sizes="50vw">
           <img
-            src="images/mandi.png.png"
+            src="images/hero-mandi.webp"
             alt="Authentic Arabian Mandi"
             class="mandi-img"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
+            width="1536"
+            height="1536"
+            style="aspect-ratio: 1/1; height: auto;"
           />
         </picture>
       </div>
@@ -1186,7 +1199,7 @@
   <div class="banner-box">
 
     <!-- Left Rider -->
-    <img src="images/rider_left.png" alt="Delivery Rider Left" class="banner-delivery" />
+    <img src="images/rider_left.webp" alt="Delivery Rider Left" class="banner-delivery" loading="eager" width="1024" height="1024" />
 
     <!-- Center content -->
     <div class="banner-center">
@@ -1222,7 +1235,7 @@
     </div>
 
     <!-- Right Rider -->
-    <img src="images/rider_right.png" alt="Delivery Rider Right" class="banner-delivery" />
+    <img src="images/rider_right.webp" alt="Delivery Rider Right" class="banner-delivery" loading="eager" width="1024" height="1024" />
 
   </div>
 </section>
@@ -1241,7 +1254,7 @@
         <div class="divider-line-white"></div>
       </div>
 
-      <img src="images/camel.png" alt="Arabian Camel" class="camel-img-mobile" loading="lazy" />
+      <img src="images/camel.webp" alt="Arabian Camel" class="camel-img-mobile" loading="lazy"  width="800" height="533" />
 
       <p class="story-text">
         Arabian Palace started its journey in 2017 with a simple mission — to serve authentic Arabian cuisine and become the destination for the best Mandhi in Kerala.
@@ -1280,7 +1293,7 @@
     </div>
 
     <div class="story-right">
-      <img src="images/camel.png" alt="Arabian Camel" class="camel-img" loading="lazy" />
+      <img src="images/camel.webp" alt="Arabian Camel" class="camel-img" loading="lazy"  width="800" height="533" />
     </div>
 
   </div>
@@ -1315,25 +1328,25 @@
         <!-- Card 1 -->
         <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Chicken Mandi</h3>
-          <img src="images/menu/chicken_mandi.png" alt="Chicken Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/chicken_mandi.webp" alt="Chicken Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- Card 2 -->
         <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Beef Mandi</h3>
-          <img src="images/menu/beef_mandi.png" alt="Beef Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/beef_mandi.webp" alt="Beef Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- Card 3 -->
         <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Alfam Mandi</h3>
-          <img src="images/menu/alfam_mandi.png" alt="Alfam Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/alfam_mandi.webp" alt="Alfam Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- Card 4 -->
         <div class="c-card" data-cat="mandi" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Shawaya Mandi</h3>
-          <img src="images/menu/shawaya_mandi.png" alt="Shawaya Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/shawaya_mandi.webp" alt="Shawaya Mandi" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
 
@@ -1343,25 +1356,25 @@
         <!-- Card G1 -->
         <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Alfam</h3>
-          <img src="images/menu/alfam.png" alt="Alfam" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/alfam.webp" alt="Alfam" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- Card G2 -->
         <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Tandoori Chicken</h3>
-          <img src="images/menu/Tandoori Chicken.png" alt="Tandoori Chicken" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/Tandoori Chicken.webp" alt="Tandoori Chicken" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- Card G3 -->
         <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Kebab</h3>
-          <img src="images/menu/kebab.png" alt="Kebab" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/kebab.webp" alt="Kebab" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- Card G4 -->
         <div class="c-card" data-cat="grill" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Fish Grill</h3>
-          <img src="images/menu/fish_grill.png" alt="Fish Grill" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/fish_grill.webp" alt="Fish Grill" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- ══ OTHER FAVORITES ══ -->
@@ -1369,25 +1382,25 @@
         <!-- Card O1 -->
         <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Burger</h3>
-          <img src="images/menu/burger.png" alt="Burger" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/burger.webp" alt="Burger" style="width: 100%; max-width: 280px; height: auto; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="300">
         </div>
 
         <!-- Card O2 -->
         <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Shawarma</h3>
-          <img src="images/menu/shawarma.png" alt="Shawarma" style="width: 100%; max-width: 210px; height: auto; object-fit: contain; margin: -10px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/shawarma.webp" alt="Shawarma" style="width: 100%; max-width: 210px; height: auto; object-fit: contain; margin: -10px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="450">
         </div>
 
         <!-- Card O3 -->
         <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Special Shake</h3>
-          <img src="images/menu/special_shake.png" alt="Special Shake" style="width: 100%; max-width: 175px; height: auto; object-fit: contain; margin: -25px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/special_shake.webp" alt="Special Shake" style="width: 100%; max-width: 175px; height: auto; object-fit: contain; margin: -25px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="450">
         </div>
 
         <!-- Card O4 -->
         <div class="c-card" data-cat="other" style="padding: 30px 20px; align-items: center; justify-content: flex-start;">
           <h3 style="font-family: 'Titan One', cursive; font-size: 34px; font-weight: normal; color: var(--green); margin: 0 0 20px 0; text-align: center; letter-spacing: 1px;">Fresh Lime</h3>
-          <img src="images/menu/fresh_lime.png" alt="Fresh Lime" style="width: 100%; max-width: 190px; height: auto; object-fit: contain; margin: -20px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));">
+          <img src="images/menu/fresh_lime.webp" alt="Fresh Lime" style="width: 100%; max-width: 190px; height: auto; object-fit: contain; margin: -20px auto 0 auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));" loading="lazy" width="300" height="450">
         </div>
 
       </div>
@@ -1428,7 +1441,7 @@
 
     <!-- RIGHT: Founders Image -->
     <div class="about-img-wrap">
-      <img src="images/founders.png.png" alt="Founders of Arabian Palace" class="about-founders-img" />
+      <img src="images/founders.webp" alt="Founders of Arabian Palace" class="about-founders-img" loading="lazy" width="1024" height="1024" />
     </div>
   </div>
 
@@ -1453,7 +1466,7 @@
         <!-- Card 1: Arabian Palace -->
         <div class="brand-card brand-ap">
           <div class="bc-img-wrap">
-            <img src="images/arabian_palace_card.png" alt="Arabian Palace" class="bc-img bc-img-lg" />
+            <img src="images/arabian_palace_card.webp" alt="Arabian Palace" class="bc-img bc-img-lg" loading="lazy" width="320" height="213" />
           </div>
           <div class="bc-body">
             <h3 class="bc-name">Arabian<br>Palace</h3>
@@ -1474,7 +1487,7 @@
         <!-- Card 2: Shawaya Palace -->
         <div class="brand-card brand-sp">
           <div class="bc-img-wrap">
-            <img src="images/shawaya_palace_card.png" alt="Shawaya Palace" class="bc-img bc-img-md" />
+            <img src="images/shawaya_palace_card.webp" alt="Shawaya Palace" class="bc-img bc-img-md" loading="lazy" width="320" height="213" />
           </div>
           <div class="bc-body">
             <h3 class="bc-name">Shawaya<br>Palace</h3>
@@ -1495,7 +1508,7 @@
         <!-- Card 3: Broastino Palace -->
         <div class="brand-card brand-bp">
           <div class="bc-img-wrap">
-            <img src="images/broastino_palace_card.png" alt="Broastino Palace" class="bc-img bc-img-md" />
+            <img src="images/broastino_palace_card.webp" alt="Broastino Palace" class="bc-img bc-img-md" loading="lazy" width="320" height="213" />
           </div>
           <div class="bc-body">
             <h3 class="bc-name bc-name-dark">Broastino<br>Palace</h3>
@@ -1648,7 +1661,7 @@
     <!-- Right Image -->
     <div class="wcu-premium-right">
       <div class="wcu-premium-img-wrapper">
-        <img src="images/why_cutomers.png" alt="Mandhi Plate" class="wcu-premium-img">
+        <img src="images/why_cutomers.webp" alt="Mandhi Plate" class="wcu-premium-img" loading="lazy" width="800" height="800">
       </div>
     </div>
   </div>
@@ -1674,7 +1687,7 @@
       </p>
       <div class="mvv-image-container">
         <div class="mvv-image-glow"></div>
-        <img src="images/our_mission.png" alt="Best Mandhi" class="mvv-mission-img">
+        <img src="images/our_mission.webp" alt="Best Mandhi" class="mvv-mission-img" loading="lazy" width="800" height="533">
       </div>
     </div>
 
@@ -1693,7 +1706,7 @@
       </p>
       <div class="mvv-image-container">
         <div class="mvv-image-glow"></div>
-        <img src="images/ourmission.png" alt="Arabian Palace Building" class="mvv-vision-img">
+        <img src="images/ourmission.webp" alt="Arabian Palace Building" class="mvv-vision-img" loading="lazy" width="800" height="533">
       </div>
     </div>
 
@@ -4224,7 +4237,7 @@
 
     <!-- Floating Logo -->
     <div class="footer-logo-center">
-      <img src="images/logo.png" alt="Arabian Palace Logo">
+      <img src="images/logo.webp" alt="Arabian Palace Logo" loading="eager" width="200" height="133">
     </div>
   </div>
 
@@ -4501,7 +4514,7 @@
     </div>
 
     <div class="footer-logo-center">
-      <img src="images/logo.png" alt="Arabian Palace Logo">
+      <img src="images/logo.webp" alt="Arabian Palace Logo" loading="eager" width="200" height="133">
     </div>
   </div>
 
@@ -6643,7 +6656,7 @@
   height: 350px;
   margin-top: -80px;
   margin-bottom: -120px;
-  background-image: url('images/footer.png');
+  background-image: url('images/footer.webp');
   background-size: auto 100%;
   background-position: center center;
   background-repeat: repeat-x;
@@ -6752,7 +6765,7 @@
   <div class="footer-container">
     <!-- Left Column: Brand -->
     <div class="footer-brand">
-      <img src="images/logo.png.png" alt="Arabian Palace" class="footer-logo">
+      <img src="images/logo.webp" alt="Arabian Palace" class="footer-logo" loading="eager" width="200" height="133">
       <p class="brand-tagline">THE MANDHI EXPERTS</p>
       <p class="brand-desc">
         Serving the best Mandhi in Kerala while maintaining exceptional quality, authentic Arabian flavours, and outstanding customer service in every outlet.
