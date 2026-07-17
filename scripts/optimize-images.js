@@ -26,10 +26,10 @@ function gatherFiles(dir) {
 gatherFiles(IMAGES_DIR);
 
 const CONFIG = {
-    hero: { widths: [320, 480, 768, 1024, 1536] },
-    card: { width: 320 },
-    menu: { width: 300 },
-    default: { width: null } // Just convert
+    hero: { widths: [480, 768, 1024, 1536, 1920], quality: 90 }, // High quality for hero
+    card: { width: 800, quality: 86 }, // Increased width for retina sharpness
+    menu: { width: 800, quality: 88 }, // High quality, larger size for food details
+    default: { width: 1200, quality: 82 } // Fallback max width 1200 for decorative
 };
 
 async function processImages() {
@@ -49,21 +49,21 @@ async function processImages() {
                     const outPath = path.join(dir, `${prefix}-${w}.webp`);
                     await sharp(filePath)
                         .resize({ width: w, withoutEnlargement: true })
-                        .webp({ quality: 80 })
+                        .webp({ quality: CONFIG.hero.quality })
                         .toFile(outPath);
                     console.log(` -> ${outPath}`);
                 }
                 
                 // create a default one
                 const outPath = path.join(dir, `${prefix}.webp`);
-                await sharp(filePath).webp({ quality: 80 }).toFile(outPath);
+                await sharp(filePath).webp({ quality: CONFIG.hero.quality }).toFile(outPath);
             }
             // Card Images
             else if (filename.includes('_card')) {
                 const outPath = path.join(dir, `${basename}.webp`);
                 await sharp(filePath)
                     .resize({ width: CONFIG.card.width, withoutEnlargement: true })
-                    .webp({ quality: 80 })
+                    .webp({ quality: CONFIG.card.quality })
                     .toFile(outPath);
                 console.log(` -> ${outPath}`);
             }
@@ -72,21 +72,33 @@ async function processImages() {
                 const outPath = path.join(dir, `${basename}.webp`);
                 await sharp(filePath)
                     .resize({ width: CONFIG.menu.width, withoutEnlargement: true })
-                    .webp({ quality: 80 })
+                    .webp({ quality: CONFIG.menu.quality })
                     .toFile(outPath);
                 console.log(` -> ${outPath}`);
             }
             // Everything Else (Logo, Camel, etc)
             else {
-                let w = null;
-                if (filename === 'logo.png' || filename === 'logo.png.png') w = 200;
-                if (filename === 'camel.png') w = 800; // reasonable max width
-                if (filename === 'why_cutomers.png' || filename === 'our_mission.png' || filename === 'ourmission.png') w = 800;
+                let w = CONFIG.default.width;
+                let q = CONFIG.default.quality;
+                
+                // Fine-tune specific decorative elements
+                if (filename === 'logo.png' || filename === 'logo.png.png') {
+                    w = 600; // Logos need to be sharp but not massive
+                    q = 90;
+                }
+                if (filename === 'camel.png') {
+                    w = 1000; 
+                    q = 85;
+                }
+                if (filename === 'why_cutomers.png' || filename === 'our_mission.png' || filename === 'ourmission.png') {
+                    w = 1200;
+                    q = 86;
+                }
                 
                 const outPath = path.join(dir, `${basename}.webp`);
                 const pipeline = sharp(filePath);
                 if (w) pipeline.resize({ width: w, withoutEnlargement: true });
-                await pipeline.webp({ quality: 80 }).toFile(outPath);
+                await pipeline.webp({ quality: q }).toFile(outPath);
                 console.log(` -> ${outPath}`);
             }
         } catch (err) {
