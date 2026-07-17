@@ -516,6 +516,22 @@
         border-radius: 10px;
       }
     }
+
+    @media (max-width: 768px) {
+      .nav-btn {
+        display: none;
+      }
+      .navbar .container {
+        justify-content: center;
+      }
+      .navbar-brand {
+        font-size: 20px;
+        white-space: nowrap;
+      }
+      .navbar-brand img {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -551,10 +567,6 @@
       </div>
       <div class="split-image-wrapper">
         <img src="images/our_story_shop.webp" alt="Arabian Palace First Outlet" class="split-image" loading="lazy" width="1024" height="1024" />
-        <div class="stat-card-overlay">
-          <span class="stat-val">15+</span>
-          <span class="stat-label">Outlets</span>
-        </div>
       </div>
     </div>
   </section>
