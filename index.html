@@ -6761,6 +6761,10 @@
     grid-template-columns: 1fr;
     text-align: center;
     gap: 40px;
+    padding-inline: 20px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .footer-brand {
@@ -6770,16 +6774,16 @@
   }
 
   .footer-brand img.footer-logo {
-    margin-left: 0;
-    margin-right: 0;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    transform: translateX(18px);
   }
 
   .footer-brand .brand-tagline {
     text-align: center;
     width: 100%;
+    transform: translateX(18px);
   }
 
   .footer-brand .brand-desc {
@@ -6788,6 +6792,24 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    transform: translateX(18px);
+  }
+
+  .footer-socials {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-socials span {
+    transform: translateX(18px);
+  }
+
+  .social-icons {
+    justify-content: center;
+    width: 100%;
+    transform: translateX(18px);
   }
   
   .footer-links,
